@@ -66,15 +66,15 @@ array, with the following REQUIRED JSON members:
 
 * "value" -- The "value" JSON value is the context URI and set to an IP Network lookup URL ([@!RFC9082, section 3.1.1]).
 * "rel" -- The "rel" JSON value is the link relation type and set to the "geofeed" string. The "geofeed" link relation
-type is new and will be registered in the IANA Link Relations Registry (see the Link Relations Registry section).
+type is new and will be registered in the IANA Link Relations Registry (see the "Link Relations Registry" section).
 * "href" -- The "href" JSON value is the target URI and set to the HTTPS URL of the geofeed file for the IP network in
 the context URI.
 
 Per the definition of a web link ([@!RFC8288]), a "geofeed" link object MAY have additional OPTIONAL JSON members.
 Specifically:
 
-* "type" -- The "type" JSON value is the media type for the target URI. See the Media Types Registry section for
-acceptable values.
+* "type" -- The "type" JSON value is the media type for the target URI. See the "Media Type for a Geofeed Link" section
+for acceptable values.
 * "hreflang" -- The "hreflang" JSON value is an attribute for the target URI and could be used to indicate the languages
 the geofeed data is available in.
 
@@ -88,7 +88,7 @@ for the optional RPKI signature. The "text/csv" media type ([@!RFC7111, section 
 represent a geofeed file, but it does not support the "#" comments needed to include the RPKI signature.
 
 To enable including "#" comments for an RPKI signature, a new media type "application/geofeed+csv" will be registered in
-the IANA Media Types Registry (see the Media Types Registry section).
+the IANA Media Types Registry (see the "Media Types Registry" section).
 
 It is RECOMMENDED that the "type" JSON value in a "geofeed" link object be set to "application/geofeed+csv" media type.
 
@@ -209,7 +209,7 @@ IANA is requested to register the following value in the Link Relations Registry
 * Required parameters: N/A
 * Optional parameters: N/A
 * Encoding considerations: See [@?I-D.ymbk-opsawg-9092-update, section 2].
-* Security considerations: See the Security Considerations section of this document.
+* Security considerations: See the "Security Considerations" section of this document.
 * Interoperability considerations: There are no known interoperability problems regarding this media format.
 * Published specification: This document.
 * Applications that use this media type: Implementations of the Registration Data Access Protocol (RDAP) Extension for
