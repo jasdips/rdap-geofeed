@@ -223,4 +223,17 @@ on the REGEXT mailing list, and other documents produced by the REGEXT Working G
 * Change controller: IETF
 * Provisional Registration: No
 
+# Acknowledgements
+
+We thank Gavin Brown for the suggestion to use a web link instead of a simple URI string to specify a geofeed file URL.
+
+# Change History
+
+## Changes from 00 to 01
+
+* Now using a web link instead of a simple URI string to specify a geofeed file URL.
+* Renamed the extension as "geofeed1" instead of "geofeedv1".
+* Introduced the new "geofeed" link relation type.
+* Introduced the new "application/geofeed+csv" media type.
+
 {backmatter}
