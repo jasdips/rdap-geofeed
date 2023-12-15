@@ -10,7 +10,7 @@ name = "Internet-Draft"
 value = "draft-ietf-regext-rdap-geofeed-00"
 stream = "IETF"
 status = "standard"
-date = 2023-12-11T00:00:00Z
+date = 2023-12-15T00:00:00Z
 
 [[author]]
 initials="J."
@@ -32,91 +32,153 @@ email = "tomh@apnic.net"
 
 .# Abstract
 
-This document defines a new RDAP extension `geofeedv1` for including a geofeed
-file URL in an IP Network object.
+This document defines a new RDAP extension "geofeed1" for including a geofeed file URL in an IP Network object.
 
 {mainmatter}
 
 # Introduction
 
-[@!RFC8805] and [@?I-D.ymbk-opsawg-9092-update] (obsoletes [@!RFC9092]) detail
-the IP geolocation feed (in short, geofeed) concept. This document specifies
-how the geofeed data can be accessed through RDAP. It defines a new RDAP
-extension `geofeedv1` for including a geofeed file URL in an IP Network object.
+[@!RFC8805] and [@?I-D.ymbk-opsawg-9092-update] (obsoletes [@!RFC9092]) detail the IP geolocation feed (in short,
+geofeed) concept. This document specifies how the geofeed data can be accessed through RDAP. It defines a new RDAP
+extension "geofeed1" for including a geofeed file URL in an IP Network object.
 
 ## Requirements Language
 
-The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-"SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this
-document are to be interpreted as described in BCP 14 [@!RFC2119] [@!RFC8174]
-when, and only when, they appear in all capitals, as shown here.
+The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD","SHOULD NOT", "RECOMMENDED",
+"NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14
+[@!RFC2119] [@!RFC8174] when, and only when, they appear in all capitals, as shown here.
 
 # Specification
 
 ## Extension
 
-A new RDAP extension `geofeedv1` is defined for accessing the geofeed data
-through RDAP. It extends the IP Network object class [@!RFC9083] to include
-a new `geofeed` member.
+A new RDAP extension "geofeed1" is defined for accessing the geofeed data through RDAP. It updates the IP Network object
+class definition ([@!RFC9083, section 5.4]) to include a new link object for the geofeed file URL in its "links" array
+([@!RFC9083, section 4.2]).
 
-An RDAP server conforming to this specification MUST include the `geofeedv1`
-extension string in the `rdapConformance` array for the IP Network lookup and
-search responses, as well as in the help response.
+An RDAP server conforming to this specification MUST include the "geofeed1" extension string in the "rdapConformance"
+array for the IP Network lookup and search responses, as well as in the help response.
 
-## Geofeed Member
+## Geofeed Link
 
-The IP Network object class is extended to include a new `geofeed` member, as
-specified below:
+The IP Network object class ([@!RFC9083, section 5.4]) MAY include a link object for the geofeed file URL in its "links"
+array, with the following REQUIRED JSON members:
 
-geofeed — a string specifying the HTTPS URL of the geofeed file for an IP
-          network [@!RFC9092]
+* "value" -- The "value" JSON value is the context URI and set to an IP Network lookup URL ([@!RFC9082, section 3.1.1]).
+* "rel" -- The "rel" JSON value is the link relation type and set to the "geo" string. The "geo" link relation type is
+new and will be registered in the IANA Link Relations Registry (see section A).
+* "href" -- The "href" JSON value is the target URI and set to the HTTPS URL of the geofeed file for the IP network in
+the context URI.
 
-Since this specification extends the base definition of the IP Network object
-class, per [@!RFC7480, section 6], the `geofeed` member name MUST be prefixed
-with the `geofeedv1` extension string, followed by an underscore:
-`geofeedv1_geofeed`.
+Per the definition of a web link ([@!RFC8288]), a "geofeed" link object MAY have additional OPTIONAL JSON members.
+Specifically:
 
-The `geofeed` member is OPTIONAL for the `geofeedv1` extension. Furthermore,
-the Redaction by Removal method [@?I-D.ietf-regext-rdap-redacted] SHOULD be
-used when redacting this member.
+* "type" -- The "type" JSON value is the media type for the target URI. See section B for acceptable values.
+* "hreflang" -- The "hreflang" JSON value is an attribute for the target URI and could be used to indicate the languages
+the geofeed data is available in.
+
+There MAY be zero or more "geofeed" link objects in the "links" array of an IP Network object. In other words, the
+"geofeed" link objects are OPTIONAL.
+
+## Media Type for a Geofeed Link
+
+[@?I-D.ymbk-opsawg-9092-update] requires a geofeed file to be a UTF-8 CSV file, with a series of "#" comments at the end
+for the optional RPKI signature. The "text/csv" media type ([@!RFC7111, section 5.1]) seems like a good candidate to
+represent a geofeed file, but it does not support the "#" comments needed to include the RPKI signature.
+
+To enable including "#" comments for an RPKI signature, a new media type "application/geofeed+csv" will be registered in
+the IANA Media Types Registry (see section C).
+
+It is RECOMMENDED that the "type" JSON value in a "geofeed" link object be set to "application/geofeed+csv" media type.
 
 ## Example
 
-Here is an elided example of an IP Network object with the `geofeedv1` extension
-and the `geofeedv1_geofeed` member:
+The following is an elided example of an IP Network object with a "geofeed" link:
 
 ```
 {
-  "rdapConformance" : [
-    "rdap_level_0",
-    "geofeedv1"
-  ],
-  "objectClassName" : "ip network",
-  "handle" : "XXXX-RIR",
-  "startAddress" : "2001:db8::",
-  "endAddress" : "2001:db8:0:ffff:ffff:ffff:ffff:ffff",
-  "ipVersion" : "v6",
-  "name": "NET-RTR-1",
-  "type" : "DIRECT ALLOCATION",
-  "country" : "AU",
-  "parentHandle" : "YYYY-RIR",
-  "status" : [ "active" ],
-  …
-  "geofeedv1_geofeed" : "https:example.net/geofeed"
+    "objectClassName": "ip network",
+    "handle": "XXXX-RIR",
+    "startAddress": "2001:db8::",
+    "endAddress": "2001:db8:0:ffff:ffff:ffff:ffff:ffff",
+    "ipVersion": "v6",
+    "name": "NET-RTR-1",
+    "type": "DIRECT ALLOCATION",
+    "country": "AU",
+    "parentHandle": "YYYY-RIR",
+    "status": [ "active" ],
+    "links":
+     [
+        {
+            "value": "https://example.net/ip/2001:db8::/48",
+            "rel": "self",
+            "href": "https://example.net/ip/2001:db8::/48",
+            "type": "application/rdap+json"
+        },
+        {
+            "value": "https://example.net/ip/2001:db8::/48",
+            "rel": "geo",
+            "href": "https://example.net/geofeed",
+            "type": "application/geofeed+csv"
+        },
+        ...
+    ],
+    ...
+}
+```
+
+# Redaction
+
+Since the "geofeed" link objects in the "links" array of an IP Network object are optional, the Redaction by Removal
+method [@?I-D.ietf-regext-rdap-redacted] MUST be used when redacting them. The following is an elided example of an IP
+Network object with redacted "geofeed" links:
+
+```
+{
+    "objectClassName": "ip network",
+    "handle": "XXXX-RIR",
+    "startAddress": "2001:db8::",
+    "endAddress": "2001:db8:0:ffff:ffff:ffff:ffff:ffff",
+    "ipVersion": "v6",
+    "name": "NET-RTR-1",
+    "type": "DIRECT ALLOCATION",
+    "country": "AU",
+    "parentHandle": "YYYY-RIR",
+    "status": [ "active" ],
+    "links":
+     [
+        {
+            "value": "https://example.net/ip/2001:db8::/48",
+            "rel": "self",
+            "href": "https://example.net/ip/2001:db8::/48",
+            "type": "application/rdap+json"
+        },
+        ...
+    ],
+    "redacted":
+    [
+        {
+            "name":
+            {
+                "description": "Geofeed links"
+            },
+            "prePath": "$.links[?(@.rel=='geo')]",
+            "method": "removal"
+        }
+    ],
+    ...
 }
 ```
 
 # Privacy Considerations
 
-When including a geofeed file URL in an IP Network object, an RDAP server
-operator SHOULD follow the guidance from [@?I-D.ymbk-opsawg-9092-update, section 7]
-to not accidentally expose the location of an individual. 
+When including a geofeed file URL in an IP Network object, an RDAP server operator SHOULD follow the guidance from
+[@?I-D.ymbk-opsawg-9092-update, section 7] to not accidentally expose the location of an individual. 
 
 # Security Considerations
 
-[@?I-D.ymbk-opsawg-9092-update] requires an HTTPS URL for a geofeed file, and
-optionally RPKI-signing the data within. Besides that, this document does not
-introduce any new security considerations past those already discussed in the
+[@?I-D.ymbk-opsawg-9092-update] requires an HTTPS URL for a geofeed file, and optionally RPKI-signing the data within.
+Besides that, this document does not introduce any new security considerations past those already discussed in the
 RDAP protocol specifications.
 
 # IANA Considerations
@@ -124,7 +186,7 @@ RDAP protocol specifications.
 IANA is requested to register the following value in the RDAP Extensions
 Registry:
 
-Extension identifier: geofeedv1
+Extension identifier: geofeed1
 
 Registry operator: Any
 
