@@ -61,16 +61,16 @@ array for the IP Network lookup and search responses, as well as in the help res
 
 ## Geofeed Link
 
-The IP Network object class ([@!RFC9083, section 5.4]) MAY include a link object for the geofeed file URL in its "links"
-array, with the following REQUIRED JSON members:
+The IP Network object class ([@!RFC9083, section 5.4]) MAY include a link object for the geofeed file URL (also referred
+to as a Geofeed link object) in its "links" array, with the following REQUIRED JSON members:
 
 * "value" -- The "value" JSON value is the context URI and set to an IP Network lookup URL ([@!RFC9082, section 3.1.1]).
-* "rel" -- The "rel" JSON value is the link relation type and set to the "geofeed" string. The "geofeed" link relation
-type is new and will be registered in the IANA Link Relations Registry (see the "Link Relations Registry" section).
+* "rel" -- The "rel" JSON value is the link relation type and set to the "geo" string. The "geo" link relation type is
+new and will be registered in the IANA Link Relations Registry (see the "Link Relations Registry" section).
 * "href" -- The "href" JSON value is the target URI and set to the HTTPS URL of the geofeed file for the IP network in
 the context URI.
 
-Per the definition of a web link ([@!RFC8288]), a "geofeed" link object MAY have additional OPTIONAL JSON members.
+Per the definition of a web link ([@!RFC8288]), a Geofeed link object MAY have additional OPTIONAL JSON members.
 Specifically:
 
 * "type" -- The "type" JSON value is the media type for the target URI. See the "Media Type for a Geofeed Link" section
@@ -78,8 +78,8 @@ for acceptable values.
 * "hreflang" -- The "hreflang" JSON value is an attribute for the target URI and could be used to indicate the languages
 the geofeed data is available in.
 
-There MAY be zero or more "geofeed" link objects in the "links" array of an IP Network object. In other words, the
-"geofeed" link objects are OPTIONAL.
+There MAY be zero or more Geofeed link objects in the "links" array of an IP Network object. In other words, the Geofeed
+link objects are OPTIONAL.
 
 ## Media Type for a Geofeed Link
 
@@ -90,7 +90,7 @@ represent a geofeed file, but it does not support the "#" comments needed to inc
 To enable including "#" comments for an RPKI signature, a new media type "application/geofeed+csv" will be registered in
 the IANA Media Types Registry (see the "Media Types Registry" section).
 
-It is RECOMMENDED that the "type" JSON value in a "geofeed" link object be set to "application/geofeed+csv" media type.
+It is RECOMMENDED that the "type" JSON value in a Geofeed link object be set to "application/geofeed+csv" media type.
 
 ## Example
 
@@ -118,7 +118,7 @@ The following is an elided example of an IP Network object with a "geofeed" link
         },
         {
             "value": "https://example.net/ip/2001:db8::/48",
-            "rel": "geofeed",
+            "rel": "geo",
             "href": "https://example.net/geofeed",
             "type": "application/geofeed+csv"
         },
@@ -130,7 +130,7 @@ The following is an elided example of an IP Network object with a "geofeed" link
 
 # Redaction
 
-Since the "geofeed" link objects in the "links" array of an IP Network object are optional, the Redaction by Removal
+Since the Geofeed link objects in the "links" array of an IP Network object are optional, the Redaction by Removal
 method [@?I-D.ietf-regext-rdap-redacted] MUST be used when redacting them. The following is an elided example of an IP
 Network object with redacted "geofeed" links:
 
@@ -163,7 +163,7 @@ Network object with redacted "geofeed" links:
             {
                 "description": "Geofeed links"
             },
-            "prePath": "$.links[?(@.rel=='geofeed')]",
+            "prePath": "$.links[?(@.rel=='geo')]",
             "method": "removal"
         }
     ],
@@ -198,8 +198,8 @@ IANA is requested to register the following value in the RDAP Extensions Registr
 
 IANA is requested to register the following value in the Link Relations Registry:
 
-* Relation Name: geofeed
-* Description: Indicates that the link context has a resource with IP geolocation feed data at the link target.
+* Relation Name: geo
+* Description: Indicates that the link context has a resource with geographic information at the link target.
 * Reference: This document.
 
 ## Media Types Registry
@@ -233,7 +233,7 @@ We thank Gavin Brown for the suggestion to use a web link instead of a simple UR
 
 * Now using a web link instead of a simple URI string to specify a geofeed file URL.
 * Renamed the extension as "geofeed1" instead of "geofeedv1".
-* Introduced the new "geofeed" link relation type.
+* Introduced the new "geo" link relation type.
 * Introduced the new "application/geofeed+csv" media type.
 
 {backmatter}
