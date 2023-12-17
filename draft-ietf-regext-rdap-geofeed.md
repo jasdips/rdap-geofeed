@@ -98,7 +98,7 @@ specification.
 
 ## Example
 
-The following is an elided example of an IP Network object with a "geofeed" link:
+The following is an elided example of an IP Network object with a Geofeed link object:
 
 ```
 {
@@ -136,7 +136,7 @@ The following is an elided example of an IP Network object with a "geofeed" link
 
 Since the Geofeed link objects in the "links" array of an IP Network object are optional, the Redaction by Removal
 method [@?I-D.ietf-regext-rdap-redacted] MUST be used when redacting them. The following is an elided example of an IP
-Network object with redacted "geofeed" links:
+Network object with redacted Geofeed link objects:
 
 ```
 {
