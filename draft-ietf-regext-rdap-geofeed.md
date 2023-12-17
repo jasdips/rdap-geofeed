@@ -7,7 +7,7 @@ ipr= "trust200902"
 
 [seriesInfo]
 name = "Internet-Draft"
-value = "draft-ietf-regext-rdap-geofeed-00"
+value = "draft-ietf-regext-rdap-geofeed-01"
 stream = "IETF"
 status = "standard"
 date = 2023-12-15T00:00:00Z
