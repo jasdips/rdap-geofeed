@@ -70,13 +70,14 @@ new and will be registered in the IANA Link Relations Registry (see the "Link Re
 * "href" -- The "href" JSON value is the target URI and set to the HTTPS URL of the geofeed file for the IP network in
 the context URI.
 
-Per the definition of a web link ([@!RFC8288]), a Geofeed link object MAY have additional OPTIONAL JSON members.
+Per the definition of a web link ([@!RFC8288]), a Geofeed link object may have additional JSON members.
 Specifically:
 
-* "type" -- The "type" JSON value is the media type for the target URI. See the "Media Type for a Geofeed Link" section
-for acceptable values.
+* "type" -- The "type" JSON value is the media type for the target URI. Given that the geofeed data is mostly intended
+for use by automated/scripted processes, it is RECOMMENDED that server operators set a media type in Geofeed link
+objects. See the "Media Type for a Geofeed Link" section for acceptable "type" values.
 * "hreflang" -- The "hreflang" JSON value is an attribute for the target URI and could be used to indicate the languages
-the geofeed data is available in.
+the geofeed data is available in. It is OPTIONAL.
 
 There MAY be zero or more Geofeed link objects in the "links" array of an IP Network object. In other words, the Geofeed
 link objects are OPTIONAL.
@@ -84,13 +85,15 @@ link objects are OPTIONAL.
 ## Media Type for a Geofeed Link
 
 [@?I-D.ymbk-opsawg-9092-update] requires a geofeed file to be a UTF-8 CSV file, with a series of "#" comments at the end
-for the optional RPKI signature. The "text/csv" media type ([@!RFC7111, section 5.1]) seems like a good candidate to
-represent a geofeed file, but it does not support the "#" comments needed to include the RPKI signature.
+for the optional RPKI signature. At first glance, the "text/csv" media type ([@!RFC7111, section 5.1]) seems like a good
+candidate to represent a geofeed file, but it does not support the "#" comments needed to include the RPKI signature.
 
 To enable including "#" comments for an RPKI signature, a new media type "application/geofeed+csv" will be registered in
-the IANA Media Types Registry (see the "Media Types Registry" section).
+the IANA Media Types Registry (see the "Media Types Registry" section). The "type" JSON value in a Geofeed link object
+SHOULD be set to the "application/geofeed+csv" media type.
 
-It is RECOMMENDED that the "type" JSON value in a Geofeed link object be set to "application/geofeed+csv" media type.
+If alternative geofeed formats are defined in the future, they could be included in future versions of this
+specification.
 
 ## Example
 
@@ -225,7 +228,7 @@ on the REGEXT mailing list, and other documents produced by the REGEXT Working G
 
 # Acknowledgements
 
-We thank Gavin Brown for the suggestion to use a web link instead of a simple URI string to specify a geofeed file URL.
+Gavin Brown suggested using a web link instead of a simple URI string to specify a geofeed file URL.
 
 # Change History
 
