@@ -89,8 +89,10 @@ for the optional RPKI signature. At first glance, the "text/csv" media type ([@!
 candidate to represent a geofeed file, but it does not support the "#" comments needed to include the RPKI signature.
 
 To enable including "#" comments for an RPKI signature, a new media type "application/geofeed+csv" will be registered in
-the IANA Media Types Registry (see the "Media Types Registry" section). The "type" JSON value in a Geofeed link object
-SHOULD be set to the "application/geofeed+csv" media type.
+the IANA Media Types Registry (see the "Media Types Registry" section), and a new suffix "+csv" in the IANA Structured
+Syntax Suffixes Registry (see the "Structured Syntax Suffixes Registry" section).
+
+The "type" JSON value in a Geofeed link object SHOULD be set to the "application/geofeed+csv" media type.
 
 If alternative geofeed formats are defined in the future, they could be included in future versions of this
 specification.
@@ -225,6 +227,28 @@ on the REGEXT mailing list, and other documents produced by the REGEXT Working G
 * Authors: Tom Harrison, Jasdip Singh
 * Change controller: IETF
 * Provisional Registration: No
+
+## Structured Syntax Suffixes Registry
+
+* Name: Comma-Separated Values (CSV)
+* +suffix: +csv
+* References: [@!RFC4180], [@!RFC7111]
+* Encoding Considerations: Same as "text/csv".
+* Interoperability Considerations: Same as "text/csv".
+* Fragment Identifier Considerations:
+
+    The syntax and semantics of fragment identifiers specified for +csv SHOULD be as specified for "text/csv".
+
+    The syntax and semantics for fragment identifiers for a specific "xxx/yyy+csv" SHOULD be processed as follows:
+
+    For cases defined in +csv, where the fragment identifier resolves per the +csv rules, then as specified in +csv.
+
+    For cases defined in +csv, where the fragment identifier does not resolve per the +csv rules, then as specified in "xxx/yyy+csv".
+
+    For cases not defined in +csv, then as specified in "xxx/yyy+csv".
+
+* Security Considerations: Same as "text/csv".
+* Contact: IETF <iesg@ietf.org>
 
 # Acknowledgements
 
