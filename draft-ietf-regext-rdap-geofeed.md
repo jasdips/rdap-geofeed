@@ -67,8 +67,7 @@ to as a Geofeed link object) in its "links" array, with the following REQUIRED J
 * "value" -- The "value" JSON value is the context URI ([@!RFC9083, section 4.2]).
 * "rel" -- The "rel" JSON value is the link relation type and set to the "geo" string. The "geo" link relation type is
 new and will be registered in the IANA Link Relations Registry (see the "Link Relations Registry" section).
-* "href" -- The "href" JSON value is the target URI and set to the HTTPS URL of the geofeed file for the IP network in
-the context URI.
+* "href" -- The "href" JSON value is the target URI and set to the HTTPS URL of the geofeed file for the IP network.
 
 Per the definition of a web link ([@!RFC8288]), a Geofeed link object may have additional JSON members.
 Specifically:
