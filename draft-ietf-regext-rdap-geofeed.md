@@ -44,7 +44,7 @@ extension "geofeed1" for including a geofeed file URL in an IP Network object.
 
 ## Requirements Language
 
-The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD","SHOULD NOT", "RECOMMENDED",
+The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",
 "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14
 [@!RFC2119] [@!RFC8174] when, and only when, they appear in all capitals, as shown here.
 
@@ -67,7 +67,7 @@ to as a Geofeed link object) in its "links" array, with the following REQUIRED J
 * "value" -- The "value" JSON value is the context URI ([@!RFC9083, section 4.2]).
 * "rel" -- The "rel" JSON value is the link relation type and set to the "geo" string. The "geo" link relation type is
 new and will be registered in the IANA Link Relations Registry (see the "Link Relations Registry" section).
-* "href" -- The "href" JSON value is the target URI and set to the HTTPS URL of the geofeed file for the IP network.
+* "href" -- The "href" JSON value is the target URI and set to the HTTPS URL of the geofeed file for an IP network.
 
 Per the definition of a web link ([@!RFC8288]), a Geofeed link object may have additional JSON members.
 Specifically:
@@ -84,12 +84,13 @@ link objects are OPTIONAL.
 ## Media Type for a Geofeed Link
 
 [@?I-D.ymbk-opsawg-9092-update] requires a geofeed file to be a UTF-8 CSV file, with a series of "#" comments at the end
-for the optional RPKI signature. At first glance, the "text/csv" media type ([@!RFC7111, section 5.1]) seems like a good
-candidate to represent a geofeed file, but it does not support the "#" comments needed to include the RPKI signature.
+for the optional RPKI (Resource Public Key Infrastructure) signature. At first glance, the "text/csv" media type
+([@!RFC7111, section 5.1]) seems like a good candidate to represent a geofeed file, but it does not support the "#"
+comments needed to include the RPKI signature.
 
-To enable including "#" comments for an RPKI signature, a new media type "application/geofeed+csv" will be registered in
-the IANA Media Types Registry (see the "Media Types Registry" section), and a new suffix "+csv" in the IANA Structured
-Syntax Suffixes Registry (see the "Structured Syntax Suffixes Registry" section).
+To enable including "#" comments for the RPKI signature of a geofeed, a new media type "application/geofeed+csv" will be
+registered in the IANA Media Types Registry (see the "Media Types Registry" section), and a new suffix "+csv" will be
+registered in the IANA Structured Syntax Suffixes Registry (see the "Structured Syntax Suffixes Registry" section).
 
 The "type" JSON value in a Geofeed link object SHOULD be set to the "application/geofeed+csv" media type.
 
@@ -220,7 +221,7 @@ IANA is requested to register the following value in the Link Relations Registry
 Geofeed Data.
 * Additional information: This media type is a product of the IETF REGEXT Working Group. The REGEXT charter, information
 on the REGEXT mailing list, and other documents produced by the REGEXT Working Group can be found at https://datatracker.ietf.org/wg/regext/.
-* Person & email address to contact for further information: IESG <iesg&ietf.org>
+* Person & email address to contact for further information: IETF <iesg@ietf.org>
 * Intended usage: COMMON
 * Restrictions on usage: None
 * Authors: Tom Harrison, Jasdip Singh
