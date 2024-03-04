@@ -101,11 +101,10 @@ for the optional RPKI (Resource Public Key Infrastructure) signature. At first g
 ([@?I-D.shafranovich-rfc4180-bis, section 4]) seems like a good candidate to represent a geofeed file since it now
 supports the "#" comments needed for including the RPKI signature.
 
-However, although the CSV geofeed data could be directly viewed by a user but to make it truly usable, that data, along
-with the optional RPKI signature comment, would need to be processed by an application (most likely, an
-automated/scripted process) first. Therefore, using a new “application” media type with a “geofeed” subtype under
-the "application" top-level type ([@!RFC6838, section 4.2.5]) for the geofeed data is preferable over the existing
-"text/csv" media type.
+However, although the CSV geofeed data could be directly viewed by a user, the most common use case will involve it
+being processed by some sort of application first, in order to facilitate subsequent address lookup operations.
+Therefore, using a new “application” media type with a “geofeed” subtype under the "application" top-level type
+([@!RFC6838, section 4.2.5]) for the geofeed data is preferable over the existing "text/csv" media type.
 
 To that end, a new media type "application/geofeed+csv" will be registered in the IANA Media Types Registry (see
 (#media_types_registry)), and a new suffix "+csv" will be registered in the IANA Structured Syntax Suffixes
