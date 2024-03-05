@@ -38,7 +38,7 @@ This document defines a new RDAP extension "geofeed1" for including a geofeed fi
 
 # Introduction
 
-[@!RFC8805] and [@?I-D.ymbk-opsawg-9092-update] (obsoletes [@!RFC9092]) detail the IP geolocation feed (in short,
+[@!RFC8805] and [@?I-D.ietf-opsawg-9092-update] (obsoletes [@!RFC9092]) detail the IP geolocation feed (in short,
 geofeed) concept. This document specifies how the geofeed data can be accessed through RDAP. It defines a new RDAP
 extension "geofeed1" for including a geofeed file URL in an IP Network object.
 
@@ -96,7 +96,7 @@ link objects are OPTIONAL.
 
 ## Media Type for a Geofeed Link {#media_type_for_a_geofeed_link}
 
-[@?I-D.ymbk-opsawg-9092-update] requires a geofeed file to be a UTF-8 CSV file, with a series of "#" comments at the end
+[@?I-D.ietf-opsawg-9092-update] requires a geofeed file to be a UTF-8 CSV file, with a series of "#" comments at the end
 for the optional RPKI (Resource Public Key Infrastructure) signature. At first glance, the "text/csv" media type
 ([@?I-D.shafranovich-rfc4180-bis, section 4]) seems like a good candidate to represent a geofeed file since it now
 supports the "#" comments needed for including the RPKI signature.
@@ -197,11 +197,11 @@ Network object with redacted Geofeed link objects:
 # Privacy Considerations
 
 When including a geofeed file URL in an IP Network object, an RDAP server operator SHOULD follow the guidance from
-[@?I-D.ymbk-opsawg-9092-update, section 7] to not accidentally expose the location of an individual. 
+[@?I-D.ietf-opsawg-9092-update, section 7] to not accidentally expose the location of an individual.
 
 # Security Considerations {#security_considerations}
 
-[@?I-D.ymbk-opsawg-9092-update] requires an HTTPS URL for a geofeed file, and optionally RPKI-signing the data within.
+[@?I-D.ietf-opsawg-9092-update] requires an HTTPS URL for a geofeed file, and optionally RPKI-signing the data within.
 Besides that, this document does not introduce any new security considerations past those already discussed in the
 RDAP protocol specifications.
 
@@ -231,7 +231,7 @@ IANA is requested to register the following value in the Link Relations Registry
 * Subtype name: geofeed+csv
 * Required parameters: N/A
 * Optional parameters: N/A
-* Encoding considerations: See [@?I-D.ymbk-opsawg-9092-update, section 2].
+* Encoding considerations: See [@?I-D.ietf-opsawg-9092-update, section 2].
 * Security considerations: See (#security_considerations) of this document.
 * Interoperability considerations: There are no known interoperability problems regarding this media format.
 * Published specification: This document.
