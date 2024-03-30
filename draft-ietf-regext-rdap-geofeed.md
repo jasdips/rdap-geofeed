@@ -313,6 +313,8 @@ Hollenbeck also provided feedback for this document.
 
 * Removed "value" and "hreflang" explanations from the "Geofeed Link" section. Further, clarified the "zero or more"
   cardinality of Geofeed link objects.
-* Updated the "Redaction" section for the new redacted name of type "geofeed links".
+* Updated the "Redaction" section for the new redacted name of type "geofeed links". Further, updated the reference for
+  the RDAP Redaction draft to its new RFC.
+* Added URLs for various IANA registries.
 
 {backmatter}
