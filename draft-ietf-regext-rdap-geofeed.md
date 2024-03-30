@@ -75,21 +75,16 @@ this inclusion:
 ## Geofeed Link
 
 The IP Network object class ([@!RFC9083, section 5.4]) MAY include a link object for the geofeed file URL (also referred
-to as a Geofeed link object) in its "links" array, with the following REQUIRED JSON members:
+to as a Geofeed link object) in its "links" array ([@!RFC9083, section 4.2]). In RDAP, the "value", "rel", and "href"
+JSON members are REQUIRED for any link object. Additionally, for a Geofeed link object, the "type" JSON member is
+RECOMMENDED. Pertinent details of a Geofeed link object:
 
-* "value" -- The "value" JSON value is the context URI ([@!RFC9083, section 4.2]).
-* "rel" -- The "rel" JSON value is the link relation type and set to the "geo" string. The "geo" link relation type is
-new and will be registered in the IANA Link Relations Registry (see (#link_relations_registry)).
-* "href" -- The "href" JSON value is the target URI and set to the HTTPS URL of the geofeed file for an IP network.
-
-Per the definition of a web link ([@!RFC8288]), a Geofeed link object may have additional JSON members.
-Specifically:
-
-* "type" -- The "type" JSON value is the media type for the target URI. Given that the geofeed data is mostly intended
-for use by automated/scripted processes, it is RECOMMENDED that server operators set a media type in Geofeed link
-objects. See (#media_type_for_a_geofeed_link) for acceptable "type" values.
-* "hreflang" -- The "hreflang" JSON value is an attribute for the target URI and could be used to indicate the languages
-the geofeed data is available in. It is OPTIONAL.
+* "rel" -- The link relation type is set to the "geo" string. The "geo" link relation type is new and will be registered
+in the IANA Link Relations Registry (see (#link_relations_registry)).
+* "href" -- The target URI is set to the HTTPS URL of the geofeed file for an IP network.
+* "type" -- Given that the geofeed data is mostly intended for use by automated/scripted processes, it is RECOMMENDED
+that server operators set a media type for the target URI in a Geofeed link object. See (#media_type_for_a_geofeed_link)
+for acceptable "type" values.
 
 There MAY be zero or more Geofeed link objects in the "links" array of an IP Network object. In other words, the Geofeed
 link objects are OPTIONAL.
@@ -112,8 +107,8 @@ Registry (see (#structured_syntax_suffixes_registry)).
 
 The "type" JSON value in a Geofeed link object SHOULD be set to the "application/geofeed+csv" media type.
 
-If alternative geofeed formats (beside CSV) are defined in the future, they could be included in future versions of
-this specification.
+If alternative geofeed formats beside CSV are defined in the future, they could be included in future versions of this
+specification.
 
 ## Example
 
@@ -282,7 +277,7 @@ https://www.iana.org/assignments/media-type-structured-suffix/:
 
 Mark Kosters provided initial support and encouragement for this work, along with the [@!RFC9092] authors. Gavin Brown
 suggested using a web link instead of a simple URI string to specify a geofeed file URL. James Gould and Scott
-Hollenbeck also provided feedback for this document. Thank you.
+Hollenbeck also provided feedback for this document.
 
 # Change History
 
