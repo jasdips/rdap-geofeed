@@ -7,10 +7,10 @@ ipr= "trust200902"
 
 [seriesInfo]
 name = "Internet-Draft"
-value = "draft-ietf-regext-rdap-geofeed-02"
+value = "draft-ietf-regext-rdap-geofeed-03"
 stream = "IETF"
 status = "standard"
-date = 2023-03-04T00:00:00Z
+date = 2023-03-30T00:00:00Z
 
 [[author]]
 initials="J."
@@ -209,7 +209,8 @@ RDAP protocol specifications.
 
 ## RDAP Extensions Registry
 
-IANA is requested to register the following value in the RDAP Extensions Registry:
+IANA is requested to register the following value in the RDAP Extensions Registry at
+https://www.iana.org/assignments/rdap-extensions/:
 
 * Extension identifier: geofeed1
 * Registry operator: Any
@@ -219,13 +220,17 @@ IANA is requested to register the following value in the RDAP Extensions Registr
 
 ## Link Relations Registry {#link_relations_registry}
 
-IANA is requested to register the following value in the Link Relations Registry:
+IANA is requested to register the following value in the Link Relations Registry at
+https://www.iana.org/assignments/link-relations/:
 
 * Relation Name: geo
 * Description: Indicates that the link context has a resource with geographic information at the link target.
 * Reference: This document.
 
 ## Media Types Registry {#media_types_registry}
+
+IANA is requested to register the following value in the Media Types Registry at
+https://www.iana.org/assignments/media-types/:
 
 * Type name: application
 * Subtype name: geofeed+csv
@@ -248,6 +253,9 @@ https://datatracker.ietf.org/wg/regext/.
 * Provisional Registration: No
 
 ## Structured Syntax Suffixes Registry {#structured_syntax_suffixes_registry}
+
+IANA is requested to register the following value in the Structured Syntax Suffixes Registry at
+https://www.iana.org/assignments/media-type-structured-suffix/:
 
 * Name: Comma-Separated Values (CSV)
 * +suffix: +csv
@@ -272,7 +280,9 @@ https://datatracker.ietf.org/wg/regext/.
 
 # Acknowledgements
 
-Gavin Brown suggested using a web link instead of a simple URI string to specify a geofeed file URL.
+Mark Kosters provided initial support and encouragement for this work, along with the [@!RFC9092] authors. Gavin Brown
+suggested using a web link instead of a simple URI string to specify a geofeed file URL. James Gould and Scott
+Hollenbeck also provided feedback for this document. Thank you.
 
 # Change History
 
