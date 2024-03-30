@@ -80,11 +80,11 @@ JSON members are REQUIRED for any link object. Additionally, for a Geofeed link 
 RECOMMENDED. Pertinent details of a Geofeed link object:
 
 * "rel" -- The link relation type is set to the "geo" string. The "geo" link relation type is new and will be registered
-in the IANA Link Relations Registry (see (#link_relations_registry)).
+  in the IANA Link Relations Registry (see (#link_relations_registry)).
 * "href" -- The target URI is set to the HTTPS URL of the geofeed file for an IP network.
 * "type" -- Given that the geofeed data is mostly intended for use by automated/scripted processes, it is RECOMMENDED
-that server operators set a media type for the target URI in a Geofeed link object. See (#media_type_for_a_geofeed_link)
-for acceptable "type" values.
+  that server operators set a media type for the target URI in a Geofeed link object. See
+  (#media_type_for_a_geofeed_link) for acceptable "type" values.
 
 There MAY be zero or more Geofeed link objects in the "links" array of an IP Network object. Zero connotes that
 including a Geofeed link object is OPTIONAL. Further, more than one Geofeed link object is allowed in case a geofeed
@@ -150,8 +150,10 @@ The following is an elided example of an IP Network object with a Geofeed link o
 # Redaction
 
 Since the Geofeed link objects in the "links" array of an IP Network object are optional, the Redaction by Removal
-method [@?I-D.ietf-regext-rdap-redacted] MUST be used when redacting them. The following is an elided example of an IP
-Network object with redacted Geofeed link objects:
+method [@!RFC9537] MUST be used when redacting them. Further, in the "redacted" member, the "name" object MUST have its
+"type" member set to "geofeed links" (see (#rdap_json_values_registry)).
+
+The following is an elided example of an IP Network object with redacted Geofeed link objects:
 
 ```
 {
@@ -180,7 +182,7 @@ Network object with redacted Geofeed link objects:
         {
             "name":
             {
-                "description": "Geofeed links"
+                "type": "geofeed links"
             },
             "prePath": "$.links[?(@.rel=='geo')]",
             "method": "removal"
@@ -237,10 +239,10 @@ https://www.iana.org/assignments/media-types/:
 * Interoperability considerations: There are no known interoperability problems regarding this media format.
 * Published specification: This document.
 * Applications that use this media type: Implementations of the Registration Data Access Protocol (RDAP) Extension for
-Geofeed Data. Furthermore, any application that processes the CSV geofeed data.
+  Geofeed Data. Furthermore, any application that processes the CSV geofeed data.
 * Additional information: This media type is a product of the IETF REGEXT Working Group. The REGEXT charter, information
-on the REGEXT mailing list, and other documents produced by the REGEXT Working Group can be found at
-https://datatracker.ietf.org/wg/regext/.
+  on the REGEXT mailing list, and other documents produced by the REGEXT Working Group can be found at
+  https://datatracker.ietf.org/wg/regext/.
 * Person & email address to contact for further information: IETF <iesg@ietf.org>
 * Intended usage: COMMON
 * Restrictions on usage: None
@@ -260,19 +262,30 @@ https://www.iana.org/assignments/media-type-structured-suffix/:
 * Interoperability Considerations: Same as "text/csv".
 * Fragment Identifier Considerations:
 
-    The syntax and semantics of fragment identifiers specified for +csv SHOULD be as specified for "text/csv".
+  The syntax and semantics of fragment identifiers specified for +csv SHOULD be as specified for "text/csv".
 
-    The syntax and semantics for fragment identifiers for a specific "xxx/yyy+csv" SHOULD be processed as follows:
+  The syntax and semantics for fragment identifiers for a specific "xxx/yyy+csv" SHOULD be processed as follows:
 
-    For cases defined in +csv, where the fragment identifier resolves per the +csv rules, then as specified in +csv.
+  For cases defined in +csv, where the fragment identifier resolves per the +csv rules, then as specified in +csv.
 
-    For cases defined in +csv, where the fragment identifier does not resolve per the +csv rules, then as specified in
-    "xxx/yyy+csv".
+  For cases defined in +csv, where the fragment identifier does not resolve per the +csv rules, then as specified in
+  "xxx/yyy+csv".
 
-    For cases not defined in +csv, then as specified in "xxx/yyy+csv".
+  For cases not defined in +csv, then as specified in "xxx/yyy+csv".
 
 * Security Considerations: Same as "text/csv".
 * Contact: IETF <iesg@ietf.org>
+
+## RDAP JSON Values Registry {#rdap_json_values_registry}
+
+IANA is requested to register the following value in the RDAP JSON Values Registry at
+https://www.iana.org/assignments/rdap-json-values/:
+
+* Value: geofeed links
+* Type: redacted name
+* Description: To redact Geofeed link objects.
+* Registrant Name: IETF
+* Registrant Contact Information: <iesg@ietf.org>
 
 # Acknowledgements
 
@@ -295,5 +308,11 @@ Hollenbeck also provided feedback for this document.
 * Added an example for RDAP conformance.
 * Updated the rationale for using the new "application/geofeed+csv" media type.
 * Updated the "Applications that use this media type" section for the "application/geofeed+csv" registration.
+
+## Changes from 02 to 03
+
+* Removed "value" and "hreflang" explanations from the "Geofeed Link" section. Further, clarified the "zero or more"
+  cardinality of Geofeed link objects.
+* Updated the "Redaction" section for the new redacted name of type "geofeed links".
 
 {backmatter}
