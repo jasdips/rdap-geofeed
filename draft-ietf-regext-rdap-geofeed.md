@@ -86,8 +86,9 @@ in the IANA Link Relations Registry (see (#link_relations_registry)).
 that server operators set a media type for the target URI in a Geofeed link object. See (#media_type_for_a_geofeed_link)
 for acceptable "type" values.
 
-There MAY be zero or more Geofeed link objects in the "links" array of an IP Network object. In other words, the Geofeed
-link objects are OPTIONAL.
+There MAY be zero or more Geofeed link objects in the "links" array of an IP Network object. Zero connotes that
+including a Geofeed link object is OPTIONAL. Further, more than one Geofeed link object is allowed in case a geofeed
+file target needs to be represented in multiple formats and/or languages.
 
 ## Media Type for a Geofeed Link {#media_type_for_a_geofeed_link}
 
