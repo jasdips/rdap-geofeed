@@ -10,7 +10,7 @@ name = "Internet-Draft"
 value = "draft-ietf-regext-rdap-geofeed-03"
 stream = "IETF"
 status = "standard"
-date = 2023-03-30T00:00:00Z
+date = 2023-04-01T00:00:00Z
 
 [[author]]
 initials="J."
@@ -147,51 +147,6 @@ The following is an elided example of an IP Network object with a Geofeed link o
 }
 ```
 
-# Redaction
-
-Since the Geofeed link objects in the "links" array of an IP Network object are optional, the Redaction by Removal
-method [@!RFC9537] MUST be used when redacting them. Further, in the "redacted" member, the "name" object MUST have its
-"type" member set to "geofeed links" (see (#rdap_json_values_registry)).
-
-The following is an elided example of an IP Network object with redacted Geofeed link objects:
-
-```
-{
-    "objectClassName": "ip network",
-    "handle": "XXXX-RIR",
-    "startAddress": "2001:db8::",
-    "endAddress": "2001:db8:0:ffff:ffff:ffff:ffff:ffff",
-    "ipVersion": "v6",
-    "name": "NET-RTR-1",
-    "type": "DIRECT ALLOCATION",
-    "country": "AU",
-    "parentHandle": "YYYY-RIR",
-    "status": [ "active" ],
-    "links":
-     [
-        {
-            "value": "https://example.net/ip/2001:db8::/48",
-            "rel": "self",
-            "href": "https://example.net/ip/2001:db8::/48",
-            "type": "application/rdap+json"
-        },
-        ...
-    ],
-    "redacted":
-    [
-        {
-            "name":
-            {
-                "type": "geofeed links"
-            },
-            "prePath": "$.links[?(@.rel=='geo')]",
-            "method": "removal"
-        }
-    ],
-    ...
-}
-```
-
 # Privacy Considerations
 
 When including a geofeed file URL in an IP Network object, an RDAP server operator SHOULD follow the guidance from
@@ -276,22 +231,11 @@ https://www.iana.org/assignments/media-type-structured-suffix/:
 * Security Considerations: Same as "text/csv".
 * Contact: IETF <iesg@ietf.org>
 
-## RDAP JSON Values Registry {#rdap_json_values_registry}
-
-IANA is requested to register the following value in the RDAP JSON Values Registry at
-https://www.iana.org/assignments/rdap-json-values/:
-
-* Value: geofeed links
-* Type: redacted name
-* Description: To redact Geofeed link objects.
-* Registrant Name: IETF
-* Registrant Contact Information: <iesg@ietf.org>
-
 # Acknowledgements
 
 Mark Kosters provided initial support and encouragement for this work, along with the [@!RFC9092] authors. Gavin Brown
-suggested using a web link instead of a simple URI string to specify a geofeed file URL. James Gould and Scott
-Hollenbeck also provided feedback for this document.
+suggested using a web link instead of a simple URI string to specify a geofeed file URL. James Gould, Andy Newton, and
+Scott Hollenbeck also provided feedback for this document.
 
 # Change History
 
@@ -313,8 +257,7 @@ Hollenbeck also provided feedback for this document.
 
 * Removed "value" and "hreflang" explanations from the "Geofeed Link" section. Further, clarified the "zero or more"
   cardinality of Geofeed link objects.
-* Updated the "Redaction" section for the new redacted name of type "geofeed links". Further, updated the reference for
-  the RDAP Redaction draft to its new RFC.
+* Removed the "Redaction" section since the geofeed files are public to start with.
 * Added URLs for various IANA registries.
 
 {backmatter}
