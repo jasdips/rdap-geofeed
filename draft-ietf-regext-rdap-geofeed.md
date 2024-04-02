@@ -10,7 +10,7 @@ name = "Internet-Draft"
 value = "draft-ietf-regext-rdap-geofeed-03"
 stream = "IETF"
 status = "standard"
-date = 2023-04-01T00:00:00Z
+date = 2023-04-02T00:00:00Z
 
 [[author]]
 initials="J."
@@ -82,13 +82,11 @@ RECOMMENDED. Pertinent details of a Geofeed link object:
 * "rel" -- The link relation type is set to the "geo" string. The "geo" link relation type is new and will be registered
   in the IANA Link Relations Registry (see (#link_relations_registry)).
 * "href" -- The target URI is set to the HTTPS URL of the geofeed file for an IP network.
-* "type" -- Given that the geofeed data is mostly intended for use by automated/scripted processes, it is RECOMMENDED
-  that server operators set a media type for the target URI in a Geofeed link object. See
-  (#media_type_for_a_geofeed_link) for acceptable "type" values.
+* "type" -- See (#media_type_for_a_geofeed_link) for acceptable "type" values.
 
-There MAY be zero or more Geofeed link objects in the "links" array of an IP Network object. Zero connotes that
-including a Geofeed link object is OPTIONAL. Further, more than one Geofeed link object is allowed in case a geofeed
-file target needs to be represented in multiple formats and/or languages.
+There MAY be zero or more Geofeed link objects in the "links" array of an IP Network object. Further, more than one
+Geofeed link object is allowed in case a geofeed file target needs to be represented in multiple formats and/or
+languages.
 
 ## Media Type for a Geofeed Link {#media_type_for_a_geofeed_link}
 
@@ -255,8 +253,8 @@ Scott Hollenbeck also provided feedback for this document.
 
 ## Changes from 02 to 03
 
-* Removed "value" and "hreflang" explanations from the "Geofeed Link" section. Further, clarified the "zero or more"
-  cardinality of Geofeed link objects.
+* Removed "value" and "hreflang" explanations from the "Geofeed Link" section. Further, clarified the cardinality of
+  Geofeed link objects.
 * Removed the "Redaction" section since the geofeed files are public to start with.
 * Added URLs for various IANA registries.
 
