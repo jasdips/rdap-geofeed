@@ -10,7 +10,7 @@ name = "Internet-Draft"
 value = "draft-ietf-regext-rdap-geofeed-03"
 stream = "IETF"
 status = "standard"
-date = 2023-04-02T00:00:00Z
+date = 2023-04-03T00:00:00Z
 
 [[author]]
 initials="J."
@@ -106,8 +106,14 @@ Registry (see (#structured_syntax_suffixes_registry)).
 
 The "type" JSON value in a Geofeed link object SHOULD be set to the "application/geofeed+csv" media type.
 
-If alternative geofeed formats beside CSV are defined in the future, they could be included in future versions of this
-specification.
+A server that includes the "geofeed1" extension identifier in its responses is indicating that by way of its responses,
+it will provide access to geofeed data at a target site, in accordance with the text of this document. However, this
+document does not restrict the use of other media types that relate to geographic information, nor the use of link
+objects more generally.
+
+Although a server may use registered media types in its link objects without any restrictions, it may be useful to
+define new RDAP extensions for those media types in order for the server to communicate to clients that it will make
+data for that type accessible, in the same way that the server does with the "geofeed1" extension identifier.
 
 ## Example
 
@@ -136,7 +142,7 @@ The following is an elided example of an IP Network object with a Geofeed link o
         {
             "value": "https://example.net/ip/2001:db8::/48",
             "rel": "geo",
-            "href": "https://example.net/geofeed",
+            "href": "https://example.com/geofeed",
             "type": "application/geofeed+csv"
         },
         ...
@@ -232,8 +238,8 @@ https://www.iana.org/assignments/media-type-structured-suffix/:
 # Acknowledgements
 
 Mark Kosters provided initial support and encouragement for this work, along with the [@!RFC9092] authors. Gavin Brown
-suggested using a web link instead of a simple URI string to specify a geofeed file URL. James Gould, Andy Newton, and
-Scott Hollenbeck also provided feedback for this document.
+suggested using a web link instead of a simple URI string to specify a geofeed file URL. Andy Newton, James Gould, and
+Scott Hollenbeck also provided valuable feedback for this document.
 
 # Change History
 
@@ -255,6 +261,10 @@ Scott Hollenbeck also provided feedback for this document.
 
 * Removed "value" and "hreflang" explanations from the "Geofeed Link" section. Further, clarified the cardinality of
   Geofeed link objects.
+* Updated extensibility verbiage in the "Media Type for a Geofeed Link" section.
+* In the "Example" section, updated the domain in "href" of the Geofeed link object to contrast with the domain in
+  "value" to highlight that "href" is for a geofeed file hosted at a network operator site whereas "value" is for an IP
+  network object from an RDAP server.
 * Removed the "Redaction" section since the geofeed files are public to start with.
 * Added URLs for various IANA registries.
 
