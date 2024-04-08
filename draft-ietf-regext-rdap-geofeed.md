@@ -7,10 +7,10 @@ ipr= "trust200902"
 
 [seriesInfo]
 name = "Internet-Draft"
-value = "draft-ietf-regext-rdap-geofeed-03"
+value = "draft-ietf-regext-rdap-geofeed-04"
 stream = "IETF"
 status = "standard"
-date = 2023-04-03T00:00:00Z
+date = 2023-04-08T00:00:00Z
 
 [[author]]
 initials="J."
@@ -62,8 +62,8 @@ class definition ([@!RFC9083, section 5.4]) to include a new link object for the
 ([@!RFC9083, section 4.2]).
 
 An RDAP server conforming to this specification MUST include the "geofeed1" extension string in the "rdapConformance"
-array for the IP Network lookup and search responses, as well as in the help response. Here is an elided example for
-this inclusion:
+array for any lookup or search response containing an IP Network object, as well as in the help response. Here is an
+elided example for this inclusion:
 
 ```
 {
@@ -267,5 +267,9 @@ Scott Hollenbeck also provided valuable feedback for this document.
   network object from an RDAP server.
 * Removed the "Redaction" section since the geofeed files are public to start with.
 * Added URLs for various IANA registries.
+
+## Changes from 03 to 04
+
+* Updated the criteria for including the extension identifier in "rdapConformance".
 
 {backmatter}
