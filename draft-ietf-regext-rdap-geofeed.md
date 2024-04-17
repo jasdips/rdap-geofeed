@@ -97,9 +97,6 @@ An RDAP server that hosts geofeed URLs for its IP network objects
 ([@!RFC9083, section 5.4]) may include link objects for those geofeed
 URLs in IP network objects in its responses.  These link objects are
 added to the "links" member of each object ([@!RFC9083, section 4.2]).
-An example scenario where a server would not include such a link
-object is where the URL is redacted due to privacy considerations or
-regulatory requirements.
 
 In RDAP, the "value", "rel", and "href" JSON members are REQUIRED for
 any link object.  Additionally, for a geofeed link object, the "type"
