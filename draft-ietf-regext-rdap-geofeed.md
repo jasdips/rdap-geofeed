@@ -242,7 +242,7 @@ https://www.iana.org/assignments/media-types/:
 * Interoperability considerations: There are no known interoperability problems regarding this media format.
 * Published specification: This document.
 * Applications that use this media type: Implementations of the Registration Data Access Protocol (RDAP) Extension for
-  geofeed Data. Furthermore, any application that processes the CSV geofeed data.
+  Geofeed Data. Furthermore, any application that processes the CSV geofeed data.
 * Additional information: This media type is a product of the IETF REGEXT Working Group. The REGEXT charter, information
   on the REGEXT mailing list, and other documents produced by the REGEXT Working Group can be found at
   https://datatracker.ietf.org/wg/regext/.
