@@ -316,4 +316,8 @@ Scott Hollenbeck also provided valuable feedback for this document.
 
 * Updated the criteria for including the extension identifier in "rdapConformance".
 
+## Changes from 04 to 05
+
+* Made various editorial changes.
+
 {backmatter}

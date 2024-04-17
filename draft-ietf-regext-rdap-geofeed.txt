@@ -80,6 +80,7 @@ Table of Contents
      7.2.  Changes from 01 to 02 . . . . . . . . . . . . . . . . . .   8
      7.3.  Changes from 02 to 03 . . . . . . . . . . . . . . . . . .   8
      7.4.  Changes from 03 to 04 . . . . . . . . . . . . . . . . . .   8
+     7.5.  Changes from 04 to 05 . . . . . . . . . . . . . . . . . .   9
    8.  Normative References  . . . . . . . . . . . . . . . . . . . .   9
    9.  Informative References  . . . . . . . . . . . . . . . . . . .  10
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  10
@@ -105,7 +106,6 @@ Table of Contents
    Indentation and whitespace in examples are provided only to
    illustrate element relationships, and are not a REQUIRED feature of
    this protocol.
-
 
 
 
@@ -453,6 +453,10 @@ Internet-Draft                rdap-geofeed                    April 2024
    *  Updated the criteria for including the extension identifier in
       "rdapConformance".
 
+7.5.  Changes from 04 to 05
+
+   *  Made various editorial changes.
+
 8.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
@@ -493,10 +497,6 @@ Internet-Draft                rdap-geofeed                    April 2024
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
-   [RFC8805]  Kline, E., Duleba, K., Szamonek, Z., Moser, S., and W.
-              Kumari, "A Format for Self-Published IP Geolocation
-              Feeds", RFC 8805, DOI 10.17487/RFC8805, August 2020,
-              <https://www.rfc-editor.org/info/rfc8805>.
 
 
 
@@ -505,6 +505,11 @@ Singh & Harrison         Expires 19 October 2024                [Page 9]
 
 Internet-Draft                rdap-geofeed                    April 2024
 
+
+   [RFC8805]  Kline, E., Duleba, K., Szamonek, Z., Moser, S., and W.
+              Kumari, "A Format for Self-Published IP Geolocation
+              Feeds", RFC 8805, DOI 10.17487/RFC8805, August 2020,
+              <https://www.rfc-editor.org/info/rfc8805>.
 
    [RFC9083]  Hollenbeck, S. and A. Newton, "JSON Responses for the
               Registration Data Access Protocol (RDAP)", STD 95,
@@ -542,11 +547,6 @@ Authors' Addresses
    Tom Harrison
    APNIC
    Email: tomh@apnic.net
-
-
-
-
-
 
 
 
