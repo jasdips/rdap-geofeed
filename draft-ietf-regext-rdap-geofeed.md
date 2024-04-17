@@ -10,7 +10,7 @@ name = "Internet-Draft"
 value = "draft-ietf-regext-rdap-geofeed-05"
 stream = "IETF"
 status = "standard"
-date = 2023-04-08T00:00:00Z
+date = 2024-04-17T00:00:00Z
 
 [[author]]
 initials="J."
