@@ -5,8 +5,8 @@
 Registration Protocols Extensions (regext)                      J. Singh
 Internet-Draft                                                      ARIN
 Intended status: Standards Track                             T. Harrison
-Expires: 16 October 2024                                           APNIC
-                                                           14 April 2024
+Expires: 19 October 2024                                           APNIC
+                                                           17 April 2024
 
 
                    An RDAP Extension for Geofeed Data
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 October 2024.
+   This Internet-Draft will expire on 19 October 2024.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Singh & Harrison         Expires 16 October 2024                [Page 1]
+Singh & Harrison         Expires 19 October 2024                [Page 1]
 
 Internet-Draft                rdap-geofeed                    April 2024
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Singh & Harrison         Expires 16 October 2024                [Page 2]
+Singh & Harrison         Expires 19 October 2024                [Page 2]
 
 Internet-Draft                rdap-geofeed                    April 2024
 
@@ -148,9 +148,7 @@ Internet-Draft                rdap-geofeed                    April 2024
    (Section 5.4 of [RFC9083]) may include link objects for those geofeed
    URLs in IP network objects in its responses.  These link objects are
    added to the "links" member of each object (Section 4.2 of
-   [RFC9083]).  An example scenario where a server would not include
-   such a link object is where the URL is redacted due to privacy
-   considerations or regulatory requirements.
+   [RFC9083]).
 
    In RDAP, the "value", "rel", and "href" JSON members are REQUIRED for
    any link object.  Additionally, for a geofeed link object, the "type"
@@ -162,15 +160,15 @@ Internet-Draft                rdap-geofeed                    April 2024
       Link Relations Registry (see Section 5.2) by this document.
    *  "href" -- The target URL is set to the HTTPS URL of the geofeed
       file for an IP network.
+   *  "type" -- "application/geofeed+csv" (see Section 2.1).
 
 
 
-Singh & Harrison         Expires 16 October 2024                [Page 3]
+
+Singh & Harrison         Expires 19 October 2024                [Page 3]
 
 Internet-Draft                rdap-geofeed                    April 2024
 
-
-   *  "type" -- "application/geofeed+csv" (see Section 2.1).
 
    An IP network object returned by an RDAP server may contain zero,
    one, or multiple geofeed link objects.  An example scenario where
@@ -221,7 +219,9 @@ Internet-Draft                rdap-geofeed                    April 2024
 
 
 
-Singh & Harrison         Expires 16 October 2024                [Page 4]
+
+
+Singh & Harrison         Expires 19 October 2024                [Page 4]
 
 Internet-Draft                rdap-geofeed                    April 2024
 
@@ -277,7 +277,7 @@ Internet-Draft                rdap-geofeed                    April 2024
 
 
 
-Singh & Harrison         Expires 16 October 2024                [Page 5]
+Singh & Harrison         Expires 19 October 2024                [Page 5]
 
 Internet-Draft                rdap-geofeed                    April 2024
 
@@ -333,7 +333,7 @@ Internet-Draft                rdap-geofeed                    April 2024
 
 
 
-Singh & Harrison         Expires 16 October 2024                [Page 6]
+Singh & Harrison         Expires 19 October 2024                [Page 6]
 
 Internet-Draft                rdap-geofeed                    April 2024
 
@@ -342,7 +342,7 @@ Internet-Draft                rdap-geofeed                    April 2024
       interoperability problems regarding this media format.
    *  Published specification: This document.
    *  Applications that use this media type: Implementations of the
-      Registration Data Access Protocol (RDAP) Extension for geofeed
+      Registration Data Access Protocol (RDAP) Extension for Geofeed
       Data.  Furthermore, any application that processes the CSV geofeed
       data.
    *  Additional information: This media type is a product of the IETF
@@ -389,7 +389,7 @@ Internet-Draft                rdap-geofeed                    April 2024
 
 
 
-Singh & Harrison         Expires 16 October 2024                [Page 7]
+Singh & Harrison         Expires 19 October 2024                [Page 7]
 
 Internet-Draft                rdap-geofeed                    April 2024
 
@@ -445,7 +445,7 @@ Internet-Draft                rdap-geofeed                    April 2024
 
 
 
-Singh & Harrison         Expires 16 October 2024                [Page 8]
+Singh & Harrison         Expires 19 October 2024                [Page 8]
 
 Internet-Draft                rdap-geofeed                    April 2024
 
@@ -501,7 +501,7 @@ Internet-Draft                rdap-geofeed                    April 2024
 
 
 
-Singh & Harrison         Expires 16 October 2024                [Page 9]
+Singh & Harrison         Expires 19 October 2024                [Page 9]
 
 Internet-Draft                rdap-geofeed                    April 2024
 
@@ -557,4 +557,4 @@ Authors' Addresses
 
 
 
-Singh & Harrison         Expires 16 October 2024               [Page 10]
+Singh & Harrison         Expires 19 October 2024               [Page 10]
