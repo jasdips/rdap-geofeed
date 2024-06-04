@@ -7,10 +7,10 @@ ipr= "trust200902"
 
 [seriesInfo]
 name = "Internet-Draft"
-value = "draft-ietf-regext-rdap-geofeed-05"
+value = "draft-ietf-regext-rdap-geofeed-06"
 stream = "IETF"
 status = "standard"
-date = 2024-04-17T00:00:00Z
+date = 2024-06-04T00:00:00Z
 
 [[author]]
 initials="J."
@@ -47,8 +47,8 @@ in responses.
 'geofeed') file format and associated access mechanisms. This document
 specifies how geofeed URLs can be accessed through RDAP. It defines a
 new RDAP extension, "geofeed1", for indicating that an RDAP server
-hosts geofeed URLs for its IP networks, as well as a media type and a
-link relation type for the associated link objects.
+hosts geofeed URLs for its IP network objects, as well as a media type
+and a link relation type for the associated link objects.
 
 ## Requirements Language
 
@@ -188,7 +188,7 @@ geofeed link object:
 
 # Privacy Considerations
 
-When including a geofeed file URL in an IP Network object, an RDAP
+When including a geofeed file URL in an IP network object, an RDAP
 server operator SHOULD follow the guidance from
 [@?I-D.ietf-opsawg-9092-update, section 7] to not accidentally expose
 the location of an individual.
