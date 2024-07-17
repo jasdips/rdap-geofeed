@@ -10,7 +10,7 @@ name = "Internet-Draft"
 value = "draft-ietf-regext-rdap-geofeed-06"
 stream = "IETF"
 status = "standard"
-date = 2024-06-04T00:00:00Z
+date = 2024-07-17T00:00:00Z
 
 [[author]]
 initials="J."
@@ -188,10 +188,10 @@ geofeed link object:
 
 # Privacy Considerations
 
-When including a geofeed file URL in an IP network object, an RDAP
-server operator SHOULD follow the guidance from
-[@?I-D.ietf-opsawg-9092-update, section 7] to not accidentally expose
-the location of an individual.
+When including a geofeed file URL in an IP network object, it is
+expected that the service provider publishing the geofeed file has
+followed the guidance from [@?I-D.ietf-opsawg-9092-update, section 7]
+to not accidentally expose the location of an individual.
 
 Many jurisdictions have laws or regulations that restrict the use of
 "personal data", per the definition in [@!RFC6973].  Given that,
@@ -283,7 +283,7 @@ https://www.iana.org/assignments/media-type-structured-suffix/:
 
 Mark Kosters provided initial support and encouragement for this work, along with the [@!RFC9092] authors. Gavin Brown
 suggested using a web link instead of a simple URL string to specify a geofeed file URL. Andy Newton, James Gould, and
-Scott Hollenbeck also provided valuable feedback for this document.
+Scott Hollenbeck, and Mario Loffredo also provided valuable feedback for this document.
 
 # Change History
 
@@ -319,5 +319,9 @@ Scott Hollenbeck also provided valuable feedback for this document.
 ## Changes from 04 to 05
 
 * Made various editorial changes.
+
+## Changes from 05 to 06
+
+* Clarified privacy considerations.
 
 {backmatter}
