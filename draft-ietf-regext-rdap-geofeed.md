@@ -287,6 +287,8 @@ Hollenbeck, and Mario Loffredo also provided valuable feedback for this document
 
 # Change History
 
+(Remove this section before publication.)
+
 ## Changes from 00 to 01
 
 * Now using a web link instead of a simple URL string to specify a geofeed file URL.
