@@ -282,8 +282,8 @@ https://www.iana.org/assignments/media-type-structured-suffix/:
 # Acknowledgements
 
 Mark Kosters provided initial support and encouragement for this work, along with the [@!RFC9092] authors. Gavin Brown
-suggested using a web link instead of a simple URL string to specify a geofeed file URL. Andy Newton, James Gould, and
-Scott Hollenbeck, and Mario Loffredo also provided valuable feedback for this document.
+suggested using a web link instead of a simple URL string to specify a geofeed file URL. Andy Newton, James Gould, Scott
+Hollenbeck, and Mario Loffredo also provided valuable feedback for this document.
 
 # Change History
 
