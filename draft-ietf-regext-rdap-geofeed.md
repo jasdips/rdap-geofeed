@@ -91,7 +91,7 @@ media type in the IANA Media Types Registry (see
 Structured Syntax Suffixes Registry (see
 (#structured_syntax_suffixes_registry)).
 
-## Geofeed Link
+## Geofeed Link {#geofeed_link}
 
 An RDAP server that hosts geofeed URLs for its IP network objects
 ([@!RFC9083, section 5.4]) may include link objects for those geofeed
@@ -117,13 +117,25 @@ one geofeed link object would be returned is where the server is able
 to represent that data in multiple languages (see the "hreflang"
 member of the link object).
 
+## Verification of Authority
+
+When using the RDAP bootstrap process set out in [@!RFC9224], a client
+will be directed to the RDAP server that is able to make authoritative
+statements about the disposition of the resources for which the client
+is performing the query.  When compared with alternative modes of
+distribution (e.g. ad hoc shared URIs), relying on RDAP will generally
+provide a higher degree of assurance that the relevant geofeed data
+was specified by the actual resource holder (or their delegate).
+
 ## Extension Identifier
 
-An RDAP server that returns geofeed link objects in accordance with
-this specification is RECOMMENDED to include the "geofeed1" extension
-identifier in the "rdapConformance" array for any lookup or search
-response containing an IP network object, as well as in the help
-response. Here is an elided example for this inclusion:
+This document defines a new extension identifier, "geofeed1", for use
+by servers that host geofeed URLs for their IP network objects and
+include geofeed URL link objects in their responses to clients in
+accordance with (#geofeed_link).  A server that uses this extension
+identifier MUST include it in the "rdapConformance" array for any
+lookup or search response containing an IP network object, as well as
+in the help response. Here is an elided example for this inclusion:
 
 ```
 {
@@ -134,13 +146,11 @@ response. Here is an elided example for this inclusion:
 
 Extension identifier inclusion is not mandatory, because RDAP does not
 require that an extension identifier be included in responses merely
-to make use of new media types or link relation types.  An RDAP server
-that includes the "geofeed1" identifier is signalling to clients that
-it hosts geofeed URLs and will return those URLs in accordance with
-this specification where they are available.  The main benefit of
-including the identifier is that it permits a client to determine that
-a server does host geofeed URLs, which is useful where a client
-receives an IP network object without a geofeed URL, for example.
+to make use of new media types or link relation types.  The main
+benefit of including the identifier is that it permits a client to
+determine that a server does host geofeed URLs, which is useful where
+a client receives an IP network object without a geofeed URL, for
+example.
 
 Although a server may use registered media types in its link objects
 without any restrictions, it may be useful to define new RDAP
@@ -185,6 +195,29 @@ geofeed link object:
     ...
 }
 ```
+
+# Operational Considerations
+
+When an RDAP server is queried for an IP network for a given address
+range, it is required to return the most-specific IP network object
+that covers the address range.  That IP network object may not have an
+associated geofeed link, but it is possible that a less-specific IP
+network object does have such a link.  Clients attempting to retrieve
+geofeed data for a given address range via RDAP should consider
+whether to retrieve the parent object for the initial response (and so
+on, recursively) in the event that the initial response does not
+contain geofeed data.  Conversely, server operators should consider
+interface options for resource holders in order to support the
+provisioning of geofeed links for all networks covered by the
+associated data.
+
+It is common for a resource holder to maintain a single geofeed file
+containing the geofeed data for all of their resources.  The resource
+holder then updates each of their network object registrations to
+refer to that single geofeed file.  As with geofeed references in
+inetnum objects (per [@!RFC9092]), clients who find a geofeed link
+object within an IP network object MUST ignore geofeed data from that
+link that is outside the IP network object's address range.
 
 # Privacy Considerations
 
