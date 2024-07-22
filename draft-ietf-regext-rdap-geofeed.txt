@@ -68,7 +68,6 @@ Table of Contents
      2.3.  Extension Identifier  . . . . . . . . . . . . . . . . . .   4
      2.4.  Example . . . . . . . . . . . . . . . . . . . . . . . . .   4
    3.  Operational Considerations  . . . . . . . . . . . . . . . . .   5
-     3.1.  Verification of Authority . . . . . . . . . . . . . . . .   6
    4.  Privacy Considerations  . . . . . . . . . . . . . . . . . . .   6
    5.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
@@ -105,6 +104,7 @@ Table of Contents
    "OPTIONAL" in this document are to be interpreted as described in BCP
    14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
+
 
 
 
@@ -287,18 +287,13 @@ Internet-Draft                rdap-geofeed                     July 2024
    object within an IP network object MUST ignore geofeed data from that
    link that is outside the IP network object's address range.
 
-3.1.  Verification of Authority
-
-   Section 3.2 of [RFC8805] defines
-
-   When using the RDAP bootstrap process set out in [RFC9224], a client
-   will be directed to the RDAP server that is able to make
-   authoritative statements about the disposition of the resources for
-   which the client is performing the query.  When compared with
-   alternative modes of distribution (e.g. ad hoc shared URIs), relying
-   on RDAP will generally provide a higher degree of assurance that the
-   relevant geofeed data was specified by the actual resource holder (or
-   their delegate).
+   Section 3.2 of [RFC8805] recommends that consumers of geofeed data
+   verify that the publisher of the data is authoritative for the
+   relevant resources.  The RDAP bootstrap process ([RFC9224]) helps
+   clients with this recommendation, since a client following that
+   process will be directed to the RDAP server that is able to make
+   authoritative statements about the disposition of the relevant
+   resources.
 
 4.  Privacy Considerations
 
@@ -330,6 +325,11 @@ Internet-Draft                rdap-geofeed                     July 2024
    extensions/: (https://www.iana.org/assignments/rdap-extensions/:)
 
    *  Extension identifier: geofeed1
+   *  Registry operator: Any
+   *  Published specification: This document.
+   *  Contact: IETF iesg@ietf.org (mailto:iesg@ietf.org)
+   *  Intended usage: This extension describes version 1 of a method to
+      access the IP geolocation feed data through RDAP.
 
 
 
@@ -337,12 +337,6 @@ Singh & Harrison         Expires 23 January 2025                [Page 6]
 
 Internet-Draft                rdap-geofeed                     July 2024
 
-
-   *  Registry operator: Any
-   *  Published specification: This document.
-   *  Contact: IETF iesg@ietf.org (mailto:iesg@ietf.org)
-   *  Intended usage: This extension describes version 1 of a method to
-      access the IP geolocation feed data through RDAP.
 
 6.2.  Link Relations Registry
 
@@ -386,6 +380,12 @@ Internet-Draft                rdap-geofeed                     July 2024
    *  Restrictions on usage: None
    *  Authors: Tom Harrison, Jasdip Singh
    *  Change controller: IETF
+   *  Provisional Registration: No
+
+
+
+
+
 
 
 
@@ -393,8 +393,6 @@ Singh & Harrison         Expires 23 January 2025                [Page 7]
 
 Internet-Draft                rdap-geofeed                     July 2024
 
-
-   *  Provisional Registration: No
 
 6.4.  Structured Syntax Suffixes Registry
 
@@ -441,7 +439,9 @@ Internet-Draft                rdap-geofeed                     July 2024
 
 8.1.  Changes from 00 to 01
 
-
+   *  Now using a web link instead of a simple URL string to specify a
+      geofeed file URL.
+   *  Renamed the extension as "geofeed1" instead of "geofeedv1".
 
 
 
@@ -450,9 +450,6 @@ Singh & Harrison         Expires 23 January 2025                [Page 8]
 Internet-Draft                rdap-geofeed                     July 2024
 
 
-   *  Now using a web link instead of a simple URL string to specify a
-      geofeed file URL.
-   *  Renamed the extension as "geofeed1" instead of "geofeedv1".
    *  Introduced the new "geo" link relation type.
    *  Introduced the new "application/geofeed+csv" media type.
 
@@ -496,7 +493,10 @@ Internet-Draft                rdap-geofeed                     July 2024
 
 9.  Normative References
 
-
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/info/rfc2119>.
 
 
 
@@ -505,11 +505,6 @@ Singh & Harrison         Expires 23 January 2025                [Page 9]
 
 Internet-Draft                rdap-geofeed                     July 2024
 
-
-   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <https://www.rfc-editor.org/info/rfc2119>.
 
    [RFC3629]  Yergeau, F., "UTF-8, a transformation format of ISO
               10646", STD 63, RFC 3629, DOI 10.17487/RFC3629, November
@@ -554,6 +549,11 @@ Internet-Draft                rdap-geofeed                     July 2024
               RFC 9083, DOI 10.17487/RFC9083, June 2021,
               <https://www.rfc-editor.org/info/rfc9083>.
 
+   [RFC9092]  Bush, R., Candela, M., Kumari, W., and R. Housley,
+              "Finding and Using Geofeed Data", RFC 9092,
+              DOI 10.17487/RFC9092, July 2021,
+              <https://www.rfc-editor.org/info/rfc9092>.
+
 
 
 
@@ -561,11 +561,6 @@ Singh & Harrison         Expires 23 January 2025               [Page 10]
 
 Internet-Draft                rdap-geofeed                     July 2024
 
-
-   [RFC9092]  Bush, R., Candela, M., Kumari, W., and R. Housley,
-              "Finding and Using Geofeed Data", RFC 9092,
-              DOI 10.17487/RFC9092, July 2021,
-              <https://www.rfc-editor.org/info/rfc9092>.
 
    [RFC9224]  Blanchet, M., "Finding the Authoritative Registration Data
               Access Protocol (RDAP) Service", STD 95, RFC 9224,
@@ -598,6 +593,11 @@ Authors' Addresses
    Tom Harrison
    APNIC
    Email: tomh@apnic.net
+
+
+
+
+
 
 
 
