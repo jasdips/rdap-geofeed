@@ -117,16 +117,6 @@ one geofeed link object would be returned is where the server is able
 to represent that data in multiple languages (see the "hreflang"
 member of the link object).
 
-## Verification of Authority
-
-When using the RDAP bootstrap process set out in [@!RFC9224], a client
-will be directed to the RDAP server that is able to make authoritative
-statements about the disposition of the resources for which the client
-is performing the query.  When compared with alternative modes of
-distribution (e.g. ad hoc shared URIs), relying on RDAP will generally
-provide a higher degree of assurance that the relevant geofeed data
-was specified by the actual resource holder (or their delegate).
-
 ## Extension Identifier
 
 This document defines a new extension identifier, "geofeed1", for use
@@ -218,6 +208,14 @@ refer to that single geofeed file.  As with geofeed references in
 inetnum objects (per [@!RFC9092]), clients who find a geofeed link
 object within an IP network object MUST ignore geofeed data from that
 link that is outside the IP network object's address range.
+
+[@!RFC8805, section 3.2] recommends that consumers of geofeed data
+verify that the publisher of the data is authoritative for the
+relevant resources.  The RDAP bootstrap process ([@!RFC9224]) helps
+clients with this recommendation, since a client following that
+process will be directed to the RDAP server that is able to make
+authoritative statements about the disposition of the relevant
+resources.
 
 # Privacy Considerations
 

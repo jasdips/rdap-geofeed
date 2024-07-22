@@ -1,4 +1,5 @@
 *.iml
 .idea
 *.swp
+*.html
 draft-ietf-regext-rdap-geofeed.xml
