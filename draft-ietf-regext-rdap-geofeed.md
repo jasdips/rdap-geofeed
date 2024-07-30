@@ -10,7 +10,7 @@ name = "Internet-Draft"
 value = "draft-ietf-regext-rdap-geofeed-06"
 stream = "IETF"
 status = "standard"
-date = 2024-07-17T00:00:00Z
+date = 2024-07-30T00:00:00Z
 
 [[author]]
 initials="J."
@@ -34,7 +34,7 @@ email = "tomh@apnic.net"
 
 This document defines a new Registration Data Access Protocol (RDAP)
 extension, "geofeed1", for indicating that an RDAP server hosts
-geofeed URLs for its IP network objects.  It also defines a new media
+geofeed URLs for its IP network objects. It also defines a new media
 type and link relation type for the associated link objects included
 in responses.
 
@@ -81,7 +81,7 @@ However, although the CSV geofeed data could be viewed directly by a
 user such that the "text/csv" media type was appropriate, the most
 common use case will involve it being processed by some sort of
 application first, in order to facilitate subsequent address lookup
-operations.  Therefore, using a new "application" media type with a
+operations. Therefore, using a new "application" media type with a
 "geofeed" subtype ([@!RFC6838, section 4.2.5]) for the geofeed data is
 preferable to using "text/csv".
 
@@ -95,12 +95,12 @@ Structured Syntax Suffixes Registry (see
 
 An RDAP server that hosts geofeed URLs for its IP network objects
 ([@!RFC9083, section 5.4]) may include link objects for those geofeed
-URLs in IP network objects in its responses.  These link objects are
+URLs in IP network objects in its responses. These link objects are
 added to the "links" member of each object ([@!RFC9083, section 4.2]).
 
 In RDAP, the "value", "rel", and "href" JSON members are REQUIRED for
-any link object.  Additionally, for a geofeed link object, the "type"
-JSON member is RECOMMENDED.  The geofeed-specific components of a link
+any link object. Additionally, for a geofeed link object, the "type"
+JSON member is RECOMMENDED. The geofeed-specific components of a link
 object are like so:
 
 * "rel" -- The link relation type is set to "geo". This is a new link
@@ -112,7 +112,7 @@ object are like so:
 * "type" -- "application/geofeed+csv" (see (#media_type_for_a_geofeed_link)).
 
 An IP network object returned by an RDAP server may contain zero, one,
-or multiple geofeed link objects.  An example scenario where more than
+or multiple geofeed link objects. An example scenario where more than
 one geofeed link object would be returned is where the server is able
 to represent that data in multiple languages (see the "hreflang"
 member of the link object).
@@ -122,7 +122,7 @@ member of the link object).
 This document defines a new extension identifier, "geofeed1", for use
 by servers that host geofeed URLs for their IP network objects and
 include geofeed URL link objects in their responses to clients in
-accordance with (#geofeed_link).  A server that uses this extension
+accordance with (#geofeed_link). A server that uses this extension
 identifier MUST include it in the "rdapConformance" array for any
 lookup or search response containing an IP network object, as well as
 in the help response. Here is an elided example for this inclusion:
@@ -136,7 +136,7 @@ in the help response. Here is an elided example for this inclusion:
 
 Extension identifier inclusion is not mandatory, because RDAP does not
 require that an extension identifier be included in responses merely
-to make use of new media types or link relation types.  The main
+to make use of new media types or link relation types. The main
 benefit of including the identifier is that it permits a client to
 determine that a server does host geofeed URLs, which is useful where
 a client receives an IP network object without a geofeed URL, for
@@ -190,28 +190,28 @@ geofeed link object:
 
 When an RDAP server is queried for an IP network for a given address
 range, it is required to return the most-specific IP network object
-that covers the address range.  That IP network object may not have an
+that covers the address range. That IP network object may not have an
 associated geofeed link, but it is possible that a less-specific IP
-network object does have such a link.  Clients attempting to retrieve
+network object does have such a link. Clients attempting to retrieve
 geofeed data for a given address range via RDAP should consider
 whether to retrieve the parent object for the initial response (and so
 on, recursively) in the event that the initial response does not
-contain geofeed data.  Conversely, server operators should consider
+contain geofeed data. Conversely, server operators should consider
 interface options for resource holders in order to support the
 provisioning of geofeed links for all networks covered by the
 associated data.
 
 It is common for a resource holder to maintain a single geofeed file
-containing the geofeed data for all of their resources.  The resource
+containing the geofeed data for all of their resources. The resource
 holder then updates each of their network object registrations to
-refer to that single geofeed file.  As with geofeed references in
+refer to that single geofeed file. As with geofeed references in
 inetnum objects (per [@!RFC9092]), clients who find a geofeed link
 object within an IP network object MUST ignore geofeed data from that
 link that is outside the IP network object's address range.
 
 [@!RFC8805, section 3.2] recommends that consumers of geofeed data
 verify that the publisher of the data is authoritative for the
-relevant resources.  The RDAP bootstrap process ([@!RFC9224]) helps
+relevant resources. The RDAP bootstrap process ([@!RFC9224]) helps
 clients with this recommendation, since a client following that
 process will be directed to the RDAP server that is able to make
 authoritative statements about the disposition of the relevant
@@ -225,7 +225,7 @@ followed the guidance from [@?I-D.ietf-opsawg-9092-update, section 7]
 to not accidentally expose the location of an individual.
 
 Many jurisdictions have laws or regulations that restrict the use of
-"personal data", per the definition in [@!RFC6973].  Given that,
+"personal data", per the definition in [@!RFC6973]. Given that,
 registry operators should ascertain whether the regulatory environment
 in which they operate permits implementation of the functionality
 defined in this document.
@@ -233,7 +233,7 @@ defined in this document.
 # Security Considerations {#security_considerations}
 
 [@?I-D.ietf-opsawg-9092-update] requires an HTTPS URL for a geofeed
-file.  The geofeed file may also contain an RPKI signature.  Besides
+file. The geofeed file may also contain an RPKI signature. Besides
 that, this document does not introduce any new security considerations
 past those already discussed in the RDAP protocol specifications.
 
@@ -355,6 +355,9 @@ Hollenbeck, and Mario Loffredo also provided valuable feedback for this document
 
 ## Changes from 05 to 06
 
-* Clarified privacy considerations.
+* The extension identifier inclusion is now a must.
+* Added the "Operational Considerations" section to clarify the geofeed file and IP networks relationship, as well as
+  how RDAP Bootstrap helps with a recommendation from RFC 8805.
+* Updated the "Privacy Considerations" section to clarify the service provider responsibility.
 
 {backmatter}
