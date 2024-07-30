@@ -5,8 +5,8 @@
 Registration Protocols Extensions (regext)                      J. Singh
 Internet-Draft                                                      ARIN
 Intended status: Standards Track                             T. Harrison
-Expires: 23 January 2025                                           APNIC
-                                                            22 July 2024
+Expires: 31 January 2025                                           APNIC
+                                                            30 July 2024
 
 
                    An RDAP Extension for Geofeed Data
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 January 2025.
+   This Internet-Draft will expire on 31 January 2025.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Singh & Harrison         Expires 23 January 2025                [Page 1]
+Singh & Harrison         Expires 31 January 2025                [Page 1]
 
 Internet-Draft                rdap-geofeed                     July 2024
 
@@ -83,8 +83,9 @@ Table of Contents
      8.4.  Changes from 03 to 04 . . . . . . . . . . . . . . . . . .   9
      8.5.  Changes from 04 to 05 . . . . . . . . . . . . . . . . . .   9
      8.6.  Changes from 05 to 06 . . . . . . . . . . . . . . . . . .   9
-   9.  Normative References  . . . . . . . . . . . . . . . . . . . .   9
-   10. Informative References  . . . . . . . . . . . . . . . . . . .  11
+   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
+     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
+     9.2.  Informative References  . . . . . . . . . . . . . . . . .  11
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  11
 
 1.  Introduction
@@ -108,8 +109,7 @@ Table of Contents
 
 
 
-
-Singh & Harrison         Expires 23 January 2025                [Page 2]
+Singh & Harrison         Expires 31 January 2025                [Page 2]
 
 Internet-Draft                rdap-geofeed                     July 2024
 
@@ -165,7 +165,7 @@ Internet-Draft                rdap-geofeed                     July 2024
 
 
 
-Singh & Harrison         Expires 23 January 2025                [Page 3]
+Singh & Harrison         Expires 31 January 2025                [Page 3]
 
 Internet-Draft                rdap-geofeed                     July 2024
 
@@ -221,7 +221,7 @@ Internet-Draft                rdap-geofeed                     July 2024
 
 
 
-Singh & Harrison         Expires 23 January 2025                [Page 4]
+Singh & Harrison         Expires 31 January 2025                [Page 4]
 
 Internet-Draft                rdap-geofeed                     July 2024
 
@@ -277,7 +277,7 @@ Internet-Draft                rdap-geofeed                     July 2024
 
 
 
-Singh & Harrison         Expires 23 January 2025                [Page 5]
+Singh & Harrison         Expires 31 January 2025                [Page 5]
 
 Internet-Draft                rdap-geofeed                     July 2024
 
@@ -333,7 +333,7 @@ Internet-Draft                rdap-geofeed                     July 2024
 
 
 
-Singh & Harrison         Expires 23 January 2025                [Page 6]
+Singh & Harrison         Expires 31 January 2025                [Page 6]
 
 Internet-Draft                rdap-geofeed                     July 2024
 
@@ -389,7 +389,7 @@ Internet-Draft                rdap-geofeed                     July 2024
 
 
 
-Singh & Harrison         Expires 23 January 2025                [Page 7]
+Singh & Harrison         Expires 31 January 2025                [Page 7]
 
 Internet-Draft                rdap-geofeed                     July 2024
 
@@ -445,7 +445,7 @@ Internet-Draft                rdap-geofeed                     July 2024
 
 
 
-Singh & Harrison         Expires 23 January 2025                [Page 8]
+Singh & Harrison         Expires 31 January 2025                [Page 8]
 
 Internet-Draft                rdap-geofeed                     July 2024
 
@@ -489,22 +489,29 @@ Internet-Draft                rdap-geofeed                     July 2024
 
 8.6.  Changes from 05 to 06
 
-   *  Clarified privacy considerations.
+   *  The extension identifier inclusion is now a must.
+   *  Added the "Operational Considerations" section to clarify the
+      geofeed file and IP networks relationship, as well as how RDAP
+      Bootstrap helps with a recommendation from RFC 8805.
+   *  Updated the "Privacy Considerations" section to clarify the
+      service provider responsibility.
 
-9.  Normative References
+9.  References
+
+
+
+
+Singh & Harrison         Expires 31 January 2025                [Page 9]
+
+Internet-Draft                rdap-geofeed                     July 2024
+
+
+9.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
-
-
-
-
-Singh & Harrison         Expires 23 January 2025                [Page 9]
-
-Internet-Draft                rdap-geofeed                     July 2024
-
 
    [RFC3629]  Yergeau, F., "UTF-8, a transformation format of ISO
               10646", STD 63, RFC 3629, DOI 10.17487/RFC3629, November
@@ -544,6 +551,17 @@ Internet-Draft                rdap-geofeed                     July 2024
               Feeds", RFC 8805, DOI 10.17487/RFC8805, August 2020,
               <https://www.rfc-editor.org/info/rfc8805>.
 
+
+
+
+
+
+
+Singh & Harrison         Expires 31 January 2025               [Page 10]
+
+Internet-Draft                rdap-geofeed                     July 2024
+
+
    [RFC9083]  Hollenbeck, S. and A. Newton, "JSON Responses for the
               Registration Data Access Protocol (RDAP)", STD 95,
               RFC 9083, DOI 10.17487/RFC9083, June 2021,
@@ -554,20 +572,12 @@ Internet-Draft                rdap-geofeed                     July 2024
               DOI 10.17487/RFC9092, July 2021,
               <https://www.rfc-editor.org/info/rfc9092>.
 
-
-
-
-Singh & Harrison         Expires 23 January 2025               [Page 10]
-
-Internet-Draft                rdap-geofeed                     July 2024
-
-
    [RFC9224]  Blanchet, M., "Finding the Authoritative Registration Data
               Access Protocol (RDAP) Service", STD 95, RFC 9224,
               DOI 10.17487/RFC9224, March 2022,
               <https://www.rfc-editor.org/info/rfc9224>.
 
-10.  Informative References
+9.2.  Informative References
 
    [I-D.ietf-opsawg-9092-update]
               Bush, R., Candela, M., Kumari, W. A., and R. Housley,
@@ -603,14 +613,4 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-
-
-
-
-Singh & Harrison         Expires 23 January 2025               [Page 11]
+Singh & Harrison         Expires 31 January 2025               [Page 11]
