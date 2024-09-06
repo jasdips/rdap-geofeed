@@ -7,10 +7,10 @@ ipr= "trust200902"
 
 [seriesInfo]
 name = "Internet-Draft"
-value = "draft-ietf-regext-rdap-geofeed-06"
+value = "draft-ietf-regext-rdap-geofeed-07"
 stream = "IETF"
 status = "standard"
-date = 2024-07-30T00:00:00Z
+date = 2024-08-07T00:00:00Z
 
 [[author]]
 initials="J."
@@ -134,13 +134,19 @@ in the help response. Here is an elided example for this inclusion:
 }
 ```
 
-Extension identifier inclusion is not mandatory, because RDAP does not
-require that an extension identifier be included in responses merely
-to make use of new media types or link relation types. The main
-benefit of including the identifier is that it permits a client to
-determine that a server does host geofeed URLs, which is useful where
-a client receives an IP network object without a geofeed URL, for
-example.
+An RDAP server may make use of the "application/geofeed+csv" media
+type and the "geo" link relation defined in this specification in
+its responses without including the "geofeed1" extension
+identifier in those responses, because RDAP servers are free to
+use any registered media type or link relation in a standard
+response (without implementing any particular extension). The
+additional value of the extension identifier here is that it
+signals to the client that the server hosts geofeed URLs for its
+IP network objects. This is useful where a client receives an IP
+network object without a geofeed link object, because in that case
+the client can infer that no geofeed data is available for that
+object, since the server would have provided it if it were
+available.
 
 Although a server may use registered media types in its link objects
 without any restrictions, it may be useful to define new RDAP
@@ -359,5 +365,9 @@ Hollenbeck, and Mario Loffredo also provided valuable feedback for this document
 * Added the "Operational Considerations" section to clarify the geofeed file and IP networks relationship, as well as
   how RDAP Bootstrap helps with a recommendation from RFC 8805.
 * Updated the "Privacy Considerations" section to clarify the service provider responsibility.
+
+## Changes from 06 to 07
+
+* Updated the extension identifier text so as to clarify that the media type and link relation can be used independently of that identifier.
 
 {backmatter}
