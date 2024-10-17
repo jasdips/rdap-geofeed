@@ -40,16 +40,16 @@ associated link objects included in responses.
 
 # Introduction
 
-[@!RFC8805] and [@?I-D.ietf-opsawg-9092-update] (obsoletes [@!RFC9092]) detail the IP geolocation feed (commonly known
-as 'geofeed') file format and associated access mechanisms. This document specifies how geofeed URLs can be accessed
-through RDAP. It defines a new RDAP extension, "geofeed1", for indicating that an RDAP server hosts geofeed URLs for its
-IP network objects, as well as a media type and a link relation type for the associated link objects.
+[@?RFC8805] and [@!RFC9632] detail the IP geolocation feed (commonly known as 'geofeed') file format and associated
+access mechanisms. This document specifies how geofeed URLs can be accessed through RDAP. It defines a new RDAP
+extension, "geofeed1", for indicating that an RDAP server hosts geofeed URLs for its IP network objects, as well as a
+media type and a link relation type for the associated link objects.
 
 ## Requirements Language
 
 The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",
-"NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 [@!RFC2119]
-[@!RFC8174] when, and only when, they appear in all capitals, as shown here.
+"NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [@!BCP14] when, and only
+when, they appear in all capitals, as shown here.
 
 Indentation and whitespace in examples are provided only to illustrate element relationships, and are not a REQUIRED
 feature of this protocol.
@@ -60,15 +60,15 @@ feature of this protocol.
 
 ## Media Type for a Geofeed Link {#media_type_for_a_geofeed_link}
 
-[@?I-D.ietf-opsawg-9092-update] requires a geofeed file to be a UTF-8 [@!RFC3629] comma-separated values (CSV) file,
-with a series of "#" comments at the end for the optional Resource Public Key Infrastructure (RPKI, [@!RFC6480])
-signature. At first glance, the "text/csv" media type ([@?I-D.shafranovich-rfc4180-bis, section 4]) seems like a good
-candidate for a geofeed file, since it supports the "#" comments needed for including the RPKI signature.
+[@!RFC9632] requires a geofeed file to be a UTF-8 [@!RFC3629] comma-separated values (CSV) file, with a series of "#"
+comments at the end for the optional Resource Public Key Infrastructure (RPKI, [@?RFC6480]) signature. At first glance,
+the "text/csv" media type ([@?I-D.shafranovich-rfc4180-bis, section 4]) seems like a good candidate for a geofeed file,
+since it supports the "#" comments needed for including the RPKI signature.
 
 However, although the CSV geofeed data could be viewed directly by a user such that the "text/csv" media type was
 appropriate, the most common use case will involve it being processed by some sort of application first, in order to
 facilitate subsequent address lookup operations. Therefore, using a new "application" media type with a "geofeed"
-subtype ([@!RFC6838, section 4.2.5]) for the geofeed data is preferable to using "text/csv".
+subtype ([@?RFC6838, section 4.2.5]) for the geofeed data is preferable to using "text/csv".
 
 To that end, this document registers a new "application/geofeed+csv" media type in the IANA Media Types Registry (see
 (#media_types_registry)), and a new "+csv" suffix in the IANA Structured Syntax Suffixes Registry (see
@@ -166,10 +166,10 @@ networks covered by the associated data.
 
 It is common for a resource holder to maintain a single geofeed file containing the geofeed data for all of their
 resources. The resource holder then updates each of their network object registrations to refer to that single geofeed
-file. As with geofeed references in inetnum objects (per [@!RFC9092]), clients who find a geofeed link object within an
+file. As with geofeed references in inetnum objects (per [@!RFC9632]), clients who find a geofeed link object within an
 IP network object MUST ignore geofeed data from that link that is outside the IP network object's address range.
 
-[@!RFC8805, section 3.2] recommends that consumers of geofeed data verify that the publisher of the data is
+[@?RFC8805, section 3.2] recommends that consumers of geofeed data verify that the publisher of the data is
 authoritative for the relevant resources. The RDAP bootstrap process ([@!RFC9224]) helps clients with this
 recommendation, since a client following that process will be directed to the RDAP server that is able to make
 authoritative statements about the disposition of the relevant resources.
@@ -177,18 +177,18 @@ authoritative statements about the disposition of the relevant resources.
 # Privacy Considerations
 
 When including a geofeed file URL in an IP network object, it is expected that the service provider publishing the
-geofeed file has followed the guidance from [@?I-D.ietf-opsawg-9092-update, section 7]to not accidentally expose the
-location of an individual.
+geofeed file has followed the guidance from [@!RFC9632, section 7] to not accidentally expose the location of an
+individual.
 
-Many jurisdictions have laws or regulations that restrict the use of "personal data", per the definition in [@!RFC6973].
+Many jurisdictions have laws or regulations that restrict the use of "personal data", per the definition in [@?RFC6973].
 Given that, registry operators should ascertain whether the regulatory environment in which they operate permits
 implementation of the functionality defined in this document.
 
 # Security Considerations {#security_considerations}
 
-[@?I-D.ietf-opsawg-9092-update] requires an HTTPS URL for a geofeed file. The geofeed file may also contain an RPKI
-signature. Besides that, this document does not introduce any new security considerations past those already discussed
-in the RDAP protocol specifications.
+[@!RFC9632] requires an HTTPS URL for a geofeed file. The geofeed file may also contain an RPKI signature. Besides that,
+this document does not introduce any new security considerations past those already discussed in the RDAP protocol
+specifications.
 
 # IANA Considerations
 
@@ -221,7 +221,7 @@ https://www.iana.org/assignments/media-types/:
 * Subtype name: geofeed+csv
 * Required parameters: N/A
 * Optional parameters: N/A
-* Encoding considerations: See [@?I-D.ietf-opsawg-9092-update, section 2].
+* Encoding considerations: See [@!RFC9632, section 2].
 * Security considerations: See (#security_considerations) of this document.
 * Interoperability considerations: There are no known interoperability problems regarding this media format.
 * Published specification: This document.
@@ -244,7 +244,7 @@ https://www.iana.org/assignments/media-type-structured-suffix/:
 
 * Name: Comma-Separated Values (CSV)
 * +suffix: +csv
-* References: [@!RFC4180], [@!RFC7111]
+* References: [@?RFC4180], [@?RFC7111]
 * Encoding Considerations: Same as "text/csv".
 * Interoperability Considerations: Same as "text/csv".
 * Fragment Identifier Considerations:
@@ -265,7 +265,7 @@ https://www.iana.org/assignments/media-type-structured-suffix/:
 
 # Acknowledgements
 
-Mark Kosters provided initial support and encouragement for this work, along with the [@!RFC9092] authors. Gavin Brown
+Mark Kosters provided initial support and encouragement for this work, along with the [@!RFC9632] authors. Gavin Brown
 suggested using a web link instead of a simple URL string to specify a geofeed file URL. Andy Newton, James Gould, Scott
 Hollenbeck, and Mario Loffredo also provided valuable feedback for this document.
 
