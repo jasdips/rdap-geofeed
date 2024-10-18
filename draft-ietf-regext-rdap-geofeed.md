@@ -10,7 +10,7 @@ name = "Internet-Draft"
 value = "draft-ietf-regext-rdap-geofeed-08"
 stream = "IETF"
 status = "standard"
-date = 2024-10-17T00:00:00Z
+date = 2024-10-18T00:00:00Z
 
 [[author]]
 initials="J."
@@ -90,7 +90,7 @@ object, the "type" JSON member is RECOMMENDED. The geofeed-specific components o
 
 An IP network object returned by an RDAP server may contain zero, one, or multiple geofeed link objects. An example
 scenario where more than one geofeed link object would be returned is where the server is able to represent that data in
-multiple languages (see the "hreflang" member of the link object).
+multiple languages (see the "hreflang" member of a link object).
 
 ## Extension Identifier
 
@@ -199,7 +199,7 @@ IANA is requested to register the following value in the RDAP Extensions Registr
 * Extension identifier: geofeed1
 * Registry operator: Any
 * Published specification: This document.
-* Contact: IETF <iesg@ietf.org>
+* Contact: IETF, iesg@ietf.org
 * Intended usage: This extension describes version 1 of a method to access the IP geolocation feed data through RDAP.
 
 ## Link Relations Registry {#link_relations_registry}
@@ -226,7 +226,7 @@ IANA is requested to register the following value in the Media Types Registry at
   Geofeed Data. Furthermore, any application that processes the CSV geofeed data.
 * Additional information: This media type is a product of the IETF REGEXT Working Group. The REGEXT charter, information
   on the REGEXT mailing list, and other documents produced by the REGEXT Working Group can be found at [@REGEXT].
-* Person & email address to contact for further information: IETF <iesg@ietf.org>
+* Person & email address to contact for further information: IETF, iesg@ietf.org
 * Intended usage: COMMON
 * Restrictions on usage: None
 * Authors: Tom Harrison, Jasdip Singh
@@ -257,41 +257,32 @@ at [@STRUCTURED-SYNTAX-SUFFIXES]:
   For cases not defined in +csv, then as specified in "xxx/yyy+csv".
 
 * Security Considerations: Same as "text/csv".
-* Contact: IETF <iesg@ietf.org>
+* Contact: IETF, iesg@ietf.org
 
 # Implementation Status
 
-NOTE: Please remove this section and the reference to RFC 7942 prior
-to publication as an RFC.
+NOTE: Please remove this section and the reference to RFC 7942 prior to publication as an RFC.
 
-This section records the status of known implementations of the
-protocol defined by this specification at the time of posting of this
-Internet-Draft, and is based on a proposal described in [@?RFC7942].
-The description of implementations in this section is intended to
-assist the IETF in its decision processes in progressing drafts to
-RFCs.  Please note that the listing of any individual implementation
-here does not imply endorsement by the IETF.  Furthermore, no effort
-has been spent to verify the information presented here that was
-supplied by IETF contributors.  This is not intended as, and must not
-be construed to be, a catalog of available implementations or their
-features.  Readers are advised to note that other implementations may
-exist.
+This section records the status of known implementations of the protocol defined by this specification at the time of
+posting of this Internet-Draft, and is based on a proposal described in [@?RFC7942]. The description of implementations
+in this section is intended to assist the IETF in its decision processes in progressing drafts to RFCs. Please note that
+the listing of any individual implementation here does not imply endorsement by the IETF. Furthermore, no effort has
+been spent to verify the information presented here that was supplied by IETF contributors. This is not intended as, and
+must not be construed to be, a catalog of available implementations or their features. Readers are advised to note that
+other implementations may exist.
 
-According to RFC 7942, "this will allow reviewers and working groups
-to assign due consideration to documents that have the benefit of
-running code, which may serve as evidence of valuable experimentation
-and feedback that have made the implemented protocols more mature.  It
-is up to the individual working groups to use this information as they
-see fit".
+According to RFC 7942, "this will allow reviewers and working groups to assign due consideration to documents that have
+the benefit of running code, which may serve as evidence of valuable experimentation and feedback that have made the
+implemented protocols more mature. It is up to the individual working groups to use this information as they see fit".
 
 ## RIPE NCC
 
- * Responsible Organization: RIPE NCC
- * Location: https://rdap.db.ripe.net
- * Description: An RDAP server returning geofeed data.
- * Level of Maturity: This is a production implementation.
- * Coverage: This implementation covers all of the features described in this specification.
- * Contact Information: Ed Shryane, eshryane@ripe.net
+* Responsible Organization: RIPE NCC
+* Location: https://rdap.db.ripe.net
+* Description: An RDAP server returning geofeed data.
+* Level of Maturity: This is a production implementation.
+* Coverage: This implementation covers all the features described in this specification.
+* Contact Information: Ed Shryane, eshryane@ripe.net
 
 # Acknowledgements
 
@@ -350,7 +341,8 @@ Hollenbeck, and Mario Loffredo also provided valuable feedback for this document
 
 ## Changes from 07 to 08
 
-* Added implementation status section.
+* Added the "Implementation Status" section.
+* Updated references.
 
 {backmatter}
 
