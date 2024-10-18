@@ -86,6 +86,7 @@ Table of Contents
      9.5.  Changes from 04 to 05 . . . . . . . . . . . . . . . . . .  10
      9.6.  Changes from 05 to 06 . . . . . . . . . . . . . . . . . .  10
      9.7.  Changes from 06 to 07 . . . . . . . . . . . . . . . . . .  11
+     9.8.  Changes from 07 to 08 . . . . . . . . . . . . . . . . . .  11
    10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  11
      10.1.  Normative References . . . . . . . . . . . . . . . . . .  11
      10.2.  Informative References . . . . . . . . . . . . . . . . .  11
@@ -100,7 +101,6 @@ Table of Contents
    that an RDAP server hosts geofeed URLs for its IP network objects, as
    well as a media type and a link relation type for the associated link
    objects.
-
 
 
 
@@ -571,6 +571,10 @@ Internet-Draft                rdap-geofeed                  October 2024
       media type and link relation can be used independently of that
       identifier.
 
+9.8.  Changes from 07 to 08
+
+   *  Added implementation status section.
+
 10.  References
 
 10.1.  Normative References
@@ -604,12 +608,8 @@ Internet-Draft                rdap-geofeed                  October 2024
 
 10.2.  Informative References
 
-   [I-D.shafranovich-rfc4180-bis]
-              Shafranovich, Y., "Common Format and MIME Type for Comma-
-              Separated Values (CSV) Files", Work in Progress, Internet-
-              Draft, draft-shafranovich-rfc4180-bis-07, 2 August 2024,
-              <https://datatracker.ietf.org/doc/html/draft-shafranovich-
-              rfc4180-bis-07>.
+
+
 
 
 
@@ -617,6 +617,13 @@ Singh & Harrison          Expires 21 April 2025                [Page 11]
 
 Internet-Draft                rdap-geofeed                  October 2024
 
+
+   [I-D.shafranovich-rfc4180-bis]
+              Shafranovich, Y., "Common Format and MIME Type for Comma-
+              Separated Values (CSV) Files", Work in Progress, Internet-
+              Draft, draft-shafranovich-rfc4180-bis-07, 2 August 2024,
+              <https://datatracker.ietf.org/doc/html/draft-shafranovich-
+              rfc4180-bis-07>.
 
    [LINK-RELATIONS]
               IANA, "Link Relations",
@@ -658,13 +665,6 @@ Internet-Draft                rdap-geofeed                  October 2024
               DOI 10.17487/RFC7111, January 2014,
               <https://www.rfc-editor.org/info/rfc7111>.
 
-   [RFC7942]  Sheffer, Y. and A. Farrel, "Improving Awareness of Running
-              Code: The Implementation Status Section", BCP 205,
-              RFC 7942, DOI 10.17487/RFC7942, July 2016,
-              <https://www.rfc-editor.org/info/rfc7942>.
-
-
-
 
 
 
@@ -673,6 +673,11 @@ Singh & Harrison          Expires 21 April 2025                [Page 12]
 
 Internet-Draft                rdap-geofeed                  October 2024
 
+
+   [RFC7942]  Sheffer, Y. and A. Farrel, "Improving Awareness of Running
+              Code: The Implementation Status Section", BCP 205,
+              RFC 7942, DOI 10.17487/RFC7942, July 2016,
+              <https://www.rfc-editor.org/info/rfc7942>.
 
    [RFC8805]  Kline, E., Duleba, K., Szamonek, Z., Moser, S., and W.
               Kumari, "A Format for Self-Published IP Geolocation
@@ -694,11 +699,6 @@ Authors' Addresses
    Tom Harrison
    APNIC
    Email: tomh@apnic.net
-
-
-
-
-
 
 
 

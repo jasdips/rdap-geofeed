@@ -348,6 +348,10 @@ Hollenbeck, and Mario Loffredo also provided valuable feedback for this document
 * Updated the extension identifier text so as to clarify that the media type and link relation can be used independently
   of that identifier.
 
+## Changes from 07 to 08
+
+* Added implementation status section.
+
 {backmatter}
 
 <reference anchor='LINK-RELATIONS' target='https://www.iana.org/assignments/link-relations/'>
