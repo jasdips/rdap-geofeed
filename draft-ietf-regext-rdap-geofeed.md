@@ -194,8 +194,7 @@ specifications.
 
 ## RDAP Extensions Registry
 
-IANA is requested to register the following value in the RDAP Extensions Registry at
-https://www.iana.org/assignments/rdap-extensions/:
+IANA is requested to register the following value in the RDAP Extensions Registry at [@RDAP-EXTENSIONS]:
 
 * Extension identifier: geofeed1
 * Registry operator: Any
@@ -205,8 +204,7 @@ https://www.iana.org/assignments/rdap-extensions/:
 
 ## Link Relations Registry {#link_relations_registry}
 
-IANA is requested to register the following value in the Link Relations Registry at
-https://www.iana.org/assignments/link-relations/:
+IANA is requested to register the following value in the Link Relations Registry at [@LINK-RELATIONS]:
 
 * Relation Name: geo
 * Description: Indicates that the link context has a resource with geographic information at the link target.
@@ -214,8 +212,7 @@ https://www.iana.org/assignments/link-relations/:
 
 ## Media Types Registry {#media_types_registry}
 
-IANA is requested to register the following value in the Media Types Registry at
-https://www.iana.org/assignments/media-types/:
+IANA is requested to register the following value in the Media Types Registry at [@MEDIA-TYPES]:
 
 * Type name: application
 * Subtype name: geofeed+csv
@@ -228,8 +225,7 @@ https://www.iana.org/assignments/media-types/:
 * Applications that use this media type: Implementations of the Registration Data Access Protocol (RDAP) Extension for
   Geofeed Data. Furthermore, any application that processes the CSV geofeed data.
 * Additional information: This media type is a product of the IETF REGEXT Working Group. The REGEXT charter, information
-  on the REGEXT mailing list, and other documents produced by the REGEXT Working Group can be found at
-  https://datatracker.ietf.org/wg/regext/.
+  on the REGEXT mailing list, and other documents produced by the REGEXT Working Group can be found at [@REGEXT].
 * Person & email address to contact for further information: IETF <iesg@ietf.org>
 * Intended usage: COMMON
 * Restrictions on usage: None
@@ -239,8 +235,8 @@ https://www.iana.org/assignments/media-types/:
 
 ## Structured Syntax Suffixes Registry {#structured_syntax_suffixes_registry}
 
-IANA is requested to register the following value in the Structured Syntax Suffixes Registry at
-https://www.iana.org/assignments/media-type-structured-suffix/:
+IANA is requested to register the following value in the Structured Syntax Suffixes Registry
+at [@STRUCTURED-SYNTAX-SUFFIXES]:
 
 * Name: Comma-Separated Values (CSV)
 * +suffix: +csv
@@ -319,3 +315,48 @@ Hollenbeck, and Mario Loffredo also provided valuable feedback for this document
   of that identifier.
 
 {backmatter}
+
+<reference anchor='LINK-RELATIONS' target='https://www.iana.org/assignments/link-relations/'>
+    <front>
+        <title>Link Relations</title>
+        <author>
+            <organization>IANA</organization>
+        </author>
+    </front>
+</reference>
+
+<reference anchor='MEDIA-TYPES' target='https://www.iana.org/assignments/media-types/'>
+    <front>
+        <title>Media Types</title>
+        <author>
+            <organization>IANA</organization>
+        </author>
+    </front>
+</reference>
+
+<reference anchor='RDAP-EXTENSIONS' target='https://www.iana.org/assignments/rdap-extensions/'>
+    <front>
+        <title>RDAP Extensions</title>
+        <author>
+            <organization>IANA</organization>
+        </author>
+    </front>
+</reference>
+
+<reference anchor='REGEXT' target='https://datatracker.ietf.org/wg/regext/'>
+    <front>
+        <title>Registration Protocols Extensions</title>
+        <author>
+            <organization>IETF</organization>
+        </author>
+    </front>
+</reference>
+
+<reference anchor='STRUCTURED-SYNTAX-SUFFIXES' target='https://www.iana.org/assignments/media-type-structured-suffix/'>
+    <front>
+        <title>Structured Syntax Suffixes</title>
+        <author>
+            <organization>IANA</organization>
+        </author>
+    </front>
+</reference>
