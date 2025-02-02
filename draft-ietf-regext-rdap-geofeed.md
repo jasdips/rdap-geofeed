@@ -62,8 +62,8 @@ feature of this protocol.
 
 [@!RFC9632] requires a geofeed file to be a UTF-8 [@!RFC3629] comma-separated values (CSV) file, with a series of "#"
 comments at the end for the optional Resource Public Key Infrastructure (RPKI, [@?RFC6480]) signature. At first glance,
-the "text/csv" media type ([@?I-D.shafranovich-rfc4180-bis, section 4]) seems like a good candidate for a geofeed file,
-since it supports the "#" comments needed for including the RPKI signature.
+the "text/csv" media type seems like a good candidate for a geofeed file, since it supports the "#" comments
+([@?I-D.shafranovich-rfc4180-bis, section 3.11]) needed for including the RPKI signature.
 
 However, although the CSV geofeed data could be viewed directly by a user such that the "text/csv" media type was
 appropriate, the most common use case will involve it being processed by some sort of application first, in order to
@@ -89,7 +89,7 @@ object, the "type" JSON member is RECOMMENDED. The geofeed-specific components o
 * "type" -- "application/geofeed+csv" (see (#media_type_for_a_geofeed_link)).
 
 An IP network object returned by an RDAP server MAY contain zero or more geofeed link objects. An example scenario where
-more than one geofeed link object would be returned is where the server is able to represent that data in multiple
+more than one geofeed link object would be returned is when the server is able to represent that data in multiple
 languages (see the "hreflang" member of a link object).
 
 ## Extension Identifier
@@ -156,7 +156,7 @@ The following is an elided example of an IP network object with a geofeed link o
 
 # Operational Considerations
 
-When an RDAP server is queried for an IP network for a given IP address range, it is required to return the
+When an RDAP server is queried for an IP network by a given IP address range, it is required to return the
 most-specific IP network object that covers the IP address range. That IP network object may not have an associated
 geofeed link, but it is possible that a less-specific IP network object does have such a link. Clients attempting to
 retrieve geofeed data for a given IP address range via RDAP should consider whether to retrieve the parent object for
@@ -241,7 +241,7 @@ at [@STRUCTURED-SYNTAX-SUFFIXES]:
 
 * Name: Comma-Separated Values (CSV)
 * +suffix: +csv
-* References: [@?RFC4180], [@?RFC7111]
+* References: [@!RFC4180], [@!RFC7111]
 * Encoding Considerations: Same as "text/csv".
 * Interoperability Considerations: Same as "text/csv".
 * Fragment Identifier Considerations:
