@@ -1,5 +1,5 @@
 %%%
-Title = "An RDAP Extension for Geofeed Data"
+Title = "Registration Data Access Protocol (RDAP) Extension for Geofeed Data"
 area = "Applications and Real-Time Area (ART)"
 workgroup = "Registration Protocols Extensions (regext)"
 abbrev = "rdap-geofeed"
@@ -7,10 +7,10 @@ ipr= "trust200902"
 
 [seriesInfo]
 name = "Internet-Draft"
-value = "draft-ietf-regext-rdap-geofeed-08"
+value = "draft-ietf-regext-rdap-geofeed-09"
 stream = "IETF"
 status = "standard"
-date = 2024-10-18T00:00:00Z
+date = 2025-02-01T00:00:00Z
 
 [[author]]
 initials="J."
@@ -33,8 +33,8 @@ email = "tomh@apnic.net"
 .# Abstract
 
 This document defines a new Registration Data Access Protocol (RDAP) extension, "geofeed1", for indicating that an RDAP
-server hosts geofeed URLs for its IP network objects. It also defines a new media type and link relation type for the
-associated link objects included in responses.
+server hosts geofeed URLs for its IP network objects. It also defines a new media type and a new link relation type for
+the associated link objects included in responses.
 
 {mainmatter}
 
@@ -43,7 +43,7 @@ associated link objects included in responses.
 [@?RFC8805] and [@!RFC9632] detail the IP geolocation feed (commonly known as 'geofeed') file format and associated
 access mechanisms. This document specifies how geofeed URLs can be accessed through RDAP. It defines a new RDAP
 extension, "geofeed1", for indicating that an RDAP server hosts geofeed URLs for its IP network objects, as well as a
-media type and a link relation type for the associated link objects.
+new media type and a new link relation type for the associated link objects.
 
 ## Requirements Language
 
@@ -67,7 +67,7 @@ since it supports the "#" comments needed for including the RPKI signature.
 
 However, although the CSV geofeed data could be viewed directly by a user such that the "text/csv" media type was
 appropriate, the most common use case will involve it being processed by some sort of application first, in order to
-facilitate subsequent address lookup operations. Therefore, using a new "application" media type with a "geofeed"
+facilitate subsequent IP address lookup operations. Therefore, using a new "application" media type with a "geofeed"
 subtype ([@?RFC6838, section 4.2.5]) for the geofeed data is preferable to using "text/csv".
 
 To that end, this document registers a new "application/geofeed+csv" media type in the IANA Media Types Registry (see
@@ -88,9 +88,9 @@ object, the "type" JSON member is RECOMMENDED. The geofeed-specific components o
 * "href" -- The target URL is set to the HTTPS URL of the geofeed file for an IP network.
 * "type" -- "application/geofeed+csv" (see (#media_type_for_a_geofeed_link)).
 
-An IP network object returned by an RDAP server may contain zero, one, or multiple geofeed link objects. An example
-scenario where more than one geofeed link object would be returned is where the server is able to represent that data in
-multiple languages (see the "hreflang" member of a link object).
+An IP network object returned by an RDAP server MAY contain zero or more geofeed link objects. An example scenario where
+more than one geofeed link object would be returned is where the server is able to represent that data in multiple
+languages (see the "hreflang" member of a link object).
 
 ## Extension Identifier
 
@@ -156,18 +156,19 @@ The following is an elided example of an IP network object with a geofeed link o
 
 # Operational Considerations
 
-When an RDAP server is queried for an IP network for a given address range, it is required to return the most-specific
-IP network object that covers the address range. That IP network object may not have an associated geofeed link, but it
-is possible that a less-specific IP network object does have such a link. Clients attempting to retrieve geofeed data
-for a given address range via RDAP should consider whether to retrieve the parent object for the initial response (and
-so on, recursively) in the event that the initial response does not contain geofeed data. Conversely, server operators
-should consider interface options for resource holders in order to support the provisioning of geofeed links for all
-networks covered by the associated data.
+When an RDAP server is queried for an IP network for a given IP address range, it is required to return the
+most-specific IP network object that covers the IP address range. That IP network object may not have an associated
+geofeed link, but it is possible that a less-specific IP network object does have such a link. Clients attempting to
+retrieve geofeed data for a given IP address range via RDAP should consider whether to retrieve the parent object for
+the initial response (and so on, recursively) in the event that the initial response does not contain geofeed data.
+Conversely, server operators should consider interface options for resource holders in order to support the provisioning
+of geofeed links for all networks covered by the associated data.
 
 It is common for a resource holder to maintain a single geofeed file containing the geofeed data for all of their
 resources. The resource holder then updates each of their network object registrations to refer to that single geofeed
 file. As with geofeed references in inetnum objects (per [@!RFC9632]), clients who find a geofeed link object within an
-IP network object MUST ignore geofeed data from that link that is outside the IP network object's address range.
+IP network object and opt to retrieve the data from the associated link MUST ignore any entry where the entry's IP
+address range is outside the IP network object's address range.
 
 [@?RFC8805, section 3.2] recommends that consumers of geofeed data verify that the publisher of the data is
 authoritative for the relevant resources. The RDAP bootstrap process ([@!RFC9224]) helps clients with this
@@ -288,7 +289,7 @@ implemented protocols more mature. It is up to the individual working groups to 
 
 Mark Kosters provided initial support and encouragement for this work, along with the [@!RFC9632] authors. Gavin Brown
 suggested using a web link instead of a simple URL string to specify a geofeed file URL. Andy Newton, James Gould, Scott
-Hollenbeck, and Mario Loffredo also provided valuable feedback for this document.
+Hollenbeck, Mario Loffredo, and Orie Steele also provided valuable feedback for this document.
 
 # Change History
 
@@ -343,6 +344,11 @@ Hollenbeck, and Mario Loffredo also provided valuable feedback for this document
 
 * Added the "Implementation Status" section.
 * Updated references.
+
+## Changes from 08 to 09
+
+* Incorporated feedback from the AD review.
+* Made minor editorial changes.
 
 {backmatter}
 
