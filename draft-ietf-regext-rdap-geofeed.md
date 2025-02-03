@@ -40,7 +40,7 @@ the associated link objects included in responses.
 
 # Introduction
 
-[@?RFC8805] and [@!RFC9632] detail the IP geolocation feed (commonly known as 'geofeed') file format and associated
+[@!RFC8805] and [@!RFC9632] detail the IP geolocation feed (commonly known as 'geofeed') file format and associated
 access mechanisms. This document specifies how geofeed URLs can be accessed through RDAP. It defines a new RDAP
 extension, "geofeed1", for indicating that an RDAP server hosts geofeed URLs for its IP network objects, as well as a
 new media type and a new link relation type for the associated link objects.
@@ -171,7 +171,7 @@ file. As with geofeed references in inetnum objects (per [@!RFC9632]), clients w
 IP network object and opt to retrieve the data from the associated link MUST ignore any entry where the entry's IP
 address range is outside the IP network object's address range.
 
-[@?RFC8805, section 3.2] recommends that consumers of geofeed data verify that the publisher of the data is
+[@!RFC8805, section 3.2] recommends that consumers of geofeed data verify that the publisher of the data is
 authoritative for the relevant resources. The RDAP bootstrap process ([@!RFC9224]) helps clients with this
 recommendation, since a client following that process will be directed to the RDAP server that is able to make
 authoritative statements about the disposition of the relevant resources.
@@ -219,7 +219,8 @@ IANA is requested to register the following value in the Media Types Registry at
 * Type name: application
 * Subtype name: geofeed+csv
 * Required parameters: N/A
-* Optional parameters: N/A
+* Optional parameters: "charset" is an optional parameter for "text/csv", but it is not used for
+  "application/geofeed+csv" because the geofeed content is always in UTF-8 ([@!RFC8805, section 2.1]).
 * Encoding considerations: See [@!RFC9632, section 2].
 * Security considerations: See (#security_considerations) of this document.
 * Interoperability considerations: There are no known interoperability problems regarding this media format.
@@ -290,7 +291,7 @@ implemented protocols more mature. It is up to the individual working groups to 
 
 Mark Kosters provided initial support and encouragement for this work, along with the [@!RFC9632] authors. Gavin Brown
 suggested using a web link instead of a simple URL string to specify a geofeed file URL. Andy Newton, James Gould, Scott
-Hollenbeck, Mario Loffredo, and Orie Steele also provided valuable feedback for this document.
+Hollenbeck, Mario Loffredo, Orie Steele, and Alexey Melnikov provided valuable feedback for this document.
 
 # Change History
 
@@ -349,7 +350,8 @@ Hollenbeck, Mario Loffredo, and Orie Steele also provided valuable feedback for 
 ## Changes from 08 to 09
 
 * Incorporated feedback from the AD review.
-* RFC 4180 and RFC 7111 are now normative references, given the "+csv" registration depends on them.
+* Incorporated feedback from the media type review.
+* RFCs 4180, 7111, and 8805 are now normative references.
 * Made minor editorial changes.
 
 {backmatter}
