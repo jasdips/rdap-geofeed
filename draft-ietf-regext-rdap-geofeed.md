@@ -10,21 +10,21 @@ name = "Internet-Draft"
 value = "draft-ietf-regext-rdap-geofeed-09"
 stream = "IETF"
 status = "standard"
-date = 2025-02-01T00:00:00Z
+date = 2025-02-03T00:00:00Z
 
 [[author]]
-initials="J."
-surname="Singh"
-fullname="Jasdip Singh"
-organization="ARIN"
+initials = "J."
+surname = "Singh"
+fullname = "Jasdip Singh"
+organization = "ARIN"
 [author.address]
 email = "jasdips@arin.net"
 
 [[author]]
-initials="T."
-surname="Harrison"
-fullname="Tom Harrison"
-organization="APNIC"
+initials = "T."
+surname = "Harrison"
+fullname = "Tom Harrison"
+organization = "APNIC"
 [author.address]
 email = "tomh@apnic.net"
 
@@ -88,9 +88,10 @@ object, the "type" JSON member is RECOMMENDED. The geofeed-specific components o
 * "href" -- The target URL is set to the HTTPS URL of the geofeed file for an IP network.
 * "type" -- "application/geofeed+csv" (see (#media_type_for_a_geofeed_link)).
 
-An IP network object returned by an RDAP server MAY contain zero or more geofeed link objects. An example scenario where
-more than one geofeed link object would be returned is when the server is able to represent that data in multiple
-languages (see the "hreflang" member of a link object).
+An IP network object returned by an RDAP server MAY contain zero or more geofeed link objects, though typically an IP
+network will have either no such link objects or only one. An example scenario where more than one geofeed link object
+would be returned is when the server is able to represent that data in multiple languages (see the "hreflang" member of
+a link object).
 
 ## Extension Identifier
 
@@ -156,13 +157,13 @@ The following is an elided example of an IP network object with a geofeed link o
 
 # Operational Considerations
 
-When an RDAP server is queried for an IP network by a given IP address range, it is required to return the
-most-specific IP network object that covers the IP address range. That IP network object may not have an associated
-geofeed link, but it is possible that a less-specific IP network object does have such a link. Clients attempting to
-retrieve geofeed data for a given IP address range via RDAP should consider whether to retrieve the parent object for
-the initial response (and so on, recursively) in the event that the initial response does not contain geofeed data.
-Conversely, server operators should consider interface options for resource holders in order to support the provisioning
-of geofeed links for all networks covered by the associated data.
+When an RDAP client performs an IP network lookup, per [@!RFC9082, section 3.1.1], the RDAP server is required to return
+the most-specific IP network object that covers the IP address range provided by the client. That IP network object may
+not have an associated geofeed link, but it is possible that a less-specific IP network object does have such a link.
+Clients attempting to retrieve geofeed data for a given IP address range via RDAP should consider whether to retrieve
+the parent object for the initial response (and so on, recursively) in the event that the initial response does not
+contain geofeed data. Conversely, server operators should consider interface options for resource holders in order to
+support the provisioning of geofeed links for all networks covered by the associated data.
 
 It is common for a resource holder to maintain a single geofeed file containing the geofeed data for all of their
 resources. The resource holder then updates each of their network object registrations to refer to that single geofeed
@@ -348,6 +349,7 @@ Hollenbeck, Mario Loffredo, and Orie Steele also provided valuable feedback for 
 ## Changes from 08 to 09
 
 * Incorporated feedback from the AD review.
+* RFC 4180 and RFC 7111 are now normative references, given the "+csv" registration depends on them.
 * Made minor editorial changes.
 
 {backmatter}
