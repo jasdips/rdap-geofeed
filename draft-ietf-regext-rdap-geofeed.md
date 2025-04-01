@@ -7,10 +7,10 @@ ipr= "trust200902"
 
 [seriesInfo]
 name = "Internet-Draft"
-value = "draft-ietf-regext-rdap-geofeed-10"
+value = "draft-ietf-regext-rdap-geofeed-09"
 stream = "IETF"
 status = "standard"
-date = 2025-04-01T00:00:00Z
+date = 2025-02-03T00:00:00Z
 
 [[author]]
 initials = "J."
@@ -188,9 +188,9 @@ implementation of the functionality defined in this document.
 
 # Security Considerations {#security_considerations}
 
-[@!RFC9632] requires an HTTPS URL for a geofeed file. The geofeed file may also contain an RPKI signature, per
-[@!RFC9632, section 5]. Besides that, this document does not introduce any new security considerations past those
-already discussed in the RDAP protocol specifications ([@RFC7481], [@RFC9560]).
+[@!RFC9632] requires an HTTPS URL for a geofeed file. The geofeed file may also contain an RPKI signature. Besides that,
+this document does not introduce any new security considerations past those already discussed in the RDAP protocol
+specifications.
 
 # IANA Considerations
 
