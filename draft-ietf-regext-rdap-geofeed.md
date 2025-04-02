@@ -223,7 +223,7 @@ IANA is requested to register the following value in the Media Types Registry at
 * Subtype name: geofeed+csv
 * Required parameters: N/A
 * Optional parameters: "charset" is an optional parameter for "text/csv", but it is not used for
-  "application/geofeed+csv" because the geofeed content is always in UTF-8 ([@!RFC8805, section 2.1]).
+  "application/geofeed+csv" because the geofeed content is always in UTF-8 ([@RFC8805, section 2.1]).
 * Encoding considerations: See [@!RFC9632, section 2].
 * Security considerations: See (#security_considerations) of this document.
 * Interoperability considerations: There are no known interoperability problems regarding this media format.
