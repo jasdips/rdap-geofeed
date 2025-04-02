@@ -211,8 +211,8 @@ IANA is requested to register the following value in the RDAP Extensions Registr
 
 IANA is requested to register the following value in the Link Relations Registry at [@LINK-RELATIONS]:
 
-* Relation Name: geo
-* Description: Indicates that the link context has a resource with geographic information at the link target.
+* Relation Name: geofeed
+* Description: Refers to a resource with IP geofeed location information related to the link context.
 * Reference: This document.
 
 ## Media Types Registry {#media_types_registry}
@@ -294,8 +294,8 @@ implemented protocols more mature. It is up to the individual working groups to 
 
 Mark Kosters provided initial support and encouragement for this work, along with the [@!RFC9632] authors. Gavin Brown
 suggested using a web link instead of a simple URL string to specify a geofeed file URL. Andy Newton, James Gould, Scott
-Hollenbeck, Mario Loffredo, Orie Steele, Alexey Melnikov, Rifaat Shekh-Yusuf, and Dale R. Worley provided valuable
-feedback for this document.
+Hollenbeck, Mario Loffredo, Orie Steele, Alexey Melnikov, Mark Nottingham, Rifaat Shekh-Yusuf, and Dale R. Worley
+provided valuable feedback for this document.
 
 # Change History
 
