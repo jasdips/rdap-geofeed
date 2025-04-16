@@ -10,7 +10,7 @@ name = "Internet-Draft"
 value = "draft-ietf-regext-rdap-geofeed-10"
 stream = "IETF"
 status = "standard"
-date = 2025-04-01T00:00:00Z
+date = 2025-04-16T00:00:00Z
 
 [[author]]
 initials = "J."
@@ -40,19 +40,19 @@ the associated link objects included in responses.
 
 # Introduction
 
-[@!RFC8805] and [@!RFC9632] detail the IP geolocation feed (commonly known as 'geofeed') file format and associated
+[@RFC8805] and [@!RFC9632] detail the IP geolocation feed (commonly known as 'geofeed') file format and associated
 access mechanisms. This document specifies how geofeed URLs can be accessed through RDAP. It defines a new RDAP
 extension, "geofeed1", for indicating that an RDAP server hosts geofeed URLs for its IP network objects, as well as a
 new media type and a new link relation type for the associated link objects.
 
 ## Requirements Language
 
-The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",
-"NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [@!BCP14] when, and only
-when, they appear in all capitals, as shown here.
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",
+"NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14
+[@!RFC2119] [@!RFC8174] when, and only when, they appear in all capitals, as shown here.
 
 Indentation and whitespace in examples are provided only to illustrate element relationships, and are not a REQUIRED
-feature of this protocol.
+feature of this specification.
 
 "..." in examples is used as shorthand for elements defined outside of this document.
 
@@ -62,8 +62,8 @@ feature of this protocol.
 
 [@!RFC9632] requires a geofeed file to be a UTF-8 [@!RFC3629] comma-separated values (CSV) file, with a series of "#"
 comments at the end for the optional Resource Public Key Infrastructure (RPKI, [@?RFC6480]) signature. At first glance,
-the "text/csv" media type seems like a good candidate for a geofeed file, since it supports the "#" comments
-([@?I-D.shafranovich-rfc4180-bis, section 3.11]) needed for including the RPKI signature.
+the "text/csv" media type seems like a good candidate for a geofeed file, since it supports the "#" comments needed for
+including the RPKI signature.
 
 However, although the CSV geofeed data could be viewed directly by a user such that the "text/csv" media type was
 appropriate, the most common use case will involve it being processed by some sort of application first, in order to
@@ -80,25 +80,27 @@ An RDAP server that hosts geofeed URLs for its IP network objects ([@!RFC9083, s
 for those geofeed URLs in IP network objects in its responses. These link objects are added to the "links" member of
 each object ([@!RFC9083, section 4.2]).
 
-In RDAP, the "value", "rel", and "href" JSON members are REQUIRED for any link object. Additionally, for a geofeed link
+In RDAP, the "value", "rel", and "href" JSON members are required for any link object. Additionally, for a geofeed link
 object, the "type" JSON member is RECOMMENDED. The geofeed-specific components of a link object are like so:
 
-* "rel" -- The link relation type is set to "geo". This is a new link relation type for geographical data, registered in
-  the IANA Link Relations Registry (see (#link_relations_registry)) by this document.
-* "href" -- The target URL is set to the HTTPS URL of the geofeed file for an IP network.
+* "rel" -- The link relation type is set to "geofeed". This is a new link relation type for IP geolocation feed data,
+  registered in the IANA Link Relations Registry (see (#link_relations_registry)) by this document.
+* "href" -- The target URL is set to the HTTPS URL of the geofeed file ([@!RFC9632, section 6]) for an IP network.
 * "type" -- "application/geofeed+csv" (see (#media_type_for_a_geofeed_link)).
 
 An IP network object returned by an RDAP server MAY contain zero or more geofeed link objects, though typically an IP
-network will have either no such link objects or only one. An example scenario where more than one geofeed link object
-would be returned is when the server is able to represent that data in multiple languages (see the "hreflang" member of
-a link object).
+network will have either no such link objects or only one. The scenario where more than one geofeed link object could be
+returned is when the server is able to represent that data in multiple languages. In such a case, the server SHOULD
+provide "hreflang" members for the geofeed link objects. Except for the multiple-languages scenario, the server MUST NOT
+return more than one geofeed link object.
 
 ## Extension Identifier
 
 This document defines a new extension identifier, "geofeed1", for use by servers that host geofeed URLs for their IP
 network objects and include geofeed URL link objects in their responses to clients in accordance with (#geofeed_link). A
-server that uses this extension identifier MUST include it in the "rdapConformance" array for any lookup or search
-response containing an IP network object, as well as in the help response. Here is an elided example for this inclusion:
+server that uses this extension identifier MUST include it in the "rdapConformance" array ([@!RFC9083, section 4.1]) for
+any lookup or search response containing an IP network object, as well as in the help response. Here is an elided
+example for this inclusion:
 
 ```
 {
@@ -107,17 +109,21 @@ response containing an IP network object, as well as in the help response. Here 
 }
 ```
 
-An RDAP server may make use of the "application/geofeed+csv" media type and the "geo" link relation defined in this
+If the server includes "geofeed1" in the "rdapConformance" array, then for any response concerning a particular IP
+network object for which the server possesses a geofeed URL and is able to return it to the client, the server MUST
+include a corresponding geofeed link object in the response.
+
+An RDAP server may make use of the "application/geofeed+csv" media type and the "geofeed" link relation defined in this
 specification in its responses without including the "geofeed1" extension identifier in those responses, because RDAP
 servers are free to use any registered media type or link relation in a standard response (without implementing any
-particular extension). The additional value of the extension identifier here is that it signals to the client that the
-server hosts geofeed URLs for its IP network objects. This is useful where a client receives an IP network object
-without a geofeed link object, because in that case the client can infer that no geofeed data is available for that
-object, since the server would have provided it if it were available.
+particular extension). The additional value of including the extension identifier in the "rdapConformance" array is that
+it signals to the client that the server hosts geofeed URLs for its IP network objects. This is useful where a client
+receives an IP network object without a geofeed link object, because in that case the client can infer that no geofeed
+data is available for that object, since the server would have provided it if it were available.
 
-Although a server may use registered media types in its link objects without any restrictions, it may be useful to
-define new RDAP extensions for those media types in order for the server to communicate to clients that it will make
-data for that type accessible, in the same way that the server does with the "geofeed1" extension identifier.
+Although a server may use registered media types in its link objects without any restrictions, it is useful to define
+new RDAP extensions for those media types in order for the server to communicate to clients that it will make data for
+that type accessible, in the same way that the server does with the "geofeed1" extension identifier.
 
 ## Example
 
@@ -145,7 +151,7 @@ The following is an elided example of an IP network object with a geofeed link o
         },
         {
             "value": "https://example.net/ip/2001:db8::/48",
-            "rel": "geo",
+            "rel": "geofeed",
             "href": "https://example.com/geofeed",
             "type": "application/geofeed+csv"
         },
@@ -171,16 +177,15 @@ file. As with geofeed references in inetnum objects (per [@!RFC9632]), clients w
 IP network object and opt to retrieve the data from the associated link MUST ignore any entry where the entry's IP
 address range is outside the IP network object's address range.
 
-[@!RFC8805, section 3.2] recommends that consumers of geofeed data verify that the publisher of the data is
+[@RFC8805, section 3.2] recommends that consumers of geofeed data verify that the publisher of the data is
 authoritative for the relevant resources. The RDAP bootstrap process ([@!RFC9224]) helps clients with this
 recommendation, since a client following that process will be directed to the RDAP server that is able to make
 authoritative statements about the disposition of the relevant resources.
 
 # Privacy Considerations
 
-When including a geofeed file URL in an IP network object, it is expected that the service provider publishing the
-geofeed file has followed the guidance from [@!RFC9632, section 7] to not accidentally expose the location of an
-individual.
+All the privacy considerations from [@!RFC9632, section 7] apply to this document. In particular, the service provider
+publishing the geofeed file MUST take care to not accidentally expose the location of any individual.
 
 Many jurisdictions have laws or regulations that restrict the use of "personal data", per the definition in [@?RFC6973].
 Given that, registry operators should ascertain whether the regulatory environment in which they operate permits
@@ -188,9 +193,12 @@ implementation of the functionality defined in this document.
 
 # Security Considerations {#security_considerations}
 
-[@!RFC9632] requires an HTTPS URL for a geofeed file. The geofeed file may also contain an RPKI signature, per
-[@!RFC9632, section 5]. Besides that, this document does not introduce any new security considerations past those
-already discussed in the RDAP protocol specifications ([@RFC7481], [@RFC9560]).
+[@!RFC9632] requires an HTTPS URL for a geofeed file.
+
+The geofeed file may also contain an RPKI signature, per [@!RFC9632, section 5].
+
+Besides that, this document does not introduce any new security considerations past those already discussed in the RDAP
+protocol specifications ([@RFC7481], [@RFC9560]).
 
 # IANA Considerations
 
@@ -202,14 +210,14 @@ IANA is requested to register the following value in the RDAP Extensions Registr
 * Registry operator: Any
 * Published specification: This document.
 * Contact: IETF, iesg@ietf.org
-* Intended usage: This extension describes version 1 of a method to access the IP geolocation feed data through RDAP.
+* Intended usage: This extension describes a method to access the IP geolocation feed data through RDAP.
 
 ## Link Relations Registry {#link_relations_registry}
 
 IANA is requested to register the following value in the Link Relations Registry at [@LINK-RELATIONS]:
 
-* Relation Name: geo
-* Description: Indicates that the link context has a resource with geographic information at the link target.
+* Relation Name: geofeed
+* Description: Refers to a resource with IP geofeed location information related to the link context.
 * Reference: This document.
 
 ## Media Types Registry {#media_types_registry}
@@ -220,7 +228,7 @@ IANA is requested to register the following value in the Media Types Registry at
 * Subtype name: geofeed+csv
 * Required parameters: N/A
 * Optional parameters: "charset" is an optional parameter for "text/csv", but it is not used for
-  "application/geofeed+csv" because the geofeed content is always in UTF-8 ([@!RFC8805, section 2.1]).
+  "application/geofeed+csv" because the geofeed content is always in UTF-8 ([@RFC8805, section 2.1]).
 * Encoding considerations: See [@!RFC9632, section 2].
 * Security considerations: See (#security_considerations) of this document.
 * Interoperability considerations: There are no known interoperability problems regarding this media format.
@@ -229,11 +237,11 @@ IANA is requested to register the following value in the Media Types Registry at
   Geofeed Data. Furthermore, any application that processes the CSV geofeed data.
 * Additional information: This media type is a product of the IETF REGEXT Working Group. The REGEXT charter, information
   on the REGEXT mailing list, and other documents produced by the REGEXT Working Group can be found at [@REGEXT].
-* Person & email address to contact for further information: IETF, iesg@ietf.org
+* Person & email address to contact for further information: REGEXT Working Group, regext@ietf.org
 * Intended usage: COMMON
 * Restrictions on usage: None
 * Authors: Tom Harrison, Jasdip Singh
-* Change controller: IETF
+* Author/Change controller: IETF
 * Provisional Registration: No
 
 ## Structured Syntax Suffixes Registry {#structured_syntax_suffixes_registry}
@@ -243,28 +251,29 @@ at [@STRUCTURED-SYNTAX-SUFFIXES]:
 
 * Name: Comma-Separated Values (CSV)
 * +suffix: +csv
-* References: [@!RFC4180], [@!RFC7111]
+* References: [@RFC4180], [@RFC7111]
 * Encoding Considerations: Same as "text/csv".
 * Interoperability Considerations: Same as "text/csv".
 * Fragment Identifier Considerations:
 
-  The syntax and semantics of fragment identifiers specified for +csv SHOULD be as specified for "text/csv".
+      The syntax and semantics of fragment identifiers specified for +csv SHOULD be as specified for "text/csv".
 
-  The syntax and semantics for fragment identifiers for a specific "xxx/yyy+csv" SHOULD be processed as follows:
+      The syntax and semantics for fragment identifiers for a specific "xxx/yyy+csv" SHOULD be processed as follows:
 
-  For cases defined in +csv, where the fragment identifier resolves per the +csv rules, then as specified in +csv.
+      For cases defined in +csv, where the fragment identifier resolves per the +csv rules, then as specified for +csv.
 
-  For cases defined in +csv, where the fragment identifier does not resolve per the +csv rules, then as specified in
-  "xxx/yyy+csv".
+      For cases defined in +csv, where the fragment identifier does not resolve per the +csv rules, then as specified
+      for "xxx/yyy+csv".
 
-  For cases not defined in +csv, then as specified in "xxx/yyy+csv".
+      For cases not defined in +csv, then as specified for "xxx/yyy+csv".
 
 * Security Considerations: Same as "text/csv".
 * Contact: IETF, iesg@ietf.org
+* Author/Change controller: IETF
 
 # Implementation Status
 
-NOTE: Please remove this section and the reference to RFC 7942 prior to publication as an RFC.
+(Remove this section before publication.)
 
 This section records the status of known implementations of the protocol defined by this specification at the time of
 posting of this Internet-Draft, and is based on a proposal described in [@?RFC7942]. The description of implementations
@@ -291,7 +300,8 @@ implemented protocols more mature. It is up to the individual working groups to 
 
 Mark Kosters provided initial support and encouragement for this work, along with the [@!RFC9632] authors. Gavin Brown
 suggested using a web link instead of a simple URL string to specify a geofeed file URL. Andy Newton, James Gould, Scott
-Hollenbeck, Mario Loffredo, Orie Steele, and Alexey Melnikov provided valuable feedback for this document.
+Hollenbeck, Mario Loffredo, Orie Steele, Alexey Melnikov, Mark Nottingham, Rifaat Shekh-Yusuf, Dale R. Worley, and Dhruv
+Dhody provided valuable feedback for this document.
 
 # Change History
 
@@ -353,6 +363,10 @@ Hollenbeck, Mario Loffredo, Orie Steele, and Alexey Melnikov provided valuable f
 * Incorporated feedback from the media type review.
 * RFCs 4180, 7111, and 8805 are now normative references.
 * Made minor editorial changes.
+
+## Changes from 09 to 10
+
+* Incorporated feedback from the IESG review.
 
 {backmatter}
 
