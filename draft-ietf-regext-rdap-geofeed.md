@@ -10,7 +10,7 @@ name = "Internet-Draft"
 value = "draft-ietf-regext-rdap-geofeed-10"
 stream = "IETF"
 status = "standard"
-date = 2025-04-02T00:00:00Z
+date = 2025-04-16T00:00:00Z
 
 [[author]]
 initials = "J."
@@ -89,9 +89,10 @@ object, the "type" JSON member is RECOMMENDED. The geofeed-specific components o
 * "type" -- "application/geofeed+csv" (see (#media_type_for_a_geofeed_link)).
 
 An IP network object returned by an RDAP server MAY contain zero or more geofeed link objects, though typically an IP
-network will have either no such link objects or only one. An example scenario where more than one geofeed link object
-would be returned is when the server is able to represent that data in multiple languages. In such a case, the server
-SHOULD provide "hreflang" members for the geofeed link objects.
+network will have either no such link objects or only one. The scenario where more than one geofeed link object could be
+returned is when the server is able to represent that data in multiple languages. In such a case, the server SHOULD
+provide "hreflang" members for the geofeed link objects. Except for the multiple-languages scenario, the server MUST NOT
+return more than one geofeed link object.
 
 ## Extension Identifier
 
@@ -107,6 +108,10 @@ example for this inclusion:
     ...
 }
 ```
+
+If the server includes "geofeed1" in the "rdapConformance" array, then for any response concerning a particular IP
+network object for which the server possesses a geofeed URL and is able to return it to the client, the server MUST
+include a corresponding geofeed link object in the response.
 
 An RDAP server may make use of the "application/geofeed+csv" media type and the "geofeed" link relation defined in this
 specification in its responses without including the "geofeed1" extension identifier in those responses, because RDAP
@@ -188,7 +193,7 @@ implementation of the functionality defined in this document.
 
 # Security Considerations {#security_considerations}
 
-[@!RFC9632] requires an HTTPS URL for a geofeed file. In other words, a parallel HTTP URL for that file is disallowed.
+[@!RFC9632] requires an HTTPS URL for a geofeed file.
 
 The geofeed file may also contain an RPKI signature, per [@!RFC9632, section 5].
 
