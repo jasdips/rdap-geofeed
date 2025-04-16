@@ -5,12 +5,12 @@
 Registration Protocols Extensions (regext)                      J. Singh
 Internet-Draft                                                      ARIN
 Intended status: Standards Track                             T. Harrison
-Expires: 7 August 2025                                             APNIC
-                                                         3 February 2025
+Expires: 18 October 2025                                           APNIC
+                                                           16 April 2025
 
 
   Registration Data Access Protocol (RDAP) Extension for Geofeed Data
-                   draft-ietf-regext-rdap-geofeed-09
+                   draft-ietf-regext-rdap-geofeed-10
 
 Abstract
 
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 August 2025.
+   This Internet-Draft will expire on 18 October 2025.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Singh & Harrison          Expires 7 August 2025                 [Page 1]
+Singh & Harrison         Expires 18 October 2025                [Page 1]
 
-Internet-Draft                rdap-geofeed                 February 2025
+Internet-Draft                rdap-geofeed                    April 2025
 
 
 Table of Contents
@@ -68,30 +68,31 @@ Table of Contents
      2.3.  Extension Identifier  . . . . . . . . . . . . . . . . . .   4
      2.4.  Example . . . . . . . . . . . . . . . . . . . . . . . . .   5
    3.  Operational Considerations  . . . . . . . . . . . . . . . . .   6
-   4.  Privacy Considerations  . . . . . . . . . . . . . . . . . . .   6
+   4.  Privacy Considerations  . . . . . . . . . . . . . . . . . . .   7
    5.  Security Considerations . . . . . . . . . . . . . . . . . . .   7
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   7
      6.1.  RDAP Extensions Registry  . . . . . . . . . . . . . . . .   7
-     6.2.  Link Relations Registry . . . . . . . . . . . . . . . . .   7
-     6.3.  Media Types Registry  . . . . . . . . . . . . . . . . . .   7
-     6.4.  Structured Syntax Suffixes Registry . . . . . . . . . . .   8
+     6.2.  Link Relations Registry . . . . . . . . . . . . . . . . .   8
+     6.3.  Media Types Registry  . . . . . . . . . . . . . . . . . .   8
+     6.4.  Structured Syntax Suffixes Registry . . . . . . . . . . .   9
    7.  Implementation Status . . . . . . . . . . . . . . . . . . . .   9
-     7.1.  RIPE NCC  . . . . . . . . . . . . . . . . . . . . . . . .   9
-   8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   9
-   9.  Change History  . . . . . . . . . . . . . . . . . . . . . . .   9
+     7.1.  RIPE NCC  . . . . . . . . . . . . . . . . . . . . . . . .  10
+   8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  10
+   9.  Change History  . . . . . . . . . . . . . . . . . . . . . . .  10
      9.1.  Changes from 00 to 01 . . . . . . . . . . . . . . . . . .  10
      9.2.  Changes from 01 to 02 . . . . . . . . . . . . . . . . . .  10
-     9.3.  Changes from 02 to 03 . . . . . . . . . . . . . . . . . .  10
-     9.4.  Changes from 03 to 04 . . . . . . . . . . . . . . . . . .  10
-     9.5.  Changes from 04 to 05 . . . . . . . . . . . . . . . . . .  10
-     9.6.  Changes from 05 to 06 . . . . . . . . . . . . . . . . . .  10
+     9.3.  Changes from 02 to 03 . . . . . . . . . . . . . . . . . .  11
+     9.4.  Changes from 03 to 04 . . . . . . . . . . . . . . . . . .  11
+     9.5.  Changes from 04 to 05 . . . . . . . . . . . . . . . . . .  11
+     9.6.  Changes from 05 to 06 . . . . . . . . . . . . . . . . . .  11
      9.7.  Changes from 06 to 07 . . . . . . . . . . . . . . . . . .  11
-     9.8.  Changes from 07 to 08 . . . . . . . . . . . . . . . . . .  11
-     9.9.  Changes from 08 to 09 . . . . . . . . . . . . . . . . . .  11
-   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  11
-     10.1.  Normative References . . . . . . . . . . . . . . . . . .  11
-     10.2.  Informative References . . . . . . . . . . . . . . . . .  12
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  13
+     9.8.  Changes from 07 to 08 . . . . . . . . . . . . . . . . . .  12
+     9.9.  Changes from 08 to 09 . . . . . . . . . . . . . . . . . .  12
+     9.10. Changes from 09 to 10 . . . . . . . . . . . . . . . . . .  12
+   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  12
+     10.1.  Normative References . . . . . . . . . . . . . . . . . .  12
+     10.2.  Informative References . . . . . . . . . . . . . . . . .  13
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  14
 
 1.  Introduction
 
@@ -108,23 +109,22 @@ Table of Contents
 
 
 
-
-Singh & Harrison          Expires 7 August 2025                 [Page 2]
+Singh & Harrison         Expires 18 October 2025                [Page 2]
 
-Internet-Draft                rdap-geofeed                 February 2025
+Internet-Draft                rdap-geofeed                    April 2025
 
 
 1.1.  Requirements Language
 
-   The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
-   "OPTIONAL" in this document are to be interpreted as described in
-   [BCP14] when, and only when, they appear in all capitals, as shown
-   here.
+   "OPTIONAL" in this document are to be interpreted as described in BCP
+   14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
 
    Indentation and whitespace in examples are provided only to
    illustrate element relationships, and are not a REQUIRED feature of
-   this protocol.
+   this specification.
 
    "..." in examples is used as shorthand for elements defined outside
    of this document.
@@ -138,8 +138,7 @@ Internet-Draft                rdap-geofeed                 February 2025
    for the optional Resource Public Key Infrastructure (RPKI, [RFC6480])
    signature.  At first glance, the "text/csv" media type seems like a
    good candidate for a geofeed file, since it supports the "#" comments
-   (Section 3.11 of [I-D.shafranovich-rfc4180-bis]) needed for including
-   the RPKI signature.
+   needed for including the RPKI signature.
 
    However, although the CSV geofeed data could be viewed directly by a
    user such that the "text/csv" media type was appropriate, the most
@@ -165,29 +164,33 @@ Internet-Draft                rdap-geofeed                 February 2025
 
 
 
-Singh & Harrison          Expires 7 August 2025                 [Page 3]
+
+Singh & Harrison         Expires 18 October 2025                [Page 3]
 
-Internet-Draft                rdap-geofeed                 February 2025
+Internet-Draft                rdap-geofeed                    April 2025
 
 
-   In RDAP, the "value", "rel", and "href" JSON members are REQUIRED for
+   In RDAP, the "value", "rel", and "href" JSON members are required for
    any link object.  Additionally, for a geofeed link object, the "type"
    JSON member is RECOMMENDED.  The geofeed-specific components of a
    link object are like so:
 
-   *  "rel" -- The link relation type is set to "geo".  This is a new
-      link relation type for geographical data, registered in the IANA
-      Link Relations Registry (see Section 6.2) by this document.
+   *  "rel" -- The link relation type is set to "geofeed".  This is a
+      new link relation type for IP geolocation feed data, registered in
+      the IANA Link Relations Registry (see Section 6.2) by this
+      document.
    *  "href" -- The target URL is set to the HTTPS URL of the geofeed
-      file for an IP network.
+      file (Section 6 of [RFC9632]) for an IP network.
    *  "type" -- "application/geofeed+csv" (see Section 2.1).
 
    An IP network object returned by an RDAP server MAY contain zero or
    more geofeed link objects, though typically an IP network will have
-   either no such link objects or only one.  An example scenario where
-   more than one geofeed link object would be returned is when the
-   server is able to represent that data in multiple languages (see the
-   "hreflang" member of a link object).
+   either no such link objects or only one.  The scenario where more
+   than one geofeed link object could be returned is when the server is
+   able to represent that data in multiple languages.  In such a case,
+   the server SHOULD provide "hreflang" members for the geofeed link
+   objects.  Except for the multiple-languages scenario, the server MUST
+   NOT return more than one geofeed link object.
 
 2.3.  Extension Identifier
 
@@ -195,48 +198,89 @@ Internet-Draft                rdap-geofeed                 February 2025
    by servers that host geofeed URLs for their IP network objects and
    include geofeed URL link objects in their responses to clients in
    accordance with Section 2.2.  A server that uses this extension
-   identifier MUST include it in the "rdapConformance" array for any
-   lookup or search response containing an IP network object, as well as
-   in the help response.  Here is an elided example for this inclusion:
+   identifier MUST include it in the "rdapConformance" array
+   (Section 4.1 of [RFC9083]) for any lookup or search response
+   containing an IP network object, as well as in the help response.
+   Here is an elided example for this inclusion:
 
    {
        "rdapConformance": [ "rdap_level_0", "geofeed1", ... ],
        ...
    }
 
+   If the server includes "geofeed1" in the "rdapConformance" array,
+   then for any response concerning a particular IP network object for
+   which the server possesses a geofeed URL and is able to return it to
+   the client, the server MUST include a corresponding geofeed link
+   object in the response.
+
    An RDAP server may make use of the "application/geofeed+csv" media
-   type and the "geo" link relation defined in this specification in its
-   responses without including the "geofeed1" extension identifier in
-   those responses, because RDAP servers are free to use any registered
-   media type or link relation in a standard response (without
-   implementing any particular extension).  The additional value of the
-   extension identifier here is that it signals to the client that the
-   server hosts geofeed URLs for its IP network objects.  This is useful
-   where a client receives an IP network object without a geofeed link
-   object, because in that case the client can infer that no geofeed
-   data is available for that object, since the server would have
-   provided it if it were available.
+   type and the "geofeed" link relation defined in this specification in
+   its responses without including the "geofeed1" extension identifier
+   in those responses, because RDAP servers are free to use any
 
 
 
-
-
-Singh & Harrison          Expires 7 August 2025                 [Page 4]
+Singh & Harrison         Expires 18 October 2025                [Page 4]
 
-Internet-Draft                rdap-geofeed                 February 2025
+Internet-Draft                rdap-geofeed                    April 2025
 
+
+   registered media type or link relation in a standard response
+   (without implementing any particular extension).  The additional
+   value of including the extension identifier in the "rdapConformance"
+   array is that it signals to the client that the server hosts geofeed
+   URLs for its IP network objects.  This is useful where a client
+   receives an IP network object without a geofeed link object, because
+   in that case the client can infer that no geofeed data is available
+   for that object, since the server would have provided it if it were
+   available.
 
    Although a server may use registered media types in its link objects
-   without any restrictions, it may be useful to define new RDAP
-   extensions for those media types in order for the server to
-   communicate to clients that it will make data for that type
-   accessible, in the same way that the server does with the "geofeed1"
-   extension identifier.
+   without any restrictions, it is useful to define new RDAP extensions
+   for those media types in order for the server to communicate to
+   clients that it will make data for that type accessible, in the same
+   way that the server does with the "geofeed1" extension identifier.
 
 2.4.  Example
 
    The following is an elided example of an IP network object with a
    geofeed link object:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Singh & Harrison         Expires 18 October 2025                [Page 5]
+
+Internet-Draft                rdap-geofeed                    April 2025
+
 
    {
        "objectClassName": "ip network",
@@ -259,7 +303,7 @@ Internet-Draft                rdap-geofeed                 February 2025
            },
            {
                "value": "https://example.net/ip/2001:db8::/48",
-               "rel": "geo",
+               "rel": "geofeed",
                "href": "https://example.com/geofeed",
                "type": "application/geofeed+csv"
            },
@@ -267,20 +311,6 @@ Internet-Draft                rdap-geofeed                 February 2025
        ],
        ...
    }
-
-
-
-
-
-
-
-
-
-
-Singh & Harrison          Expires 7 August 2025                 [Page 5]
-
-Internet-Draft                rdap-geofeed                 February 2025
-
 
 3.  Operational Considerations
 
@@ -300,6 +330,14 @@ Internet-Draft                rdap-geofeed                 February 2025
    It is common for a resource holder to maintain a single geofeed file
    containing the geofeed data for all of their resources.  The resource
    holder then updates each of their network object registrations to
+
+
+
+Singh & Harrison         Expires 18 October 2025                [Page 6]
+
+Internet-Draft                rdap-geofeed                    April 2025
+
+
    refer to that single geofeed file.  As with geofeed references in
    inetnum objects (per [RFC9632]), clients who find a geofeed link
    object within an IP network object and opt to retrieve the data from
@@ -316,10 +354,10 @@ Internet-Draft                rdap-geofeed                 February 2025
 
 4.  Privacy Considerations
 
-   When including a geofeed file URL in an IP network object, it is
-   expected that the service provider publishing the geofeed file has
-   followed the guidance from Section 7 of [RFC9632] to not accidentally
-   expose the location of an individual.
+   All the privacy considerations from Section 7 of [RFC9632] apply to
+   this document.  In particular, the service provider publishing the
+   geofeed file MUST take care to not accidentally expose the location
+   of any individual.
 
    Many jurisdictions have laws or regulations that restrict the use of
    "personal data", per the definition in [RFC6973].  Given that,
@@ -327,23 +365,16 @@ Internet-Draft                rdap-geofeed                 February 2025
    environment in which they operate permits implementation of the
    functionality defined in this document.
 
-
-
-
-
-
-
-Singh & Harrison          Expires 7 August 2025                 [Page 6]
-
-Internet-Draft                rdap-geofeed                 February 2025
-
-
 5.  Security Considerations
 
-   [RFC9632] requires an HTTPS URL for a geofeed file.  The geofeed file
-   may also contain an RPKI signature.  Besides that, this document does
-   not introduce any new security considerations past those already
-   discussed in the RDAP protocol specifications.
+   [RFC9632] requires an HTTPS URL for a geofeed file.
+
+   The geofeed file may also contain an RPKI signature, per Section 5 of
+   [RFC9632].
+
+   Besides that, this document does not introduce any new security
+   considerations past those already discussed in the RDAP protocol
+   specifications ([RFC7481], [RFC9560]).
 
 6.  IANA Considerations
 
@@ -355,18 +386,26 @@ Internet-Draft                rdap-geofeed                 February 2025
    *  Extension identifier: geofeed1
    *  Registry operator: Any
    *  Published specification: This document.
+
+
+
+Singh & Harrison         Expires 18 October 2025                [Page 7]
+
+Internet-Draft                rdap-geofeed                    April 2025
+
+
    *  Contact: IETF, iesg@ietf.org
-   *  Intended usage: This extension describes version 1 of a method to
-      access the IP geolocation feed data through RDAP.
+   *  Intended usage: This extension describes a method to access the IP
+      geolocation feed data through RDAP.
 
 6.2.  Link Relations Registry
 
    IANA is requested to register the following value in the Link
    Relations Registry at [LINK-RELATIONS]:
 
-   *  Relation Name: geo
-   *  Description: Indicates that the link context has a resource with
-      geographic information at the link target.
+   *  Relation Name: geofeed
+   *  Description: Refers to a resource with IP geofeed location
+      information related to the link context.
    *  Reference: This document.
 
 6.3.  Media Types Registry
@@ -385,15 +424,6 @@ Internet-Draft                rdap-geofeed                 February 2025
    *  Interoperability considerations: There are no known
       interoperability problems regarding this media format.
    *  Published specification: This document.
-
-
-
-
-Singh & Harrison          Expires 7 August 2025                 [Page 7]
-
-Internet-Draft                rdap-geofeed                 February 2025
-
-
    *  Applications that use this media type: Implementations of the
       Registration Data Access Protocol (RDAP) Extension for Geofeed
       Data.  Furthermore, any application that processes the CSV geofeed
@@ -402,13 +432,23 @@ Internet-Draft                rdap-geofeed                 February 2025
       REGEXT Working Group.  The REGEXT charter, information on the
       REGEXT mailing list, and other documents produced by the REGEXT
       Working Group can be found at [REGEXT].
-   *  Person & email address to contact for further information: IETF,
-      iesg@ietf.org
+   *  Person & email address to contact for further information: REGEXT
+      Working Group, regext@ietf.org
    *  Intended usage: COMMON
    *  Restrictions on usage: None
    *  Authors: Tom Harrison, Jasdip Singh
-   *  Change controller: IETF
+   *  Author/Change controller: IETF
    *  Provisional Registration: No
+
+
+
+
+
+
+Singh & Harrison         Expires 18 October 2025                [Page 8]
+
+Internet-Draft                rdap-geofeed                    April 2025
+
 
 6.4.  Structured Syntax Suffixes Registry
 
@@ -416,44 +456,41 @@ Internet-Draft                rdap-geofeed                 February 2025
    Syntax Suffixes Registry at [STRUCTURED-SYNTAX-SUFFIXES]:
 
    *  Name: Comma-Separated Values (CSV)
+
    *  +suffix: +csv
+
    *  References: [RFC4180], [RFC7111]
+
    *  Encoding Considerations: Same as "text/csv".
+
    *  Interoperability Considerations: Same as "text/csv".
+
    *  Fragment Identifier Considerations:
 
-   The syntax and semantics of fragment identifiers specified for +csv
-   SHOULD be as specified for "text/csv".
+      The syntax and semantics of fragment identifiers specified for
+      +csv SHOULD be as specified for "text/csv".
 
-   The syntax and semantics for fragment identifiers for a specific
-   "xxx/yyy+csv" SHOULD be processed as follows:
+      The syntax and semantics for fragment identifiers for a specific
+      "xxx/yyy+csv" SHOULD be processed as follows:
 
-   For cases defined in +csv, where the fragment identifier resolves per
-   the +csv rules, then as specified in +csv.
+      For cases defined in +csv, where the fragment identifier resolves
+      per the +csv rules, then as specified for +csv.
 
-   For cases defined in +csv, where the fragment identifier does not
-   resolve per the +csv rules, then as specified in "xxx/yyy+csv".
+      For cases defined in +csv, where the fragment identifier does not
+      resolve per the +csv rules, then as specified for "xxx/yyy+csv".
 
-   For cases not defined in +csv, then as specified in "xxx/yyy+csv".
+      For cases not defined in +csv, then as specified for "xxx/
+      yyy+csv".
 
    *  Security Considerations: Same as "text/csv".
+
    *  Contact: IETF, iesg@ietf.org
 
-
-
-
-
-
-
-Singh & Harrison          Expires 7 August 2025                 [Page 8]
-
-Internet-Draft                rdap-geofeed                 February 2025
-
+   *  Author/Change controller: IETF
 
 7.  Implementation Status
 
-   NOTE: Please remove this section and the reference to RFC 7942 prior
-   to publication as an RFC.
+   (Remove this section before publication.)
 
    This section records the status of known implementations of the
    protocol defined by this specification at the time of posting of this
@@ -461,6 +498,14 @@ Internet-Draft                rdap-geofeed                 February 2025
    The description of implementations in this section is intended to
    assist the IETF in its decision processes in progressing drafts to
    RFCs.  Please note that the listing of any individual implementation
+
+
+
+Singh & Harrison         Expires 18 October 2025                [Page 9]
+
+Internet-Draft                rdap-geofeed                    April 2025
+
+
    here does not imply endorsement by the IETF.  Furthermore, no effort
    has been spent to verify the information presented here that was
    supplied by IETF contributors.  This is not intended as, and must not
@@ -491,20 +536,13 @@ Internet-Draft                rdap-geofeed                 February 2025
    work, along with the [RFC9632] authors.  Gavin Brown suggested using
    a web link instead of a simple URL string to specify a geofeed file
    URL.  Andy Newton, James Gould, Scott Hollenbeck, Mario Loffredo,
-   Orie Steele, and Alexey Melnikov provided valuable feedback for this
+   Orie Steele, Alexey Melnikov, Mark Nottingham, Rifaat Shekh-Yusuf,
+   Dale R.  Worley, and Dhruv Dhody provided valuable feedback for this
    document.
 
 9.  Change History
 
    (Remove this section before publication.)
-
-
-
-
-Singh & Harrison          Expires 7 August 2025                 [Page 9]
-
-Internet-Draft                rdap-geofeed                 February 2025
-
 
 9.1.  Changes from 00 to 01
 
@@ -515,6 +553,14 @@ Internet-Draft                rdap-geofeed                 February 2025
    *  Introduced the new "application/geofeed+csv" media type.
 
 9.2.  Changes from 01 to 02
+
+
+
+
+Singh & Harrison         Expires 18 October 2025               [Page 10]
+
+Internet-Draft                rdap-geofeed                    April 2025
+
 
    *  Updated the "Requirements Language" section for examples.
    *  Added an example for RDAP conformance.
@@ -554,14 +600,6 @@ Internet-Draft                rdap-geofeed                 February 2025
    *  Added the "Operational Considerations" section to clarify the
       geofeed file and IP networks relationship, as well as how RDAP
       Bootstrap helps with a recommendation from RFC 8805.
-
-
-
-Singh & Harrison          Expires 7 August 2025                [Page 10]
-
-Internet-Draft                rdap-geofeed                 February 2025
-
-
    *  Updated the "Privacy Considerations" section to clarify the
       service provider responsibility.
 
@@ -570,6 +608,15 @@ Internet-Draft                rdap-geofeed                 February 2025
    *  Updated the extension identifier text so as to clarify that the
       media type and link relation can be used independently of that
       identifier.
+
+
+
+
+
+Singh & Harrison         Expires 18 October 2025               [Page 11]
+
+Internet-Draft                rdap-geofeed                    April 2025
+
 
 9.8.  Changes from 07 to 08
 
@@ -583,50 +630,26 @@ Internet-Draft                rdap-geofeed                 February 2025
    *  RFCs 4180, 7111, and 8805 are now normative references.
    *  Made minor editorial changes.
 
+9.10.  Changes from 09 to 10
+
+   *  Incorporated feedback from the IESG review.
+
 10.  References
 
 10.1.  Normative References
 
-   [BCP14]    Best Current Practice 14,
-              <https://www.rfc-editor.org/info/bcp14>.
-              At the time of writing, this BCP comprises the following:
-
-              Bradner, S., "Key words for use in RFCs to Indicate
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
-
-              Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
-              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
-              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
    [RFC3629]  Yergeau, F., "UTF-8, a transformation format of ISO
               10646", STD 63, RFC 3629, DOI 10.17487/RFC3629, November
               2003, <https://www.rfc-editor.org/info/rfc3629>.
 
-   [RFC4180]  Shafranovich, Y., "Common Format and MIME Type for Comma-
-              Separated Values (CSV) Files", RFC 4180,
-              DOI 10.17487/RFC4180, October 2005,
-              <https://www.rfc-editor.org/info/rfc4180>.
-
-
-
-
-
-Singh & Harrison          Expires 7 August 2025                [Page 11]
-
-Internet-Draft                rdap-geofeed                 February 2025
-
-
-   [RFC7111]  Hausenblas, M., Wilde, E., and J. Tennison, "URI Fragment
-              Identifiers for the text/csv Media Type", RFC 7111,
-              DOI 10.17487/RFC7111, January 2014,
-              <https://www.rfc-editor.org/info/rfc7111>.
-
-   [RFC8805]  Kline, E., Duleba, K., Szamonek, Z., Moser, S., and W.
-              Kumari, "A Format for Self-Published IP Geolocation
-              Feeds", RFC 8805, DOI 10.17487/RFC8805, August 2020,
-              <https://www.rfc-editor.org/info/rfc8805>.
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
    [RFC9082]  Hollenbeck, S. and A. Newton, "Registration Data Access
               Protocol (RDAP) Query Format", STD 95, RFC 9082,
@@ -643,19 +666,20 @@ Internet-Draft                rdap-geofeed                 February 2025
               DOI 10.17487/RFC9224, March 2022,
               <https://www.rfc-editor.org/info/rfc9224>.
 
+
+
+
+Singh & Harrison         Expires 18 October 2025               [Page 12]
+
+Internet-Draft                rdap-geofeed                    April 2025
+
+
    [RFC9632]  Bush, R., Candela, M., Kumari, W., and R. Housley,
               "Finding and Using Geofeed Data", RFC 9632,
               DOI 10.17487/RFC9632, August 2024,
               <https://www.rfc-editor.org/info/rfc9632>.
 
 10.2.  Informative References
-
-   [I-D.shafranovich-rfc4180-bis]
-              Shafranovich, Y., "Common Format and MIME Type for Comma-
-              Separated Values (CSV) Files", Work in Progress, Internet-
-              Draft, draft-shafranovich-rfc4180-bis-07, 2 August 2024,
-              <https://datatracker.ietf.org/doc/html/draft-shafranovich-
-              rfc4180-bis-07>.
 
    [LINK-RELATIONS]
               IANA, "Link Relations",
@@ -665,21 +689,17 @@ Internet-Draft                rdap-geofeed                 February 2025
               IANA, "Media Types",
               <https://www.iana.org/assignments/media-types/>.
 
-
-
-
-
-Singh & Harrison          Expires 7 August 2025                [Page 12]
-
-Internet-Draft                rdap-geofeed                 February 2025
-
-
    [RDAP-EXTENSIONS]
               IANA, "RDAP Extensions",
               <https://www.iana.org/assignments/rdap-extensions/>.
 
    [REGEXT]   IETF, "Registration Protocols Extensions",
               <https://datatracker.ietf.org/wg/regext/>.
+
+   [RFC4180]  Shafranovich, Y., "Common Format and MIME Type for Comma-
+              Separated Values (CSV) Files", RFC 4180,
+              DOI 10.17487/RFC4180, October 2005,
+              <https://www.rfc-editor.org/info/rfc4180>.
 
    [RFC6480]  Lepinski, M. and S. Kent, "An Infrastructure to Support
               Secure Internet Routing", RFC 6480, DOI 10.17487/RFC6480,
@@ -696,10 +716,39 @@ Internet-Draft                rdap-geofeed                 February 2025
               DOI 10.17487/RFC6973, July 2013,
               <https://www.rfc-editor.org/info/rfc6973>.
 
+   [RFC7111]  Hausenblas, M., Wilde, E., and J. Tennison, "URI Fragment
+              Identifiers for the text/csv Media Type", RFC 7111,
+              DOI 10.17487/RFC7111, January 2014,
+              <https://www.rfc-editor.org/info/rfc7111>.
+
+
+
+
+
+Singh & Harrison         Expires 18 October 2025               [Page 13]
+
+Internet-Draft                rdap-geofeed                    April 2025
+
+
+   [RFC7481]  Hollenbeck, S. and N. Kong, "Security Services for the
+              Registration Data Access Protocol (RDAP)", STD 95,
+              RFC 7481, DOI 10.17487/RFC7481, March 2015,
+              <https://www.rfc-editor.org/info/rfc7481>.
+
    [RFC7942]  Sheffer, Y. and A. Farrel, "Improving Awareness of Running
               Code: The Implementation Status Section", BCP 205,
               RFC 7942, DOI 10.17487/RFC7942, July 2016,
               <https://www.rfc-editor.org/info/rfc7942>.
+
+   [RFC8805]  Kline, E., Duleba, K., Szamonek, Z., Moser, S., and W.
+              Kumari, "A Format for Self-Published IP Geolocation
+              Feeds", RFC 8805, DOI 10.17487/RFC8805, August 2020,
+              <https://www.rfc-editor.org/info/rfc8805>.
+
+   [RFC9560]  Hollenbeck, S., "Federated Authentication for the
+              Registration Data Access Protocol (RDAP) Using OpenID
+              Connect", RFC 9560, DOI 10.17487/RFC9560, April 2024,
+              <https://www.rfc-editor.org/info/rfc9560>.
 
    [STRUCTURED-SYNTAX-SUFFIXES]
               IANA, "Structured Syntax Suffixes",
@@ -725,4 +774,11 @@ Authors' Addresses
 
 
 
-Singh & Harrison          Expires 7 August 2025                [Page 13]
+
+
+
+
+
+
+
+Singh & Harrison         Expires 18 October 2025               [Page 14]
