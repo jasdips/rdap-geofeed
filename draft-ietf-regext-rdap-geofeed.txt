@@ -5,12 +5,12 @@
 Registration Protocols Extensions (regext)                      J. Singh
 Internet-Draft                                                      ARIN
 Intended status: Standards Track                             T. Harrison
-Expires: 18 October 2025                                           APNIC
-                                                           16 April 2025
+Expires: 13 November 2025                                          APNIC
+                                                             12 May 2025
 
 
   Registration Data Access Protocol (RDAP) Extension for Geofeed Data
-                   draft-ietf-regext-rdap-geofeed-10
+                   draft-ietf-regext-rdap-geofeed-11
 
 Abstract
 
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 October 2025.
+   This Internet-Draft will expire on 13 November 2025.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Singh & Harrison         Expires 18 October 2025                [Page 1]
+Singh & Harrison        Expires 13 November 2025                [Page 1]
 
-Internet-Draft                rdap-geofeed                    April 2025
+Internet-Draft                rdap-geofeed                      May 2025
 
 
 Table of Contents
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Singh & Harrison         Expires 18 October 2025                [Page 2]
+Singh & Harrison        Expires 13 November 2025                [Page 2]
 
-Internet-Draft                rdap-geofeed                    April 2025
+Internet-Draft                rdap-geofeed                      May 2025
 
 
 1.1.  Requirements Language
@@ -165,9 +165,9 @@ Internet-Draft                rdap-geofeed                    April 2025
 
 
 
-Singh & Harrison         Expires 18 October 2025                [Page 3]
+Singh & Harrison        Expires 13 November 2025                [Page 3]
 
-Internet-Draft                rdap-geofeed                    April 2025
+Internet-Draft                rdap-geofeed                      May 2025
 
 
    In RDAP, the "value", "rel", and "href" JSON members are required for
@@ -221,9 +221,9 @@ Internet-Draft                rdap-geofeed                    April 2025
 
 
 
-Singh & Harrison         Expires 18 October 2025                [Page 4]
+Singh & Harrison        Expires 13 November 2025                [Page 4]
 
-Internet-Draft                rdap-geofeed                    April 2025
+Internet-Draft                rdap-geofeed                      May 2025
 
 
    registered media type or link relation in a standard response
@@ -277,9 +277,9 @@ Internet-Draft                rdap-geofeed                    April 2025
 
 
 
-Singh & Harrison         Expires 18 October 2025                [Page 5]
+Singh & Harrison        Expires 13 November 2025                [Page 5]
 
-Internet-Draft                rdap-geofeed                    April 2025
+Internet-Draft                rdap-geofeed                      May 2025
 
 
    {
@@ -333,9 +333,9 @@ Internet-Draft                rdap-geofeed                    April 2025
 
 
 
-Singh & Harrison         Expires 18 October 2025                [Page 6]
+Singh & Harrison        Expires 13 November 2025                [Page 6]
 
-Internet-Draft                rdap-geofeed                    April 2025
+Internet-Draft                rdap-geofeed                      May 2025
 
 
    refer to that single geofeed file.  As with geofeed references in
@@ -367,7 +367,8 @@ Internet-Draft                rdap-geofeed                    April 2025
 
 5.  Security Considerations
 
-   [RFC9632] requires an HTTPS URL for a geofeed file.
+   A geofeed file MUST be referenced with an HTTPS URL, per Section 6 of
+   [RFC9632].
 
    The geofeed file may also contain an RPKI signature, per Section 5 of
    [RFC9632].
@@ -385,15 +386,15 @@ Internet-Draft                rdap-geofeed                    April 2025
 
    *  Extension identifier: geofeed1
    *  Registry operator: Any
-   *  Published specification: This document.
 
 
 
-Singh & Harrison         Expires 18 October 2025                [Page 7]
+Singh & Harrison        Expires 13 November 2025                [Page 7]
 
-Internet-Draft                rdap-geofeed                    April 2025
+Internet-Draft                rdap-geofeed                      May 2025
 
 
+   *  Published specification: This document.
    *  Contact: IETF, iesg@ietf.org
    *  Intended usage: This extension describes a method to access the IP
       geolocation feed data through RDAP.
@@ -444,10 +445,9 @@ Internet-Draft                rdap-geofeed                    April 2025
 
 
 
-
-Singh & Harrison         Expires 18 October 2025                [Page 8]
+Singh & Harrison        Expires 13 November 2025                [Page 8]
 
-Internet-Draft                rdap-geofeed                    April 2025
+Internet-Draft                rdap-geofeed                      May 2025
 
 
 6.4.  Structured Syntax Suffixes Registry
@@ -501,9 +501,9 @@ Internet-Draft                rdap-geofeed                    April 2025
 
 
 
-Singh & Harrison         Expires 18 October 2025                [Page 9]
+Singh & Harrison        Expires 13 November 2025                [Page 9]
 
-Internet-Draft                rdap-geofeed                    April 2025
+Internet-Draft                rdap-geofeed                      May 2025
 
 
    here does not imply endorsement by the IETF.  Furthermore, no effort
@@ -557,9 +557,9 @@ Internet-Draft                rdap-geofeed                    April 2025
 
 
 
-Singh & Harrison         Expires 18 October 2025               [Page 10]
+Singh & Harrison        Expires 13 November 2025               [Page 10]
 
-Internet-Draft                rdap-geofeed                    April 2025
+Internet-Draft                rdap-geofeed                      May 2025
 
 
    *  Updated the "Requirements Language" section for examples.
@@ -613,9 +613,9 @@ Internet-Draft                rdap-geofeed                    April 2025
 
 
 
-Singh & Harrison         Expires 18 October 2025               [Page 11]
+Singh & Harrison        Expires 13 November 2025               [Page 11]
 
-Internet-Draft                rdap-geofeed                    April 2025
+Internet-Draft                rdap-geofeed                      May 2025
 
 
 9.8.  Changes from 07 to 08
@@ -669,9 +669,9 @@ Internet-Draft                rdap-geofeed                    April 2025
 
 
 
-Singh & Harrison         Expires 18 October 2025               [Page 12]
+Singh & Harrison        Expires 13 November 2025               [Page 12]
 
-Internet-Draft                rdap-geofeed                    April 2025
+Internet-Draft                rdap-geofeed                      May 2025
 
 
    [RFC9632]  Bush, R., Candela, M., Kumari, W., and R. Housley,
@@ -725,9 +725,9 @@ Internet-Draft                rdap-geofeed                    April 2025
 
 
 
-Singh & Harrison         Expires 18 October 2025               [Page 13]
+Singh & Harrison        Expires 13 November 2025               [Page 13]
 
-Internet-Draft                rdap-geofeed                    April 2025
+Internet-Draft                rdap-geofeed                      May 2025
 
 
    [RFC7481]  Hollenbeck, S. and N. Kong, "Security Services for the
@@ -781,4 +781,4 @@ Authors' Addresses
 
 
 
-Singh & Harrison         Expires 18 October 2025               [Page 14]
+Singh & Harrison        Expires 13 November 2025               [Page 14]
