@@ -7,10 +7,10 @@ ipr= "trust200902"
 
 [seriesInfo]
 name = "Internet-Draft"
-value = "draft-ietf-regext-rdap-geofeed-10"
+value = "draft-ietf-regext-rdap-geofeed-11"
 stream = "IETF"
 status = "standard"
-date = 2025-04-16T00:00:00Z
+date = 2025-05-12T00:00:00Z
 
 [[author]]
 initials = "J."
@@ -193,7 +193,7 @@ implementation of the functionality defined in this document.
 
 # Security Considerations {#security_considerations}
 
-[@!RFC9632] requires an HTTPS URL for a geofeed file.
+A geofeed file MUST be referenced with an HTTPS URL, per [@!RFC9632, section 6].
 
 The geofeed file may also contain an RPKI signature, per [@!RFC9632, section 5].
 
