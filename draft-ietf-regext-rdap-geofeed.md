@@ -5,12 +5,14 @@ workgroup = "Registration Protocols Extensions (regext)"
 abbrev = "rdap-geofeed"
 ipr= "trust200902"
 
+"http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml"
+
 [seriesInfo]
 name = "Internet-Draft"
-value = "draft-ietf-regext-rdap-geofeed-11"
+value = "draft-ietf-regext-rdap-geofeed-12"
 stream = "IETF"
 status = "standard"
-date = 2025-05-12T00:00:00Z
+date = 2025-06-02T00:00:00Z
 
 [[author]]
 initials = "J."
@@ -41,17 +43,22 @@ the associated link objects included in responses.
 # Introduction
 
 [@RFC8805] and [@!RFC9632] detail the IP geolocation feed (commonly known as 'geofeed') file format and associated
-access mechanisms. This document specifies how geofeed URLs can be accessed through RDAP. It defines a new RDAP
-extension, "geofeed1", for indicating that an RDAP server hosts geofeed URLs for its IP network objects, as well as a
-new media type and a new link relation type for the associated link objects.
+access mechanisms.  While [@!RFC9632] describes how a registry can make geofeed URLs available by way of a Routing
+Policy Specification Language (RPSL) [@RFC2725] service, the Regional Internet Registries (RIRs) have deployed
+Registration Data Access Protocol (RDAP) ([@RFC7480], [@RFC7481], [@!RFC9082], [@!RFC9083]) services as successors for
+RPSL for Internet number resource registrations, and maintaining feature parity between the two services supports client
+transition from RPSL to RDAP in this context.  To that end, this document specifies how geofeed URLs can be accessed
+through RDAP. It defines a new RDAP extension, "geofeed1", for indicating that an RDAP server hosts geofeed URLs for its
+IP network objects, as well as a new media type and a new link relation type for the associated link objects.
 
-## Requirements Language
+Fetching and making use of geofeed data is out of scope for the purposes of this document.  See [@RFC8805] and
+[@!RFC9632] for further details.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",
 "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14
 [@!RFC2119] [@!RFC8174] when, and only when, they appear in all capitals, as shown here.
 
-Indentation and whitespace in examples are provided only to illustrate element relationships, and are not a REQUIRED
+Indentation and whitespace in examples are provided only to illustrate element relationships, and are not a required
 feature of this specification.
 
 "..." in examples is used as shorthand for elements defined outside of this document.
@@ -91,7 +98,7 @@ object, the "type" JSON member is RECOMMENDED. The geofeed-specific components o
 An IP network object returned by an RDAP server MAY contain zero or more geofeed link objects, though typically an IP
 network will have either no such link objects or only one. The scenario where more than one geofeed link object could be
 returned is when the server is able to represent that data in multiple languages. In such a case, the server SHOULD
-provide "hreflang" members for the geofeed link objects. Except for the multiple-languages scenario, the server MUST NOT
+provide "hreflang" members for the geofeed link objects. Except for the multiple-languages scenario, the server SHOULD NOT
 return more than one geofeed link object.
 
 ## Extension Identifier
@@ -115,8 +122,8 @@ include a corresponding geofeed link object in the response.
 
 An RDAP server may make use of the "application/geofeed+csv" media type and the "geofeed" link relation defined in this
 specification in its responses without including the "geofeed1" extension identifier in those responses, because RDAP
-servers are free to use any registered media type or link relation in a standard response (without implementing any
-particular extension). The additional value of including the extension identifier in the "rdapConformance" array is that
+servers are free to use any registered media type or link relation in a standard response without implementing any
+particular extension. The additional value of including the extension identifier in the "rdapConformance" array is that
 it signals to the client that the server hosts geofeed URLs for its IP network objects. This is useful where a client
 receives an IP network object without a geofeed link object, because in that case the client can infer that no geofeed
 data is available for that object, since the server would have provided it if it were available.
@@ -182,10 +189,13 @@ authoritative for the relevant resources. The RDAP bootstrap process ([@!RFC9224
 recommendation, since a client following that process will be directed to the RDAP server that is able to make
 authoritative statements about the disposition of the relevant resources.
 
+To prevent undue load on RDAP and geofeed servers, clients fetching geofeed data using these mechanisms MUST NOT do
+frequent real-time lookups.  See [@!RFC9632, section 6] for further details.
+
 # Privacy Considerations
 
 All the privacy considerations from [@!RFC9632, section 7] apply to this document. In particular, the service provider
-publishing the geofeed file MUST take care to not accidentally expose the location of any individual.
+publishing the geofeed file MUST take care not to expose the location of any individual.
 
 Many jurisdictions have laws or regulations that restrict the use of "personal data", per the definition in [@?RFC6973].
 Given that, registry operators should ascertain whether the regulatory environment in which they operate permits
@@ -193,9 +203,10 @@ implementation of the functionality defined in this document.
 
 # Security Considerations {#security_considerations}
 
-A geofeed file MUST be referenced with an HTTPS URL, per [@!RFC9632, section 6].
+[@!RFC9632, Section 6] documents several security considerations that are equally relevant in the RDAP context.
 
-The geofeed file may also contain an RPKI signature, per [@!RFC9632, section 5].
+A geofeed file MUST be referenced with an HTTPS URL, per [@!RFC9632, section 6].  The geofeed file may also contain an
+RPKI signature, per [@!RFC9632, section 5].
 
 Besides that, this document does not introduce any new security considerations past those already discussed in the RDAP
 protocol specifications ([@RFC7481], [@RFC9560]).
@@ -290,18 +301,18 @@ implemented protocols more mature. It is up to the individual working groups to 
 ## RIPE NCC
 
 * Responsible Organization: RIPE NCC
-* Location: https://rdap.db.ripe.net
+* Location: https://docs.db.ripe.net/Release-Notes/#ripe-database-release-1-110
 * Description: An RDAP server returning geofeed data.
 * Level of Maturity: This is a production implementation.
-* Coverage: This implementation covers all the features described in this specification.
+* Coverage: This implementation covers all the features described in version 01 of this specification.
 * Contact Information: Ed Shryane, eshryane@ripe.net
 
 # Acknowledgements
 
 Mark Kosters provided initial support and encouragement for this work, along with the [@!RFC9632] authors. Gavin Brown
 suggested using a web link instead of a simple URL string to specify a geofeed file URL. Andy Newton, James Gould, Scott
-Hollenbeck, Mario Loffredo, Orie Steele, Alexey Melnikov, Mark Nottingham, Rifaat Shekh-Yusuf, Dale R. Worley, and Dhruv
-Dhody provided valuable feedback for this document.
+Hollenbeck, Mario Loffredo, Orie Steele, Alexey Melnikov, Mark Nottingham, Rifaat Shekh-Yusuf, Dale R. Worley, Dhruv
+Dhody, and Mohamed Boucadair provided valuable feedback for this document.
 
 # Change History
 
