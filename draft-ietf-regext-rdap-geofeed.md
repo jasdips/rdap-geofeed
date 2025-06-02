@@ -12,7 +12,7 @@ name = "Internet-Draft"
 value = "draft-ietf-regext-rdap-geofeed-12"
 stream = "IETF"
 status = "standard"
-date = 2025-05-12T00:00:00Z
+date = 2025-06-02T00:00:00Z
 
 [[author]]
 initials = "J."
@@ -311,8 +311,8 @@ implemented protocols more mature. It is up to the individual working groups to 
 
 Mark Kosters provided initial support and encouragement for this work, along with the [@!RFC9632] authors. Gavin Brown
 suggested using a web link instead of a simple URL string to specify a geofeed file URL. Andy Newton, James Gould, Scott
-Hollenbeck, Mario Loffredo, Orie Steele, Alexey Melnikov, Mark Nottingham, Rifaat Shekh-Yusuf, Dale R. Worley, and Dhruv
-Dhody provided valuable feedback for this document.
+Hollenbeck, Mario Loffredo, Orie Steele, Alexey Melnikov, Mark Nottingham, Rifaat Shekh-Yusuf, Dale R. Worley, Dhruv
+Dhody, and Mohamed Boucadair provided valuable feedback for this document.
 
 # Change History
 
