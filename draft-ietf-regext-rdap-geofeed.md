@@ -5,8 +5,6 @@ workgroup = "Registration Protocols Extensions (regext)"
 abbrev = "rdap-geofeed"
 ipr= "trust200902"
 
-"http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml"
-
 [seriesInfo]
 name = "Internet-Draft"
 value = "draft-ietf-regext-rdap-geofeed-12"
@@ -43,15 +41,15 @@ the associated link objects included in responses.
 # Introduction
 
 [@RFC8805] and [@!RFC9632] detail the IP geolocation feed (commonly known as 'geofeed') file format and associated
-access mechanisms.  While [@!RFC9632] describes how a registry can make geofeed URLs available by way of a Routing
-Policy Specification Language (RPSL) [@RFC2725] service, the Regional Internet Registries (RIRs) have deployed
+access mechanisms. While [@!RFC9632] describes how a registry can make geofeed URLs available by way of a Routing
+Policy Specification Language (RPSL) [@RFC2622] service, the Regional Internet Registries (RIRs) have deployed
 Registration Data Access Protocol (RDAP) ([@RFC7480], [@RFC7481], [@!RFC9082], [@!RFC9083]) services as successors for
 RPSL for Internet number resource registrations, and maintaining feature parity between the two services supports client
-transition from RPSL to RDAP in this context.  To that end, this document specifies how geofeed URLs can be accessed
+transition from RPSL to RDAP in this context. To that end, this document specifies how geofeed URLs can be accessed
 through RDAP. It defines a new RDAP extension, "geofeed1", for indicating that an RDAP server hosts geofeed URLs for its
 IP network objects, as well as a new media type and a new link relation type for the associated link objects.
 
-Fetching and making use of geofeed data is out of scope for the purposes of this document.  See [@RFC8805] and
+Fetching and making use of geofeed data is out of scope for the purposes of this document. See [@RFC8805] and
 [@!RFC9632] for further details.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",
@@ -98,8 +96,8 @@ object, the "type" JSON member is RECOMMENDED. The geofeed-specific components o
 An IP network object returned by an RDAP server MAY contain zero or more geofeed link objects, though typically an IP
 network will have either no such link objects or only one. The scenario where more than one geofeed link object could be
 returned is when the server is able to represent that data in multiple languages. In such a case, the server SHOULD
-provide "hreflang" members for the geofeed link objects. Except for the multiple-languages scenario, the server SHOULD NOT
-return more than one geofeed link object.
+provide "hreflang" members for the geofeed link objects. Except for the multiple-languages scenario, the server SHOULD
+NOT return more than one geofeed link object.
 
 ## Extension Identifier
 
@@ -190,7 +188,7 @@ recommendation, since a client following that process will be directed to the RD
 authoritative statements about the disposition of the relevant resources.
 
 To prevent undue load on RDAP and geofeed servers, clients fetching geofeed data using these mechanisms MUST NOT do
-frequent real-time lookups.  See [@!RFC9632, section 6] for further details.
+frequent real-time lookups. See [@!RFC9632, section 6] for further details.
 
 # Privacy Considerations
 
@@ -203,9 +201,9 @@ implementation of the functionality defined in this document.
 
 # Security Considerations {#security_considerations}
 
-[@!RFC9632, Section 6] documents several security considerations that are equally relevant in the RDAP context.
+[@!RFC9632, section 6] documents several security considerations that are equally relevant in the RDAP context.
 
-A geofeed file MUST be referenced with an HTTPS URL, per [@!RFC9632, section 6].  The geofeed file may also contain an
+A geofeed file MUST be referenced with an HTTPS URL, per [@!RFC9632, section 6]. The geofeed file may also contain an
 RPKI signature, per [@!RFC9632, section 5].
 
 Besides that, this document does not introduce any new security considerations past those already discussed in the RDAP
@@ -376,6 +374,14 @@ Dhody, and Mohamed Boucadair provided valuable feedback for this document.
 * Made minor editorial changes.
 
 ## Changes from 09 to 10
+
+* Incorporated feedback from the IESG review.
+
+## Changes from 10 to 11
+
+* Incorporated feedback from the IESG review.
+
+## Changes from 11 to 12
 
 * Incorporated feedback from the IESG review.
 
