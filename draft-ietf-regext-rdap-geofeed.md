@@ -7,7 +7,7 @@ ipr= "trust200902"
 
 [seriesInfo]
 name = "Internet-Draft"
-value = "draft-ietf-regext-rdap-geofeed-12"
+value = "draft-ietf-regext-rdap-geofeed-13"
 stream = "IETF"
 status = "standard"
 date = 2025-06-02T00:00:00Z
@@ -115,8 +115,9 @@ example for this inclusion:
 ```
 
 If the server includes "geofeed1" in the "rdapConformance" array, then for any response concerning a particular IP
-network object for which the server possesses a geofeed URL and is able to return it to the client, the server MUST
-include a corresponding geofeed link object in the response.
+network object for which the server possesses a geofeed URL and is able to return it to the client (i.e. is not
+compelled to omit it due to regulatory constraints or similar), the server MUST include a corresponding geofeed link
+object in the response.
 
 An RDAP server may make use of the "application/geofeed+csv" media type and the "geofeed" link relation defined in this
 specification in its responses without including the "geofeed1" extension identifier in those responses, because RDAP
@@ -129,6 +130,9 @@ data is available for that object, since the server would have provided it if it
 Although a server may use registered media types in its link objects without any restrictions, it is useful to define
 new RDAP extensions for those media types in order for the server to communicate to clients that it will make data for
 that type accessible, in the same way that the server does with the "geofeed1" extension identifier.
+
+The "1" in "geofeed1" denotes that this is version 1 of the geofeed extension.  New versions of the geofeed extension
+will use different extension identifiers.
 
 ## Example
 
@@ -310,7 +314,8 @@ implemented protocols more mature. It is up to the individual working groups to 
 Mark Kosters provided initial support and encouragement for this work, along with the [@!RFC9632] authors. Gavin Brown
 suggested using a web link instead of a simple URL string to specify a geofeed file URL. Andy Newton, James Gould, Scott
 Hollenbeck, Mario Loffredo, Orie Steele, Alexey Melnikov, Mark Nottingham, Rifaat Shekh-Yusuf, Dale R. Worley, Dhruv
-Dhody, and Mohamed Boucadair provided valuable feedback for this document.
+Dhody, Mohamed Boucadair, Mahesh Jethanandani, Ketan Talaulikar, and Éric Vyncke provided valuable feedback for this
+document.
 
 # Change History
 
@@ -382,6 +387,10 @@ Dhody, and Mohamed Boucadair provided valuable feedback for this document.
 * Incorporated feedback from the IESG review.
 
 ## Changes from 11 to 12
+
+* Incorporated feedback from the IESG review.
+
+## Changes from 12 to 13
 
 * Incorporated feedback from the IESG review.
 
