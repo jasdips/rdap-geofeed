@@ -7,10 +7,10 @@ ipr= "trust200902"
 
 [seriesInfo]
 name = "Internet-Draft"
-value = "draft-ietf-regext-rdap-geofeed-13"
+value = "draft-ietf-regext-rdap-geofeed-14"
 stream = "IETF"
 status = "standard"
-date = 2025-06-02T00:00:00Z
+date = 2025-06-05T00:00:00Z
 
 [[author]]
 initials = "J."
@@ -43,7 +43,7 @@ the associated link objects included in responses.
 [@RFC8805] and [@!RFC9632] detail the IP geolocation feed (commonly known as 'geofeed') file format and associated
 access mechanisms. While [@!RFC9632] describes how a registry can make geofeed URLs available by way of a Routing
 Policy Specification Language (RPSL) [@RFC2622] service, the Regional Internet Registries (RIRs) have deployed
-Registration Data Access Protocol (RDAP) ([@RFC7480], [@RFC7481], [@!RFC9082], [@!RFC9083]) services as successors for
+Registration Data Access Protocol (RDAP) ([@RFC7480], [@RFC7481], [@!RFC9082], [@!RFC9083]) services as successors to
 RPSL for Internet number resource registrations, and maintaining feature parity between the two services supports client
 transition from RPSL to RDAP in this context. To that end, this document specifies how geofeed URLs can be accessed
 through RDAP. It defines a new RDAP extension, "geofeed1", for indicating that an RDAP server hosts geofeed URLs for its
@@ -223,7 +223,7 @@ IANA is requested to register the following value in the RDAP Extensions Registr
 * Registry operator: Any
 * Published specification: This document.
 * Contact: IETF, iesg@ietf.org
-* Intended usage: This extension describes a method to access the IP geolocation feed data through RDAP.
+* Intended usage: This extension describes version 1 of a method to access the IP geolocation feed data through RDAP.
 
 ## Link Relations Registry {#link_relations_registry}
 
@@ -391,6 +391,10 @@ document.
 * Incorporated feedback from the IESG review.
 
 ## Changes from 12 to 13
+
+* Incorporated feedback from the IESG review.
+
+## Changes from 13 to 14
 
 * Incorporated feedback from the IESG review.
 
