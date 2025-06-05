@@ -49,7 +49,7 @@ transition from RPSL to RDAP in this context. To that end, this document specifi
 through RDAP. It defines a new RDAP extension, "geofeed1", for indicating that an RDAP server hosts geofeed URLs for its
 IP network objects, as well as a new media type and a new link relation type for the associated link objects.
 
-Fetching and making use of geofeed data are out of scope for the purposes of this document. See [@RFC8805] and
+Fetching and making use of geofeed data is out of scope for the purposes of this document. See [@RFC8805] and
 [@!RFC9632] for further details.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",
