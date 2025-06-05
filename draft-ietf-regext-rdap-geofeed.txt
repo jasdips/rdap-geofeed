@@ -122,7 +122,7 @@ Internet-Draft                rdap-geofeed                     June 2025
    geofeed URLs for its IP network objects, as well as a new media type
    and a new link relation type for the associated link objects.
 
-   Fetching and making use of geofeed data are out of scope for the
+   Fetching and making use of geofeed data is out of scope for the
    purposes of this document.  See [RFC8805] and [RFC9632] for further
    details.
 
