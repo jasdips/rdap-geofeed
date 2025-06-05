@@ -5,12 +5,12 @@
 Registration Protocols Extensions (regext)                      J. Singh
 Internet-Draft                                                      ARIN
 Intended status: Standards Track                             T. Harrison
-Expires: 6 December 2025                                           APNIC
-                                                             4 June 2025
+Expires: 7 December 2025                                           APNIC
+                                                             5 June 2025
 
 
   Registration Data Access Protocol (RDAP) Extension for Geofeed Data
-                   draft-ietf-regext-rdap-geofeed-13
+                   draft-ietf-regext-rdap-geofeed-14
 
 Abstract
 
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 6 December 2025.
+   This Internet-Draft will expire on 7 December 2025.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Singh & Harrison         Expires 6 December 2025                [Page 1]
+Singh & Harrison         Expires 7 December 2025                [Page 1]
 
 Internet-Draft                rdap-geofeed                     June 2025
 
@@ -91,6 +91,7 @@ Table of Contents
      9.11. Changes from 10 to 11 . . . . . . . . . . . . . . . . . .  12
      9.12. Changes from 11 to 12 . . . . . . . . . . . . . . . . . .  12
      9.13. Changes from 12 to 13 . . . . . . . . . . . . . . . . . .  12
+     9.14. Changes from 13 to 14 . . . . . . . . . . . . . . . . . .  12
    10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  12
      10.1.  Normative References . . . . . . . . . . . . . . . . . .  12
      10.2.  Informative References . . . . . . . . . . . . . . . . .  13
@@ -104,16 +105,16 @@ Table of Contents
    available by way of a Routing Policy Specification Language (RPSL)
    [RFC2622] service, the Regional Internet Registries (RIRs) have
    deployed Registration Data Access Protocol (RDAP) ([RFC7480],
-   [RFC7481], [RFC9082], [RFC9083]) services as successors for RPSL for
-   Internet number resource registrations, and maintaining feature
+   [RFC7481], [RFC9082], [RFC9083]) services as successors to RPSL for
 
 
 
-Singh & Harrison         Expires 6 December 2025                [Page 2]
+Singh & Harrison         Expires 7 December 2025                [Page 2]
 
 Internet-Draft                rdap-geofeed                     June 2025
 
 
+   Internet number resource registrations, and maintaining feature
    parity between the two services supports client transition from RPSL
    to RDAP in this context.  To that end, this document specifies how
    geofeed URLs can be accessed through RDAP.  It defines a new RDAP
@@ -121,7 +122,7 @@ Internet-Draft                rdap-geofeed                     June 2025
    geofeed URLs for its IP network objects, as well as a new media type
    and a new link relation type for the associated link objects.
 
-   Fetching and making use of geofeed data is out of scope for the
+   Fetching and making use of geofeed data are out of scope for the
    purposes of this document.  See [RFC8805] and [RFC9632] for further
    details.
 
@@ -164,8 +165,7 @@ Internet-Draft                rdap-geofeed                     June 2025
 
 
 
-
-Singh & Harrison         Expires 6 December 2025                [Page 3]
+Singh & Harrison         Expires 7 December 2025                [Page 3]
 
 Internet-Draft                rdap-geofeed                     June 2025
 
@@ -221,7 +221,7 @@ Internet-Draft                rdap-geofeed                     June 2025
 
 
 
-Singh & Harrison         Expires 6 December 2025                [Page 4]
+Singh & Harrison         Expires 7 December 2025                [Page 4]
 
 Internet-Draft                rdap-geofeed                     June 2025
 
@@ -277,7 +277,7 @@ Internet-Draft                rdap-geofeed                     June 2025
 
 
 
-Singh & Harrison         Expires 6 December 2025                [Page 5]
+Singh & Harrison         Expires 7 December 2025                [Page 5]
 
 Internet-Draft                rdap-geofeed                     June 2025
 
@@ -333,7 +333,7 @@ Internet-Draft                rdap-geofeed                     June 2025
 
 
 
-Singh & Harrison         Expires 6 December 2025                [Page 6]
+Singh & Harrison         Expires 7 December 2025                [Page 6]
 
 Internet-Draft                rdap-geofeed                     June 2025
 
@@ -389,7 +389,7 @@ Internet-Draft                rdap-geofeed                     June 2025
 
 
 
-Singh & Harrison         Expires 6 December 2025                [Page 7]
+Singh & Harrison         Expires 7 December 2025                [Page 7]
 
 Internet-Draft                rdap-geofeed                     June 2025
 
@@ -403,8 +403,8 @@ Internet-Draft                rdap-geofeed                     June 2025
    *  Registry operator: Any
    *  Published specification: This document.
    *  Contact: IETF, iesg@ietf.org
-   *  Intended usage: This extension describes a method to access the IP
-      geolocation feed data through RDAP.
+   *  Intended usage: This extension describes version 1 of a method to
+      access the IP geolocation feed data through RDAP.
 
 6.2.  Link Relations Registry
 
@@ -445,7 +445,7 @@ Internet-Draft                rdap-geofeed                     June 2025
 
 
 
-Singh & Harrison         Expires 6 December 2025                [Page 8]
+Singh & Harrison         Expires 7 December 2025                [Page 8]
 
 Internet-Draft                rdap-geofeed                     June 2025
 
@@ -501,7 +501,7 @@ Internet-Draft                rdap-geofeed                     June 2025
 
 
 
-Singh & Harrison         Expires 6 December 2025                [Page 9]
+Singh & Harrison         Expires 7 December 2025                [Page 9]
 
 Internet-Draft                rdap-geofeed                     June 2025
 
@@ -557,7 +557,7 @@ Internet-Draft                rdap-geofeed                     June 2025
 
 
 
-Singh & Harrison         Expires 6 December 2025               [Page 10]
+Singh & Harrison         Expires 7 December 2025               [Page 10]
 
 Internet-Draft                rdap-geofeed                     June 2025
 
@@ -613,7 +613,7 @@ Internet-Draft                rdap-geofeed                     June 2025
 
 
 
-Singh & Harrison         Expires 6 December 2025               [Page 11]
+Singh & Harrison         Expires 7 December 2025               [Page 11]
 
 Internet-Draft                rdap-geofeed                     June 2025
 
@@ -655,24 +655,29 @@ Internet-Draft                rdap-geofeed                     June 2025
 
    *  Incorporated feedback from the IESG review.
 
+9.14.  Changes from 13 to 14
+
+   *  Incorporated feedback from the IESG review.
+
 10.  References
 
 10.1.  Normative References
+
+
+
+
+
+
+
+Singh & Harrison         Expires 7 December 2025               [Page 12]
+
+Internet-Draft                rdap-geofeed                     June 2025
+
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
-
-
-
-
-
-
-Singh & Harrison         Expires 6 December 2025               [Page 12]
-
-Internet-Draft                rdap-geofeed                     June 2025
-
 
    [RFC3629]  Yergeau, F., "UTF-8, a transformation format of ISO
               10646", STD 63, RFC 3629, DOI 10.17487/RFC3629, November
@@ -716,19 +721,17 @@ Internet-Draft                rdap-geofeed                     June 2025
               IANA, "RDAP Extensions",
               <https://www.iana.org/assignments/rdap-extensions/>.
 
-   [REGEXT]   IETF, "Registration Protocols Extensions",
-              <https://datatracker.ietf.org/wg/regext/>.
 
 
 
 
-
-
-
-Singh & Harrison         Expires 6 December 2025               [Page 13]
+Singh & Harrison         Expires 7 December 2025               [Page 13]
 
 Internet-Draft                rdap-geofeed                     June 2025
 
+
+   [REGEXT]   IETF, "Registration Protocols Extensions",
+              <https://datatracker.ietf.org/wg/regext/>.
 
    [RFC2622]  Alaettinoglu, C., Villamizar, C., Gerich, E., Kessens, D.,
               Meyer, D., Bates, T., Karrenberg, D., and M. Terpstra,
@@ -778,10 +781,7 @@ Internet-Draft                rdap-geofeed                     June 2025
 
 
 
-
-
-
-Singh & Harrison         Expires 6 December 2025               [Page 14]
+Singh & Harrison         Expires 7 December 2025               [Page 14]
 
 Internet-Draft                rdap-geofeed                     June 2025
 
@@ -837,4 +837,4 @@ Authors' Addresses
 
 
 
-Singh & Harrison         Expires 6 December 2025               [Page 15]
+Singh & Harrison         Expires 7 December 2025               [Page 15]
